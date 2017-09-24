@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "name": "Paulina",
+      "email": "kowal",
+      "password": "kowal",
+      "id": 78
+    },
+    {
+      "name": "Natasza",
+      "email": "Nowak",
+      "password": "nowa",
+      "id": 3
+    },
+    {
+      "name": "Krzysztof",
+      "email": "Nienowy",
+      "password": "krzysiek",
+      "id": 4
+    }
+  ]
+}

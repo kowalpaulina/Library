@@ -1,0 +1,164 @@
+{
+  "books": [
+    {
+      "id": 9780641723445,
+      "cat": [
+        "book",
+        "hardcover"
+      ],
+      "title": "The Lightning Thief",
+      "author": "Rick Riordan",
+      "series_t": "Percy Jackson and the Olympians",
+      "sequence_i": 1,
+      "genre_s": "fantasy",
+      "inStock": true,
+      "price": 12.5,
+      "pages_i": 384,
+      "read": false
+    },
+    {
+      "id": 9781423103349,
+      "cat": [
+        "book",
+        "paperback"
+      ],
+      "title": "The Sea of Monsters",
+      "author": "Rick Riorsh",
+      "series_t": "Percy Jackson and the Olympians",
+      "sequence_i": 2,
+      "genre_s": "fantasy",
+      "inStock": true,
+      "price": 6.49,
+      "pages_i": 304,
+      "read": true
+    },
+    {
+      "id": 978,
+      "cat": [
+        "book",
+        "paperback"
+      ],
+      "title": "Sophie's World : The Greek  Philosophers",
+      "author": "Jostein Gaarder",
+      "sequence_i": 1,
+      "genre_s": "fantasy",
+      "inStock": true,
+      "price": 3.07,
+      "pages_i": 64,
+      "read": false
+    },
+    {
+      "id": 9781423103350,
+      "author": "Filip Springer",
+      "title": "Miedzianka",
+      "read": false
+    },
+    {
+      "id": 9781423103351,
+      "author": "Filip Springer",
+      "title": "Wanna z kolumnadą",
+      "read": true
+    },
+    {
+      "id": 9781423103353,
+      "author": "hgfh",
+      "title": "The Lightning Thieff",
+      "read": false
+    },
+    {
+      "id": 9781423103354,
+      "author": "Nieznany",
+      "title": "Angular2",
+      "read": false
+    },
+    {
+      "id": 9781423103355,
+      "author": "Tony Judt",
+      "title": "Źle ma się kraj",
+      "read": true
+    },
+    {
+      "title": "THE LITIGATORSaergdfgdgdr",
+      "description": "Partners in a small law firm take on a big case after a fast-track burnout joins them.",
+      "contributor": "by John Grisham",
+      "author": "John Grisham",
+      "contributor_note": "",
+      "price": 0,
+      "age_group": "",
+      "publisher": "Dell",
+      "isbns": [
+        {
+          "isbn10": "0345536886",
+          "isbn13": "9780345536884"
+        },
+        {
+          "isbn10": "034553056X",
+          "isbn13": "9780345530561"
+        }
+      ],
+      "ranks_history": [],
+      "reviews": [
+        {
+          "book_review_link": "",
+          "first_chapter_link": "",
+          "sunday_review_link": "",
+          "article_chapter_link": ""
+        }
+      ],
+      "id": 9781423103368
+    },
+    {
+      "title": "The Last Juror: A Novel",
+      "description": null,
+      "contributor": null,
+      "author": "John Grisham",
+      "contributor_note": null,
+      "price": 0,
+      "age_group": null,
+      "publisher": null,
+      "isbns": [
+        {
+          "isbn10": "0440246024",
+          "isbn13": "9780440246022"
+        }
+      ],
+      "ranks_history": [],
+      "reviews": [
+        {
+          "book_review_link": "",
+          "first_chapter_link": null,
+          "sunday_review_link": "https://www.nytimes.com/2004/04/04/books/books-in-brief-fiction-poetry-956155.html",
+          "article_chapter_link": null
+        }
+      ],
+      "id": 9781423103370,
+      "read": true
+    },
+    {
+      "title": "THE APPEAL",
+      "description": "Political and legal intrigue ensue when a Mississippi court rules against a company accused of dumping toxic waste.",
+      "contributor": "by John Grisham",
+      "author": "John Grisham",
+      "contributor_note": "",
+      "price": 0,
+      "age_group": "",
+      "publisher": "Doubleday Publishing",
+      "isbns": [
+        {
+          "isbn10": "0345532023",
+          "isbn13": "9780345532022"
+        }
+      ],
+      "ranks_history": [],
+      "reviews": [
+        {
+          "book_review_link": "https://www.nytimes.com/2008/01/28/books/28maslin.html",
+          "first_chapter_link": "https://www.nytimes.com/2008/03/30/books/chapters/first-chapter-the-appeal.html",
+          "sunday_review_link": "https://www.nytimes.com/2008/03/30/books/review/brill.html",
+          "article_chapter_link": ""
+        }
+      ],
+      "id": 9781423103371
+    }
+  ]
+}

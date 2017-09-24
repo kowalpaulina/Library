@@ -1,0 +1,17 @@
+body{
+    max-width: 1920px;
+    height: 100%;
+    height: auto;
+    overflow: auto;
+}
+
+
+
+
+.container{
+    margin-top: 30px;
+}
+
+.form-log-in, .form-group{
+    padding-top: 50px;
+}

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-toggleable-md bg-faded navbar-inverse">
+  <div class="navbar-header">
+    <a href="#" class="navbar-brand">Moja Biblioteka</a>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="blog" routerLinkActive="active">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="about" routerLinkActive="active">O mnie</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="books" routerLinkActive="active">Książki</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="searchBooks" routerLinkActive="active">Szukaj książek</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="reviews" routerLinkActive="active">Recenzje</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin" routerLinkActive="active">Panel administracyjny</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login" routerLinkActive="active">Zaloguj się</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register" routerLinkActive="active">Rejestracja</a>
+      </li>
+
+      <div class="invitation">{{invitation}}</div>
+
+    </ul>
+  </div>
+</nav>
