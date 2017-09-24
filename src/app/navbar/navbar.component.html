@@ -1,23 +1,27 @@
-<nav class="navbar navbar-toggleable-md bg-faded navbar-inverse">
-  <div class="navbar-header">
-    <a href="#" class="navbar-brand">Moja Biblioteka</a>
-  </div>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a class="navbar-brand" href="#">Library</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="blog" routerLinkActive="active">Blog</a>
+        <a class="nav-link" routerLink="blog" routerLinkActive="active">Strona powitalna dla wszystkich</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="books" routerLinkActive="active">My library</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="about" routerLinkActive="active">O mnie</a>
+        <a class="nav-link" routerLink="searchBooks" routerLinkActive="active">Find books</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="books" routerLinkActive="active">Książki</a>
+        <a class="nav-link" routerLink="about" routerLinkActive="active">Borrowed books</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="searchBooks" routerLinkActive="active">Szukaj książek</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="reviews" routerLinkActive="active">Recenzje</a>
+        <a class="nav-link" routerLink="reviews" routerLinkActive="active">Waiting for books</a>
       </li>
 
       <li class="nav-item">
@@ -28,7 +32,7 @@
         <a class="nav-link" routerLink="/login" routerLinkActive="active">Zaloguj się</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/register" routerLinkActive="active">Rejestracja</a>
+        <a class="nav-link" routerLink="/register" routerLinkActive="active">Zaprzyjaźnij się z biblioteką</a>
       </li>
 
       <div class="invitation">{{invitation}}</div>
