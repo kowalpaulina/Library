@@ -12,7 +12,7 @@ export class GithubService {
   getData(): Observable<Github[]> {
     return this.http
       .get(
-        "https://api.github.com/users/kowalpaulina?access_token=1b38af1b118fa6d37bb8ee1d1bb94b1fcbd83129"
+        "https://api.github.com/users/kowalpaulina"
       )
       .map(this.extractData)
       .catch(this.handleError);
