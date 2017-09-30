@@ -1,0 +1,41 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> # </th>
+            <th> Title </th>
+            <th> Author </th>
+            <th> Read? </th>
+            <th> Borrowed? </th>
+
+            <th> Borrower </th>
+            <th> Date From </th>
+            <th> Date To </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books; let i = index" class="playlist-row" (click)="edit(book)">
+            <td> {{ i + 1 }}. </td>
+            <td> {{ book.title }} </td>
+            <td> {{ book.author }} </td>
+
+
+            <td>
+                <button *ngIf="book.read==true" class="btn btn-primary">Yes</button>
+                <button *ngIf="!book.read" class="btn btn-danger">No</button>
+            </td>
+
+            <td>
+                <button *ngIf="book.borrowed" class="btn btn-primary">Yes</button>
+                <button *ngIf="!book.borrowed" class="btn btn-danger">No</button>
+            </td>
+
+            <td > {{ book.borrower }} </td>
+            <td> {{ book.dateFrom }} </td>
+            <td> {{ book.dateTo }} </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+<router-outlet></router-outlet>

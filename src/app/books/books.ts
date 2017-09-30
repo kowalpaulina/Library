@@ -1,6 +1,10 @@
 export interface Books {
     id: number,
-    author: string;
+    author: string,
     title: string,
-    read?: boolean
+    read?: boolean,
+    borrowed?: boolean,
+    borrower?:string
+    dateFrom?:number,
+    dateTo?:number
 }

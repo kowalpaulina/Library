@@ -158,7 +158,18 @@
           "article_chapter_link": ""
         }
       ],
-      "id": 9781423103371
+      "id": 9781423103371,
+      "borrowed": true
+    },
+    {
+      "id": 9781423103372,
+      "author": "Tołstoj",
+      "title": "Anna Karenina",
+      "read": false,
+      "borrowed": true,
+      "borrower": "Edyta",
+      "dateFrom": "2017-09-26",
+      "dateTo": "2017-09-30"
     }
   ]
 }

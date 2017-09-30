@@ -10,7 +10,7 @@ import { NgForm } from "@angular/forms";
         <div class="books-details" *ngIf="books">
           <form #formRef="ngForm" (ngSubmit)="save(formRef.valid, books)">
           <div class="form-group">
-            <label>Nazwa:</label>
+            <label>Title:</label>
             <input type="text" #nameRef="ngModel" required minlength="2" [(ngModel)]="books.title" name="name" class="form-control">
             <div class="has-danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
               <div class="form-control-feedback" 
@@ -23,8 +23,8 @@ import { NgForm } from "@angular/forms";
               </div>
             </div>
 
-            <label>Autor:</label>
-            <input type="text" required minlength="3" [(ngModel)]="books.author" name="author" class="form-control">
+            <label for="author">Author:</label>
+            <input type="text" required minlength="3" [(ngModel)]="books.author" name="author" class="form-control" id="author">
             <div class="has-danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
               <div class="form-control-feedback" 
                     *ngIf="nameRef.errors?.required">
@@ -35,17 +35,36 @@ import { NgForm } from "@angular/forms";
                     To pole musi mieć przynajmniej {{nameRef.errors.minlength.requiredLength}} znaki
               </div>
             </div>
+            
+
+            <label for="borrower">Borrower:</label>
+            <input type="text" [(ngModel)]="books.borrower" name="borrower" class="form-control" id="borrower">
+      
+            <label for="dateFrom">Date From</label>
+            <input type="date" [(ngModel)]="books.dateFrom" name="dateFrom" class="form-control" id="dateFrom">
+
+            <label for="dateTo">Date To</label>
+            <input type="date" [(ngModel)]="books.dateTo" name="dateTo" class="form-control" id="dateTo">
+
+
           </div>
          
       
           
           <div class="form-group">
             <label><input type="checkbox" [(ngModel)]="books.read" name="read"> 
-            Przeczytana</label>
+            Read?</label>
           </div>
+
           <div class="form-group">
-            <button class="btn btn-success float-xs-right" type="submit">Zapisz</button>
-            <button *ngIf="books.id" class="btn btn-warning float-xs-right" type="button" (click)="delete(books); $event.stopPropagation()">Usuń</button>
+            <label><input type="checkbox" [(ngModel)]="books.borrowed" name="borrow"> 
+            Borrowed?</label>
+          </div>
+
+
+          <div class="form-group">
+            <button class="btn btn-success float-xs-right" type="submit">Save</button>
+            <button *ngIf="books.id" class="btn btn-warning float-xs-right" type="button" (click)="delete(books); $event.stopPropagation()">Delete</button>
           </div>
           </form>
         </div>

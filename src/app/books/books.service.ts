@@ -47,7 +47,11 @@ export class BooksService {
       id: 0,
       author: "",
       title: "",
-      read: false
+      read: false,
+      borrowed: false,
+      borrower: "",
+      dateFrom:0,
+      dateTo:0
     };
   }
 
