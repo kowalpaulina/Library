@@ -1,19 +1,22 @@
 {
-  "posts": [
+  "users": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Paulina",
+      "email": "kowal",
+      "password": "kowal",
+      "id": 78
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Natasza",
+      "email": "Nowak",
+      "password": "nowa",
+      "id": 3
+    },
+    {
+      "name": "Krzysztof",
+      "email": "Nienowy",
+      "password": "krzysiek",
+      "id": 4
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

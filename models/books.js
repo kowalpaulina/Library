@@ -30,6 +30,10 @@ const books = new Schema({
     dateTo: {
         type: Number, 
     },
+    created: {
+        type: Date, 
+        default: Date.now,
+    },
 
     // user: {
     //     type: Schema.Types.ObjectId, 

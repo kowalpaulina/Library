@@ -46,13 +46,15 @@ router.get('/:id/edit', function (req, res, next) {
 });
 
 
-
-
 router.post('/new', function (req, res, next) {
     let book = new Book({
         author: req.body.author,
         title: req.body.title,
         read: req.body.read,
+        borrowed: req.body.borrowed,
+        borrower: req.body.borrower,
+        dateFrom: req.body.dateFrom,
+        dateTo: req.body.dateTo,
     });
     book.save(function (err, result) {
         if (err) {
@@ -87,6 +89,10 @@ router.patch('/:id/edit', function (req, res, next) {
         book.author = req.body.author,
         book.title = req.body.title,
         book.read = req.body.read,
+        book.borrowed = req.body.borrowed,
+        book.borrower = req.body.borrower,
+        book.dateFrom = req.body.dateFrom,
+        book.dateTo = req.body.dateTo,
         book.save(function(err, result) {
             if (err) {
                 return res.status(500).json({
@@ -135,64 +141,5 @@ router.delete('/:id/edit', function(req, res, next) {
 
 
 
-
-
-
-
-
-
-
-
-//GET HTTP method to /bucketlist
-// router.get('/',(req,res) => {
-// 	bucketlist.getAllLists((err, lists)=> {
-// 		if(err) {
-// 			res.json({success:false, message: `Failed to load all lists. Error: ${err}`});
-// 		}
-// 		else {
-// 			res.write(JSON.stringify({success: true, lists:lists},null,2));
-// 			res.end();	
-			
-// 	}	
-// 	});
-// });
-
-
-// //POST HTTP method to /bucketlist
-
-// router.post('/', (req,res,next) => {
-// 	console.log(req.body);
-// 	let newList = new bucketlist({
-// 		title: req.body.title,
-// 		description: req.body.description,
-// 		category: req.body.category
-// 	});
-// 	bucketlist.addList(newList,(err, list) => {
-// 		if(err) {
-// 			res.json({success: false, message: `Failed to create a new list. Error: ${err}`});
-
-// 		}
-// 		else 
-// 			res.json({success:true, message: "Added successfully."});
-	
-// 	});
-// });
-
-
-// //DELETE HTTP method to /bucketlist. Here, we pass in a params which is the object id.
-// router.delete('/:id', (req,res,next)=> {
-// 	let id = req.params.id;
-// 	console.log(id);
-// 	bucketlist.deleteListById(id,(err,list) => {
-// 		if(err) {
-// 			res.json({success:false, message: `Failed to delete the list. Error: ${err}`});
-// 		}
-// 		else if(list) {
-// 			res.json({success:true, message: "Deleted successfully"});
-// 		}
-// 		else
-// 			res.json({success:false});
-// 	})
-// });
 
 module.exports = router;
