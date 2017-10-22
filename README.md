@@ -16,5 +16,5 @@ Do a `npm install` inside the `angular-src` directory and next:
 ng build
 ```
 
-Run `npm start` to get this started!
+Run `npm start` in root directory to get this started!
 
