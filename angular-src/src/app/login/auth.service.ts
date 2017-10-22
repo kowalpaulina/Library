@@ -16,7 +16,7 @@ export class AuthService {
   isLoggedIn: Subject<boolean> = new BehaviorSubject<boolean>(false);
   usersStream$ = new Subject<Users[]>();
   userPermission$ = new Subject<Boolean>();
-  users_url = "http://localhost:3000/users/";
+  users_url = "http://localhost:4000/users/";
   users: Users[];
   userLoggedIn: Users;
   userData: Users;

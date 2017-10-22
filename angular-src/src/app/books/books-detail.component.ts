@@ -64,7 +64,7 @@ import { NgForm } from "@angular/forms";
 
           <div class="form-group">
             <button class="btn btn-success float-xs-right" type="submit">Save</button>
-            <button *ngIf="books.id" class="btn btn-warning float-xs-right" type="button" (click)="delete(books); $event.stopPropagation()">Delete</button>
+            <button *ngIf="books._id" class="btn btn-warning float-xs-right" type="button" (click)="delete(books); $event.stopPropagation()">Delete</button>
           </div>
           </form>
         </div>
@@ -95,7 +95,7 @@ export class BooksDetailComponent implements OnInit {
     }
     this.booksDataService.saveBook(this.books)
       .subscribe(books => {
-      this.router.navigate(["books", books.id]);
+      this.router.navigate(["books", books._id]);
     });
   }
 
@@ -107,7 +107,7 @@ export class BooksDetailComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
-      let id = parseInt(params["id"]);
+      let id = params["id"];
       console.log(id);
       if (id) {
         this.booksDataService.getBook(id).subscribe((books: Books) => {

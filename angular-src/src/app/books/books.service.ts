@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { Http, Response, Headers } from "@angular/http";
 import { Books } from "./books";
 import "rxjs/add/operator/map";
 import "rxjs/Rx";
@@ -9,34 +9,39 @@ import { Subject, Observable } from "rxjs";
 export class BooksService {
   constructor(private http: Http) {}
 
-  server_url = "http://localhost:4000/books/";
-
+  server_url = "http://localhost:3000/books/";
   books: Books[] = [];
   chosenBook;
-
   booksStream$ = new Subject<Books[]>();
 
   saveBook(books) {
+    //books = JSON.stringify(books);
+    console.log("save book._id type", typeof books._id);
+    console.log("save book._id type", books._id);
     console.log("save", books);
     let request;
-    if (books.id) {
-      request = this.http.put(this.server_url + books.id, books);
+    const headers = new Headers({'Content-Type': 'application/json'});
+    if (books._id) {
+      console.log("id z patch z service",books._id);
+      request = this.http.patch(`${this.server_url}${books._id}/edit`, books, {headers:headers});
     } else {
-      request = this.http.post(this.server_url, books);
+      console.log("id z post z service",books.id);
+      request = this.http.post(`${this.server_url}new`, books, {headers:headers});
     }
     return request
-      .map(response => response.json())
+      .map(response => response.json().obj)
       .do(books => {
       this.getBooks();
-    });
+    })
+    .catch((error: Response) => Observable.throw(error.json()));
   }
 
   deleteBook(books) {
     console.log("usun", books);
     let request;
-    request = this.http.delete(this.server_url + books.id);
+    request = this.http.delete(`${this.server_url}${books._id}/edit`);
 
-    return request.map(response => response.json())
+    return request.map(response => response.json().obj)
     .do(books => {
       this.getBooks();
     });
@@ -44,7 +49,7 @@ export class BooksService {
 
   createBook(): Books {
     return {
-      id: 0,
+      id: null,
       author: "",
       title: "",
       read: false,
@@ -58,13 +63,17 @@ export class BooksService {
   getBooks() {
     return this.http
       .get(this.server_url)
-      .map(response => response.json())
+      .map(response => response.json().obj)
       .subscribe(books => {
-        console.log("getBooks", books);
+        console.log("getBooks", books); 
+        
         this.books = books;
         this.booksStream$.next(this.books);
       });
   }
+
+
+  //{_id: "59e79d2018722d34b0ca5486", author: "Zlj", title: "Z2", read: false, __v: 0}
 
   getBooksStream() {
     if (!this.books.length) {
@@ -76,7 +85,8 @@ export class BooksService {
   }
 
   getBook(id) {
-    return this.http.get(this.server_url + id).map(response => response.json());
+    console.log(id);
+    return this.http.get(`${this.server_url}${id}/edit`).map(response => response.json().obj);
   }
 
   addBookToLibrary(chosenBook){
@@ -85,6 +95,7 @@ export class BooksService {
     .subscribe(()=>{
       //musi być subscribe żeby działało
     })
+    
     
     
   }

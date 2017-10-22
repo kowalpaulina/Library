@@ -9,7 +9,7 @@ import {Users} from './user';
 export class RegistrationService {
   constructor(private http: Http) { }
 
-  server_url = "http://localhost:3000/users/";
+  server_url = "http://localhost:4000/users/";
   users:Users[] = [];
 
   registerUser(users:Users){

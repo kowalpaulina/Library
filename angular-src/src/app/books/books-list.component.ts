@@ -17,7 +17,7 @@ export class BooksListComponent implements OnInit {
 
     edit(book) {
       console.log("kliknięta ksiązka",book);
-    this.router.navigate(['books',book.id,'edit'])
+    this.router.navigate(['books',book._id,'edit'])
   }
 
     ngOnInit() {
