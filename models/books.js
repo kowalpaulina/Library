@@ -34,11 +34,14 @@ const books = new Schema({
         type: Date, 
         default: Date.now,
     },
-
-    // user: {
-    //     type: Schema.Types.ObjectId, 
-    //     ref: 'User'
-    // }
+    borrowedByUser: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User',
+    },
+    reservedByUsers: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User',
+    },
 });
 
 module.exports = mongoose.model('Books', books);

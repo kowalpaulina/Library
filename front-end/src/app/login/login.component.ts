@@ -66,8 +66,6 @@ export class LoginComponent {
       this.router.navigate([this.authService.redirectUrl]);
     else this.router.navigate(["/"]);
     return this.loggedInUser(userData);
-
-    // this.invitation = `Witaj ${userRegister[0].name}`;
   }
 
 //send Logged User Data to authService

@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>\n  <ul>\n    Lista książek pożyczonych:\n    <li>tytuł</li>\n    <li>autor</li>\n    <li>kto pożyczył</li>\n    <li>notatki</li>\n    <li>button do zwrotu</li>\n\n  </ul>\n</h3>\n"
+module.exports = "<h3>\r\n  <ul>\r\n    Lista książek pożyczonych:\r\n    <li>tytuł</li>\r\n    <li>autor</li>\r\n    <li>kto pożyczył</li>\r\n    <li>notatki</li>\r\n    <li>button do zwrotu</li>\r\n\r\n  </ul>\r\n</h3>\r\n"
 
 /***/ }),
 
@@ -372,7 +372,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\n<div class=\"container\">\n  <router-outlet></router-outlet>\n</div>\n"
+module.exports = "<app-navbar></app-navbar>\r\n<div class=\"container\">\r\n  <router-outlet></router-outlet>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -564,8 +564,10 @@ AppModule = __decorate([
                     component: __WEBPACK_IMPORTED_MODULE_15__admin_admin_component__["a" /* AdminComponent */]
                 },
                 {
-                    path: "register",
-                    component: __WEBPACK_IMPORTED_MODULE_25__registration_registration_component__["a" /* RegistrationComponent */]
+                    path: "users",
+                    children: [
+                        { path: 'register', component: __WEBPACK_IMPORTED_MODULE_25__registration_registration_component__["a" /* RegistrationComponent */] },
+                    ],
                 },
                 {
                     path: "",
@@ -933,7 +935,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/company/company.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>\n  Hello!\n</h3>\n\n\n"
+module.exports = "<h3>\r\n  Hello!\r\n</h3>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -972,7 +974,7 @@ CompanyComponent = __decorate([
 /***/ "../../../../../src/app/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"footer\">\n  Stopka\n\n</footer>\n"
+module.exports = "<footer class=\"footer\">\r\n  Stopka\r\n\r\n</footer>\r\n"
 
 /***/ }),
 
@@ -1131,7 +1133,7 @@ var AuthService = (function () {
         this.isLoggedIn = new __WEBPACK_IMPORTED_MODULE_4_rxjs_BehaviorSubject__["BehaviorSubject"](false);
         this.usersStream$ = new __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__["Subject"]();
         this.userPermission$ = new __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__["Subject"]();
-        this.users_url = "http://localhost:4000/users/";
+        this.users_url = "http://localhost:3000/users/";
         this.test = "test";
     }
     AuthService.prototype.getUserStream = function () {
@@ -1316,7 +1318,6 @@ var LoginComponent = (function () {
         else
             this.router.navigate(["/"]);
         return this.loggedInUser(userData);
-        // this.invitation = `Witaj ${userRegister[0].name}`;
     };
     //send Logged User Data to authService
     LoginComponent.prototype.loggedInUser = function (userData) {
@@ -1390,7 +1391,7 @@ module.exports = "<h2>Strona logowania</h2>\r\n<p>Message: {{message}}</p>\r\n<f
 /***/ "../../../../../src/app/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n\n  <a class=\"navbar-brand\" href=\"#\">Library</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"blog\" routerLinkActive=\"active\">Strona powitalna dla wszystkich</a>\n      </li>\n\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"books\" routerLinkActive=\"active\">My library</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"searchBooks\" routerLinkActive=\"active\">Find books</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"about\" routerLinkActive=\"active\">Borrowed books</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"reviews\" routerLinkActive=\"active\">Waiting for books</a>\n      </li>\n\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/admin\" routerLinkActive=\"active\">Panel administracyjny</a>\n      </li>\n\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Zaloguj się</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/register\" routerLinkActive=\"active\">Zaprzyjaźnij się z biblioteką</a>\n      </li>\n\n      <div class=\"invitation\">{{invitation}}</div>\n\n    </ul>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n\r\n  <a class=\"navbar-brand\" href=\"#\">Library</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\r\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"blog\" routerLinkActive=\"active\">Strona powitalna dla wszystkich</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"books\" routerLinkActive=\"active\">My library</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"searchBooks\" routerLinkActive=\"active\">Find books</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"about\" routerLinkActive=\"active\">Borrowed books</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"reviews\" routerLinkActive=\"active\">Waiting for books</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/admin\" routerLinkActive=\"active\">Panel administracyjny</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Zaloguj się</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/users/register\" routerLinkActive=\"active\">Zaprzyjaźnij się z biblioteką</a>\r\n      </li>\r\n\r\n      <div class=\"invitation\">{{invitation}}</div>\r\n\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -1452,7 +1453,7 @@ NavbarComponent = __decorate([
 /***/ "../../../../../src/app/registration/registration.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Become a friend of this library</h2>\n\n<form action=\"\" #registrationForm=\"ngForm\" (ngSubmit)=\"registerUser(registrationForm.value)\">\n  <div class=\"form-group\">\n    <label for=\"\">Imię i nazwisko</label>\n    <input type=\"text\" class=\"form-control\" name=\"name\" ngControl=\"name\" #name=\"ngModel\" ngModel required>\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"\">Imię i nazwisko</label>\n    <input type=\"text\" class=\"form-control\" name=\"email\" ngModel required>\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"\">Hasło</label>\n    <input type=\"text\" class=\"form-control\" name=\"password\" ngModel required>\n  </div>\n\n  <button type=\"submit\" class=\"btn btn-success float-xs-right\">Zarejestruj</button>\n\n\n  <!--<ul><li *ngFor=\"let user of users\">{{user.name}}</li></ul>-->\n</form>"
+module.exports = "<h2>Become a friend of this library</h2>\r\n\r\n<form action=\"\" #registrationForm=\"ngForm\" (ngSubmit)=\"registerUser(registrationForm.value)\">\r\n  <div class=\"form-group\">\r\n    <label for=\"\">Imię i nazwisko</label>\r\n    <input type=\"text\" class=\"form-control\" name=\"name\" ngControl=\"name\" #name=\"ngModel\" ngModel required>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label for=\"\">Email</label>\r\n    <input type=\"text\" class=\"form-control\" name=\"email\" ngModel required>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label for=\"\">Hasło</label>\r\n    <input type=\"text\" class=\"form-control\" name=\"password\" ngModel required>\r\n  </div>\r\n\r\n  <button type=\"submit\" class=\"btn btn-success float-xs-right\">Zarejestruj</button>\r\n\r\n</form>"
 
 /***/ }),
 
@@ -1545,13 +1546,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var RegistrationService = (function () {
     function RegistrationService(http) {
         this.http = http;
-        this.server_url = "http://localhost:4000/users/";
+        this.server_url = "http://localhost:3000/users/register/";
         this.users = [];
     }
     RegistrationService.prototype.registerUser = function (users) {
-        return this.http.post(this.server_url, users)
-            .map(function (response) { return response.json(); })
-            .subscribe();
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ 'Content-Type': 'application/json' });
+        return this.http.post(this.server_url, users, { headers: headers })
+            .map(function (response) { return response.json().obj; })
+            .subscribe(function (users) {
+            console.log('user registered', users);
+        });
     };
     return RegistrationService;
 }());
@@ -1642,7 +1646,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/reviews/services.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>\n  Tutaj będzie lista oczekujących na pożyczenia książki z informacją\n  <ul>\n    <li>autor i tutył</li>\n    <li>kto oczekuje</li>\n  </ul>\n</h3>\n\n\n<ul>\n  <li class=\"book-list\" *ngFor=\"let review of reviews\" (click)=\"onSelect(review)\" [ngStyle]=\"{'border-color': review.tag}\">\n    <span>{{review.id}}</span> \n    <span>{{review.title}}:</span>\n    <span>{{review.author}}</span>\n\n  </li>\n</ul>\n\n\n<div class=\"selectedReview\" *ngIf=\"selectedReview\">\n  <h2>Szczegóły recenzji {{selectedReview.title}}</h2>\n    <div><label>id: </label>{{selectedReview.id}}</div>\n    <div>\n        <label>Edytuj tytuł: </label>\n        <input [(ngModel)]=\"selectedReview.title\" placeholder=\"name\"/>\n        <div>\n          <label for=\"\">Nadaj kolor</label>\n          <input [(ngModel)]=\"selectedReview.tag\" type=\"color\" placeholder=\"name\"/>\n        </div>\n    </div>\n</div>"
+module.exports = "<h3>\r\n  Tutaj będzie lista oczekujących na pożyczenia książki z informacją\r\n  <ul>\r\n    <li>autor i tutył</li>\r\n    <li>kto oczekuje</li>\r\n  </ul>\r\n</h3>\r\n\r\n\r\n<ul>\r\n  <li class=\"book-list\" *ngFor=\"let review of reviews\" (click)=\"onSelect(review)\" [ngStyle]=\"{'border-color': review.tag}\">\r\n    <span>{{review.id}}</span> \r\n    <span>{{review.title}}:</span>\r\n    <span>{{review.author}}</span>\r\n\r\n  </li>\r\n</ul>\r\n\r\n\r\n<div class=\"selectedReview\" *ngIf=\"selectedReview\">\r\n  <h2>Szczegóły recenzji {{selectedReview.title}}</h2>\r\n    <div><label>id: </label>{{selectedReview.id}}</div>\r\n    <div>\r\n        <label>Edytuj tytuł: </label>\r\n        <input [(ngModel)]=\"selectedReview.title\" placeholder=\"name\"/>\r\n        <div>\r\n          <label for=\"\">Nadaj kolor</label>\r\n          <input [(ngModel)]=\"selectedReview.tag\" type=\"color\" placeholder=\"name\"/>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -1817,7 +1821,7 @@ var _a;
 /***/ "../../../../../src/app/search-books/search-books-list/search-books-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-striped\">\n      <thead>\n        <tr>\n          <th> # </th>\n          <th> Nazwa </th>\n          <th> Autor </th>\n          <th> Wydawca </th>\n          <th> Description </th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let book of books | async let i =index\" (click)=\"chosen(book)\">\n          <td> {{ i + 1 }}. </td>\n          <td> {{ book.title }} </td>\n          <td> {{ book.author }} </td>\n          <td> {{ book.publisher }} </td>\n          <td> {{ book.description }} </td>\n        </tr>\n        \n      </tbody>\n    </table>"
+module.exports = "<table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th> # </th>\r\n          <th> Nazwa </th>\r\n          <th> Autor </th>\r\n          <th> Wydawca </th>\r\n          <th> Description </th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let book of books | async let i =index\" (click)=\"chosen(book)\">\r\n          <td> {{ i + 1 }}. </td>\r\n          <td> {{ book.title }} </td>\r\n          <td> {{ book.author }} </td>\r\n          <td> {{ book.publisher }} </td>\r\n          <td> {{ book.description }} </td>\r\n        </tr>\r\n        \r\n      </tbody>\r\n    </table>"
 
 /***/ }),
 
@@ -1876,7 +1880,7 @@ var _a, _b;
 /***/ "../../../../../src/app/search-books/search-books.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row mt-1\">\n  <div class=\"col-xs\">\n    <h4 class=\"loat-xs-right mb-2\">Znajdź ksiażki</h4>\n    <app-books-search-form></app-books-search-form>\n  </div>\n</div>\n\n<app-search-books-list [books]=\"books\"></app-search-books-list>\n\n"
+module.exports = "<div class=\"row mt-1\">\r\n  <div class=\"col-xs\">\r\n    <h4 class=\"loat-xs-right mb-2\">Znajdź ksiażki</h4>\r\n    <app-books-search-form></app-books-search-form>\r\n  </div>\r\n</div>\r\n\r\n<app-search-books-list [books]=\"books\"></app-search-books-list>\r\n\r\n"
 
 /***/ }),
 

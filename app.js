@@ -9,7 +9,7 @@ const config = require('./config/database');
 //routings
 const booksRoutes = require('./controllers/books');
 const appRoutes = require('./controllers/app');
-const usesrRoutes = require('./controllers/users');
+const usersRoutes = require('./controllers/users');
 
 //Connect mongoose to our database
 //mongoose.connect(config.database);
@@ -48,6 +48,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/books', booksRoutes);
+app.use('/users', usersRoutes);
 //app.use('/users',usersRoutes);
 app.use('/', appRoutes);
 

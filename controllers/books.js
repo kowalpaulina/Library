@@ -1,7 +1,9 @@
 //Require the express package and use express.Router()
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 const Book = require('../models/books');
+const User = require('../models/users');
 
 
 router.get('/', function (req, res, next) {
@@ -14,7 +16,7 @@ router.get('/', function (req, res, next) {
                 });
             }
             res.status(200).json({
-                message: 'Book has been added',
+                message: 'Books list',
                 obj: books
             });
         });

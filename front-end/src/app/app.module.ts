@@ -95,8 +95,11 @@ import {ManageUsersService} from './admin/manage-users/manage-users.service'
         component: AdminComponent
       },
       {
-        path: "register",
-        component: RegistrationComponent
+        path: "users",
+        children: [
+          {path:'register', component: RegistrationComponent },
+
+        ],
       },
       {
         path: "",

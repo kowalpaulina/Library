@@ -2,6 +2,8 @@
 //Require mongoose package
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+mongoose.Promise = global.Promise;
+var mongooseUniqueValidator = require('mongoose-unique-validator');
 
 
 
@@ -9,25 +11,32 @@ const Schema = mongoose.Schema;
 var user = new Schema({
     name: {
         type: String, 
-        required: true,
+        trim: true,
+        required: 'Name is required',
     },
 
     email: {
         type: String, 
-        required: true,
+        unique: true,
+        lowercase: true,
+        trim: true,
+        required: 'Email is required',
     },
     password: {
         type: String,
-        required: true,
+        required: 'Password is required',
     },
     approved: {
         type: Boolean, 
     },
-
-    // user: {
-    //     type: Schema.Types.ObjectId, 
-    //     ref: 'User'
-    // }
+    booksBorrowed: {
+        type: [{type: Schema.Types.ObjectId, ref: 'Books'}]
+    },
+    reservedBooks: {
+        type: [{type: Schema.Types.ObjectId, ref: 'Books'}]
+    },
 });
+
+user.plugin(mongooseUniqueValidator);
 
 module.exports = mongoose.model('User', user);
