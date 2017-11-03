@@ -3,7 +3,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
-var mongooseUniqueValidator = require('mongoose-unique-validator');
+const mongooseUniqueValidator = require('mongoose-unique-validator');
+let Books = require('../models/books');
 
 
 

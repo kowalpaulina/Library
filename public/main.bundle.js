@@ -1145,7 +1145,7 @@ var AuthService = (function () {
         var _this = this;
         return this.http
             .get(this.users_url)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response.json().obj; })
             .subscribe(function (users) {
             console.log("getUsers1", users);
             _this.users = users;
@@ -1157,7 +1157,7 @@ var AuthService = (function () {
         var _this = this;
         return this.http
             .get(this.users_url)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response.json().obj; })
             .subscribe(function (users) {
             console.log("getUsersAfterDelete", users);
             _this.users = users;
@@ -1301,6 +1301,7 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.loginSubmit = function (userData) {
         this.message = "Loguję ...";
+        console.log("users", this.users);
         var userRegister = this.users.filter(function (user) {
             return (user.email === userData.email && user.password === userData.password);
         });

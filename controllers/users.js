@@ -6,7 +6,6 @@ const Book = require('../models/books');
 const User = require('../models/users');
 
 
-
 router.get('/', function (req, res, next) {
     User.find()
         .exec(function (err, books) {
@@ -44,10 +43,5 @@ router.post('/register', function (req, res, next) {
         });
     });
 });
-
-
-
-
-
 
 module.exports = router;

@@ -24,7 +24,7 @@ export class LoginComponent {
   private errorMessage: any = "";
   test: Subject<boolean> = new BehaviorSubject<boolean>(false);
   value: boolean;
-  userData;
+  userData: Users;
 
   constructor(
     private authService: AuthService,
@@ -33,8 +33,6 @@ export class LoginComponent {
     private formBuilder: FormBuilder
   ) {
     this.authService.isLoggedIn.subscribe(value => {
-      console.log("LoginComponent AuthService Value", value);
-      console.log("LoginComponent AuthService  - TEST", this.authService.test);
       this.isLogged = value;
     });
   }
@@ -47,6 +45,7 @@ export class LoginComponent {
 
   loginSubmit(userData:Users) {
     this.message = "Loguję ...";
+    console.log("users",this.users);
     const userRegister = this.users.filter(function(user) {
       return (
         user.email === userData.email && user.password === userData.password
