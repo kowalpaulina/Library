@@ -20,7 +20,7 @@ export class ManageUsersComponent implements OnInit {
 
   delete(user: Users) {
     this.authService.deleteUser(user).subscribe(users => {
-      this.users = users;
+      console.log(users);
     });
   }
 

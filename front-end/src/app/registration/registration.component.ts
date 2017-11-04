@@ -13,7 +13,6 @@ export class RegistrationComponent implements OnInit {
 
 
   registerUser(user:Users){
-    console.log(user);
     this.registrationService.registerUser(user);
   }
 

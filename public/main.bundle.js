@@ -276,9 +276,8 @@ var ManageUsersComponent = (function () {
         this.authService = authService;
     }
     ManageUsersComponent.prototype.delete = function (user) {
-        var _this = this;
         this.authService.deleteUser(user).subscribe(function (users) {
-            _this.users = users;
+            console.log(users);
         });
     };
     ManageUsersComponent.prototype.ngOnInit = function () {
@@ -715,32 +714,19 @@ var BooksListComponent = (function () {
         this.router = router;
     }
     BooksListComponent.prototype.edit = function (book) {
-        console.log("kliknięta ksiązka", book);
-        this.router.navigate(['books', book._id, 'edit']);
+        this.router.navigate(["books", book._id, "edit"]);
     };
     BooksListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.booksDataService.getBooksStream()
-            .subscribe(function (books) {
+        this.booksDataService.getBooksStream().subscribe(function (books) {
             _this.books = books;
         });
-        // this.activeRoute.params.subscribe(params => {
-        //   let id = parseInt(params['id']);
-        //   console.log(id);
-        //   if (id) {
-        //     this.booksDataService.getBook(id)
-        //         .subscribe( (books:Books) => {
-        //           this.books = books
-        //           console.log("bookf from params with getBookId function",this.books)
-        //         })
-        //   }
-        // })
     };
     return BooksListComponent;
 }());
 BooksListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
-        selector: 'books-list',
+        selector: "books-list",
         template: __webpack_require__("../../../../../src/app/books/books-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/books/books-list.component.scss")],
         providers: [__WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]]
@@ -833,14 +819,18 @@ var BooksService = (function () {
         console.log("save book._id type", books._id);
         console.log("save", books);
         var request;
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ 'Content-Type': 'application/json' });
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ "Content-Type": "application/json" });
         if (books._id) {
             console.log("id z patch z service", books._id);
-            request = this.http.patch("" + this.server_url + books._id + "/edit", books, { headers: headers });
+            request = this.http.patch("" + this.server_url + books._id + "/edit", books, {
+                headers: headers
+            });
         }
         else {
             console.log("id z post z service", books.id);
-            request = this.http.post(this.server_url + "new", books, { headers: headers });
+            request = this.http.post(this.server_url + "new", books, {
+                headers: headers
+            });
         }
         return request
             .map(function (response) { return response.json().obj; })
@@ -854,7 +844,8 @@ var BooksService = (function () {
         console.log("usun", books);
         var request;
         request = this.http.delete("" + this.server_url + books._id + "/edit");
-        return request.map(function (response) { return response.json().obj; })
+        return request
+            .map(function (response) { return response.json().obj; })
             .do(function (books) {
             _this.getBooks();
         });
@@ -893,12 +884,13 @@ var BooksService = (function () {
     };
     BooksService.prototype.getBook = function (id) {
         console.log(id);
-        return this.http.get("" + this.server_url + id + "/edit").map(function (response) { return response.json().obj; });
+        return this.http
+            .get("" + this.server_url + id + "/edit")
+            .map(function (response) { return response.json().obj; });
     };
     BooksService.prototype.addBookToLibrary = function (chosenBook) {
         console.log("Books from search", chosenBook);
-        this.saveBook(chosenBook)
-            .subscribe(function () {
+        this.saveBook(chosenBook).subscribe(function () {
             //musi być subscribe żeby działało
         });
     };
@@ -1132,14 +1124,14 @@ var AuthService = (function () {
         this.http = http;
         this.isLoggedIn = new __WEBPACK_IMPORTED_MODULE_4_rxjs_BehaviorSubject__["BehaviorSubject"](false);
         this.usersStream$ = new __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__["Subject"]();
-        this.userPermission$ = new __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__["Subject"]();
         this.users_url = "http://localhost:3000/users/";
-        this.test = "test";
+        this.users_url_manage = "http://localhost:3000/admin/users-manage/";
     }
     AuthService.prototype.signin = function (user) {
         var body = JSON.stringify(user);
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ 'Content-Type': 'application/json' });
-        return this.http.post(this.users_url + "login", body, { headers: headers })
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ "Content-Type": "application/json" });
+        return this.http
+            .post(this.users_url + "login", body, { headers: headers })
             .map(function (response) { return response.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(error.json()); });
     };
@@ -1148,7 +1140,6 @@ var AuthService = (function () {
     };
     AuthService.prototype.getUserStream = function () {
         this.getUsers();
-        console.log("getUserStream", this.users);
         return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].from(this.usersStream$).startWith(this.users);
     };
     AuthService.prototype.getUsers = function () {
@@ -1157,57 +1148,22 @@ var AuthService = (function () {
             .get(this.users_url)
             .map(function (response) { return response.json().obj; })
             .subscribe(function (users) {
-            console.log("getUsers1", users);
             _this.users = users;
             _this.usersStream$.next(_this.users);
-            // this.checkUsers(this.users);
-        });
-    };
-    AuthService.prototype.getUsersafterDelete = function () {
-        var _this = this;
-        return this.http
-            .get(this.users_url)
-            .map(function (response) { return response.json().obj; })
-            .subscribe(function (users) {
-            console.log("getUsersAfterDelete", users);
-            _this.users = users;
-            _this.usersStream$.next(_this.users);
-            _this.checkUsers(_this.users);
         });
     };
     AuthService.prototype.deleteUser = function (user) {
         var _this = this;
+        console.log(user);
         var request;
-        request = this.http.delete(this.users_url + user.id);
-        return request.map(function (response) { return response.json(); }).do(function (users) {
-            _this.usersStream$.next(_this.users);
-            _this.getUsersafterDelete();
+        request = this.http.delete("" + this.users_url_manage + user._id);
+        return request
+            .map(function (response) { return response.json().obj; })
+            .do(function (users) {
+            console.log(users);
+            _this.getUsers();
+            //this.usersStream$.next(this.users);
         });
-    };
-    //receive data about logged in user from component
-    AuthService.prototype.loggedInUser = function (userLoggedIn) {
-        this.userLoggedIn = userLoggedIn;
-        return this.userLoggedInFun(userLoggedIn);
-    };
-    AuthService.prototype.userLoggedInFun = function (userData) {
-        this.userData = userData;
-        return this.userData;
-    };
-    AuthService.prototype.returnCheckedUsers = function (isUser) {
-        this.isUser = isUser;
-        return this.userPermission$.next(isUser);
-    };
-    // check if loggedIn user is in list of users
-    AuthService.prototype.checkUsers = function (users) {
-        var _this = this;
-        this.userLoggedInFun(this.userLoggedIn);
-        var ifUserRegister = this.users.some(function (user) { return user.password == _this.userLoggedIn.password; });
-        this.returnCheckedUsers(ifUserRegister);
-        return this.userPermission$.next(ifUserRegister);
-    };
-    AuthService.prototype.getUserPermission = function () {
-        this.returnCheckedUsers(this.isUser);
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].from(this.userPermission$).startWith(true);
     };
     return AuthService;
 }());
@@ -1476,7 +1432,6 @@ var RegistrationComponent = (function () {
         this.registrationService = registrationService;
     }
     RegistrationComponent.prototype.registerUser = function (user) {
-        console.log(user);
         this.registrationService.registerUser(user);
     };
     RegistrationComponent.prototype.ngOnInit = function () {
@@ -1528,11 +1483,12 @@ var RegistrationService = (function () {
         this.users = [];
     }
     RegistrationService.prototype.registerUser = function (users) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ 'Content-Type': 'application/json' });
-        return this.http.post(this.server_url, users, { headers: headers })
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ "Content-Type": "application/json" });
+        return this.http
+            .post(this.server_url, users, { headers: headers })
             .map(function (response) { return response.json().obj; })
             .subscribe(function (users) {
-            console.log('user registered', users);
+            console.log("user registered", users);
         });
     };
     return RegistrationService;
