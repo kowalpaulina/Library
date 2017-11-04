@@ -1136,6 +1136,16 @@ var AuthService = (function () {
         this.users_url = "http://localhost:3000/users/";
         this.test = "test";
     }
+    AuthService.prototype.signin = function (user) {
+        var body = JSON.stringify(user);
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ 'Content-Type': 'application/json' });
+        return this.http.post(this.users_url + "login", body, { headers: headers })
+            .map(function (response) { return response.json(); })
+            .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(error.json()); });
+    };
+    AuthService.prototype.logout = function () {
+        localStorage.clear();
+    };
     AuthService.prototype.getUserStream = function () {
         this.getUsers();
         console.log("getUserStream", this.users);
@@ -1207,49 +1217,6 @@ AuthService = __decorate([
 ], AuthService);
 
 var _a;
-// getData():Observable<Users[]> {
-//         return this.http.get(this.users_url)
-//             .map(this.extractData)
-//             .catch(this.handleError);
-//     }
-//     private extractData(res:Response) {
-//         let users = res.json();
-//         return users;
-//     }
-//     private handleError(error:any) {
-//         // In a real world app, we might use a remote logging infrastructure
-//         // We'd also dig deeper into the error to get a better message
-//         let errMsg = (error.message) ? error.message :
-//             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-//         console.error(errMsg); // log to console instead
-//         return Observable.throw(errMsg);
-//     }
-// }
-// redirectUrl: string;
-// users: User[];
-// private errorMessage: any = '';
-//
-//
-// getData(): Observable<User[]> {
-//     return this.http.get('./assets/users.json')
-//         .map(this.extractData)
-//         .catch(this.handleError);
-// }
-//
-// private extractData(res: Response) {
-//     let users = res.json();
-//     //return body || [];
-//     return users;
-// }
-//
-// private handleError(error: any) {
-//     // In a real world app, we might use a remote logging infrastructure
-//     // We'd also dig deeper into the error to get a better message
-//     let errMsg = (error.message) ? error.message :
-//         error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-//     console.error(errMsg); // log to console instead
-//     return Observable.throw(errMsg);
-// }
 //# sourceMappingURL=auth.service.js.map
 
 /***/ }),
@@ -1261,9 +1228,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_service__ = __webpack_require__("../../../../../src/app/login/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_BehaviorSubject__ = __webpack_require__("../../../../rxjs/BehaviorSubject.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_BehaviorSubject__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1278,7 +1243,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var LoginComponent = (function () {
     function LoginComponent(authService, router, fb, formBuilder) {
         var _this = this;
@@ -1287,10 +1251,7 @@ var LoginComponent = (function () {
         this.fb = fb;
         this.formBuilder = formBuilder;
         this.errorMessage = "";
-        this.test = new __WEBPACK_IMPORTED_MODULE_3_rxjs_BehaviorSubject__["BehaviorSubject"](false);
         this.authService.isLoggedIn.subscribe(function (value) {
-            console.log("LoginComponent AuthService Value", value);
-            console.log("LoginComponent AuthService  - TEST", _this.authService.test);
             _this.isLogged = value;
         });
     }
@@ -1301,11 +1262,16 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.loginSubmit = function (userData) {
         this.message = "Loguję ...";
-        console.log("users", this.users);
-        var userRegister = this.users.filter(function (user) {
-            return (user.email === userData.email && user.password === userData.password);
-        });
-        if (userRegister.length === 1) {
+        this.authService.signin(userData)
+            .subscribe(function (data) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('userId', data.userId);
+        }, function (error) { return console.error(error); });
+        this.loginForm.reset();
+        this.isLoggedIn();
+    };
+    LoginComponent.prototype.isLoggedIn = function () {
+        if (localStorage.getItem('token') !== null) {
             this.authService.isLoggedIn.next(true);
             console.log("logowanie ok");
         }
@@ -1318,35 +1284,20 @@ var LoginComponent = (function () {
             this.router.navigate([this.authService.redirectUrl]);
         else
             this.router.navigate(["/"]);
-        return this.loggedInUser(userData);
-    };
-    //send Logged User Data to authService
-    LoginComponent.prototype.loggedInUser = function (userData) {
-        this.userData = userData;
-        return this.returnUserData(this.userData);
-    };
-    LoginComponent.prototype.returnUserData = function (userData) {
-        var _this = this;
-        this.authService.loggedInUser(this.userData);
-        this.authService.getUserPermission().subscribe(function (value) {
-            _this.value = value;
-            console.log("value-getUserPermission", value);
-            _this.authService.isLoggedIn.next(_this.value);
-        });
+        // return this.loggedInUser(userData);
     };
     LoginComponent.prototype.logout = function () {
+        this.authService.logout();
         this.message = "Wylogowuję ...";
         this.authService.isLoggedIn.next(false);
-        ///        console.log('LoginComponent AuthService  - TEST', this.authService.test);
     };
     LoginComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.registerForm = new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["c" /* FormGroup */]({
-            email: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["d" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["e" /* Validators */].required),
-            password: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["d" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["e" /* Validators */].required)
-        });
-        this.authService.getUserStream().subscribe(function (users) {
-            _this.users = users;
+        this.loginForm = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["c" /* FormGroup */]({
+            email: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* FormControl */]("", [
+                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required,
+                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+            ]),
+            password: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required)
         });
     };
     return LoginComponent;
@@ -1355,10 +1306,36 @@ LoginComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
         template: __webpack_require__("../../../../../src/app/login/login.html")
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_forms__["f" /* FormBuilder */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* FormBuilder */]) === "function" && _d || Object])
 ], LoginComponent);
 
 var _a, _b, _c, _d;
+// //send Logged User Data to authService
+// loggedInUser(userData:Users){
+//   this.userData = userData;
+//   return this.returnUserData(this.userData);
+// }
+// returnUserData(userData:Users){
+//      this.authService.loggedInUser(this.userData);
+//      this.authService.getUserPermission().subscribe(value=>{
+//       this.value = value;
+//       console.log("value-getUserPermission",value)
+//       this.authService.isLoggedIn.next(this.value);
+//     });
+// }
+// //send Logged User Data to authService
+// loggedInUser(userData:Users){
+//   this.userData = userData;
+//   return this.returnUserData(this.userData);
+// }
+// returnUserData(userData:Users){
+//      this.authService.loggedInUser(this.userData);
+//      this.authService.getUserPermission().subscribe(value=>{
+//       this.value = value;
+//       console.log("value-getUserPermission",value)
+//       this.authService.isLoggedIn.next(this.value);
+//     });
+// }
 //     let verified = users.find(user=> user.email === "kowal");
 // if(verified && verified.password === "kowal"){
 //   this.authService.isLoggedIn.next(true);
@@ -1385,7 +1362,7 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/login/login.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Strona logowania</h2>\r\n<p>Message: {{message}}</p>\r\n<form [formGroup]=\"registerForm\" #lgForm=\"ngForm\" (ngSubmit)=\"loginSubmit(lgForm.value)\">\r\n    <button (click)=\"logout()\" *ngIf=\"isLogged\">wyloguj</button>\r\n    <input formControlName=\"email\" type=\"email\" placeholder=\"Your email\" *ngIf=\"!isLogged\">\r\n    <input formControlName=\"password\" type=\"password\" placeholder=\"Your password\" *ngIf=\"!isLogged\">\r\n    <button type=\"submit\" *ngIf=\"!isLogged\">Zaloguj się</button>\r\n</form>"
+module.exports = "<h2>Strona logowania</h2>\r\n<p>Message: {{message}}</p>\r\n<form [formGroup]=\"loginForm\" #lgForm=\"ngForm\" (ngSubmit)=\"loginSubmit(lgForm.value)\">\r\n    <button (click)=\"logout()\" *ngIf=\"isLogged\">wyloguj</button>\r\n    <input formControlName=\"email\" type=\"email\" placeholder=\"Your email\" *ngIf=\"!isLogged\">\r\n    <input formControlName=\"password\" type=\"password\" placeholder=\"Your password\" *ngIf=\"!isLogged\">\r\n    <button type=\"submit\" *ngIf=\"!isLogged\">Zaloguj się</button>\r\n</form>"
 
 /***/ }),
 

@@ -1,6 +1,6 @@
 import { Users } from "./../registration/user";
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { Http, Response, Headers } from "@angular/http";
 
 import { Observable } from "rxjs/Observable";
 import { Subject } from "rxjs/Subject";
@@ -27,6 +27,22 @@ export class AuthService {
   isUser: boolean;
 
   constructor(private http: Http) {}
+
+
+      signin(user: Users) {
+        const body = JSON.stringify(user);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.post(`${this.users_url}login`, body, {headers: headers})
+            .map((response: Response) => response.json())
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+
+      logout() {
+        localStorage.clear();
+        
+    }
+
 
   getUserStream():Observable<Users[]> {
     this.getUsers();

@@ -22,9 +22,9 @@ export class LoginComponent {
   isLogged: boolean;
   users: Users[];
   private errorMessage: any = "";
-  test: Subject<boolean> = new BehaviorSubject<boolean>(false);
   value: boolean;
   userData: Users;
+  loginForm: FormGroup;
 
   constructor(
     private authService: AuthService,
@@ -45,72 +45,53 @@ export class LoginComponent {
 
   loginSubmit(userData:Users) {
     this.message = "Loguję ...";
-    console.log("users",this.users);
-    const userRegister = this.users.filter(function(user) {
-      return (
-        user.email === userData.email && user.password === userData.password
+    this.authService.signin(userData)
+      .subscribe(
+        data => {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('userId', data.userId);
+        },
+        error => console.error(error)
       );
-    });
-
-    if (userRegister.length === 1) {
-      this.authService.isLoggedIn.next(true);
-      console.log("logowanie ok")
-    } else {
-      this.authService.isLoggedIn.next(false);
-      this.message = "Nie ma takiego uzytkownika ...";
-      console.log("logowanie nieudane ok")
+    this.loginForm.reset();
+    this.isLoggedIn();
     }
 
-    if (this.authService.redirectUrl)
-      this.router.navigate([this.authService.redirectUrl]);
-    else this.router.navigate(["/"]);
-    return this.loggedInUser(userData);
+  isLoggedIn() {
+        if(localStorage.getItem('token') !== null){
+            this.authService.isLoggedIn.next(true);
+            console.log("logowanie ok")
+        }else{
+            this.authService.isLoggedIn.next(false);
+            this.message = "Nie ma takiego uzytkownika ...";
+            console.log("logowanie nieudane ok")
+        }
+
+        if (this.authService.redirectUrl)
+          this.router.navigate([this.authService.redirectUrl]);
+        else this.router.navigate(["/"]);
+            // return this.loggedInUser(userData);
   }
 
-//send Logged User Data to authService
-loggedInUser(userData:Users){
-  this.userData = userData;
-  return this.returnUserData(this.userData);
-}
 
-returnUserData(userData:Users){
-     this.authService.loggedInUser(this.userData);
-
-     this.authService.getUserPermission().subscribe(value=>{
-      this.value = value;
-      console.log("value-getUserPermission",value)
-      this.authService.isLoggedIn.next(this.value);
-    });
-}
-
-
-
-   
-
-  
- 
 
   logout() {
+    this.authService.logout();
     this.message = "Wylogowuję ...";
     this.authService.isLoggedIn.next(false);
-    ///        console.log('LoginComponent AuthService  - TEST', this.authService.test);
   }
 
-  registerForm: FormGroup;
+  
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
-      email: new FormControl("", Validators.required),
+    this.loginForm = new FormGroup({
+      email: new FormControl("", [
+            Validators.required,
+            Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]
+          ),
       password: new FormControl("", Validators.required)
     });
-
-    this.authService.getUserStream().subscribe((users: Users[]) => {
-      this.users = users;
-    });
-
   }
-
-
 }
 
 
@@ -120,6 +101,43 @@ returnUserData(userData:Users){
 
 
 
+
+
+  
+
+// //send Logged User Data to authService
+// loggedInUser(userData:Users){
+//   this.userData = userData;
+//   return this.returnUserData(this.userData);
+// }
+
+// returnUserData(userData:Users){
+//      this.authService.loggedInUser(this.userData);
+
+//      this.authService.getUserPermission().subscribe(value=>{
+//       this.value = value;
+//       console.log("value-getUserPermission",value)
+//       this.authService.isLoggedIn.next(this.value);
+//     });
+// }
+
+  
+
+// //send Logged User Data to authService
+// loggedInUser(userData:Users){
+//   this.userData = userData;
+//   return this.returnUserData(this.userData);
+// }
+
+// returnUserData(userData:Users){
+//      this.authService.loggedInUser(this.userData);
+
+//      this.authService.getUserPermission().subscribe(value=>{
+//       this.value = value;
+//       console.log("value-getUserPermission",value)
+//       this.authService.isLoggedIn.next(this.value);
+//     });
+// }
 
 
 

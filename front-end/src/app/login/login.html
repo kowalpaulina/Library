@@ -1,6 +1,6 @@
 <h2>Strona logowania</h2>
 <p>Message: {{message}}</p>
-<form [formGroup]="registerForm" #lgForm="ngForm" (ngSubmit)="loginSubmit(lgForm.value)">
+<form [formGroup]="loginForm" #lgForm="ngForm" (ngSubmit)="loginSubmit(lgForm.value)">
     <button (click)="logout()" *ngIf="isLogged">wyloguj</button>
     <input formControlName="email" type="email" placeholder="Your email" *ngIf="!isLogged">
     <input formControlName="password" type="password" placeholder="Your password" *ngIf="!isLogged">

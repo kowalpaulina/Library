@@ -1,7 +1,6 @@
 //Require the express package and use express.Router()
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
 const Book = require('../models/books');
 const User = require('../models/users');
 

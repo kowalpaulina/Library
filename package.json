@@ -7,10 +7,13 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "~4.15.3",
-    "mongoose": "~4.10.8",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "*",
     "cors": "~2.8.3",
-    "body-parser": "*"
+    "express": "~4.15.3",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "~4.10.8",
+    "mongoose-unique-validator": "^1.0.6"
   },
   "keywords": [
     "MEAN",
