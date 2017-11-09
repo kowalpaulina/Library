@@ -51,8 +51,20 @@ export class AuthService {
       });
   }
 
-  deleteUser(user) {
-    console.log(user);
+
+  upadeApprovedStatus(user: Users){
+    console.log(user._id);
+    const headers = new Headers({ "Content-Type": "application/json" });
+    let request;
+    request = this.http.patch(`${this.users_url_manage}${user._id}`, user, {
+        headers: headers
+      });
+    return request
+      .map(response => response.json().obj)
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  deleteUser(user: Users) {
     let request;
     request = this.http.delete(`${this.users_url_manage}${user._id}`);
     return request

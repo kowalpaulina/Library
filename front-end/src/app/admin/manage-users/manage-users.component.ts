@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Users } from "../../registration/user";
-import { ManageUsersService } from "./manage-users.service";
 import "rxjs/add/operator/map";
 import "rxjs/Rx";
 import { Subject, Observable } from "rxjs";
@@ -11,18 +10,32 @@ import { AuthService } from "../../login/auth.service";
 })
 export class ManageUsersComponent implements OnInit {
   users: Users[];
-  user;
+  appovedMessage: string;
+  
 
   constructor(
-    private manageUsersService: ManageUsersService,
     private authService: AuthService
   ) {}
 
   delete(user: Users) {
     this.authService.deleteUser(user).subscribe(users => {
-      console.log(users);
     });
   }
+
+
+  changeApproval(user:Users){
+    if(user.approved){
+      user.approved = false;
+    }else{
+      user.approved = true;
+    }
+
+    this.authService.upadeApprovedStatus(user).subscribe(users => {
+
+    })
+  }
+
+
 
   ngOnInit() {
     this.authService.getUserStream().subscribe((users: Users[]) => {

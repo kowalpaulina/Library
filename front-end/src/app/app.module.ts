@@ -32,7 +32,6 @@ import { SearchBooksListComponent } from './search-books/search-books-list/searc
 import {BooksService} from './books/books.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { RegistrationService } from './registration/registration.service'
-import {ManageUsersService} from './admin/manage-users/manage-users.service'
 
 @NgModule({
   declarations: [
@@ -91,6 +90,11 @@ import {ManageUsersService} from './admin/manage-users/manage-users.service'
         component: LoginComponent
       },
       {
+        path: "logout",
+        redirectTo: '/blog',
+      },
+
+      {
         path: "admin",
         component: AdminComponent
       },
@@ -108,7 +112,7 @@ import {ManageUsersService} from './admin/manage-users/manage-users.service'
       }
     ])
   ],
-  providers: [ReviewsService, AuthService, AuthGuard, BooksService,RegistrationService, ManageUsersService],
+  providers: [ReviewsService, AuthService, AuthGuard, BooksService,RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -6,7 +6,7 @@ import { BooksService } from "./books.service";
 @Component({
   selector: "app-books",
   template: `
-        <h2>Kolekcja książek</h2>
+        <h2>Books collection</h2>
         <books-list></books-list>
 
         <div class="form-group">

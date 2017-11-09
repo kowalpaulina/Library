@@ -2,21 +2,23 @@
       <thead>
         <tr>
           <th> # </th>
-          <th> Imię </th>
+          <th> Name </th>
           <th> Mail </th>
-          <th> Zatwierdzony </th>
+          <th> Approved </th>
+          <th> Delete </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users; let i = index" class="playlist-row" (click)="delete(user)">
+        <tr *ngFor="let user of users; let i = index" class="playlist-row">
           <td> {{ i + 1 }}. </td>
           <td> {{ user.name }} </td>
           <td> {{ user.email }} </td>
-          <td> {{ user.approved }} </td>
           <td>
-              <button *ngIf="user.approved==true" class="btn btn-primary">Tak</button>
-              <button *ngIf="!user.approved" class="btn btn-danger">Nie</button>
+              <button (click)="changeApproval(user)" class="btn btn-primary">{{user.approved ? 'Yes' : 'No'}}</button>
           </td>
+            <td>
+              <button class="btn btn-danger" (click)="delete(user)">Delete</button>
+            </td>
         </tr>
         
       </tbody>

@@ -2,7 +2,7 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AdminComponent }           from './admin.component';
-import { AdminDashboardComponent }  from './admin-dashboard.component';
+import { AdminDashboardComponent }  from './logout/admin-dashboard.component';
 import { ManageUsersComponent }    from './manage-users/manage-users.component';
 import { AuthGuard }                from '../login/auth-guard.service';
 
@@ -17,7 +17,7 @@ const adminRoutes: Routes = [
         path: '',
         children: [
           { path: 'users-manage', component: ManageUsersComponent },
-          { path: '', component: AdminDashboardComponent }
+          { path: 'logout', component: AdminDashboardComponent }
         ],
       }
     ]

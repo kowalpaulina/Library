@@ -74,46 +74,6 @@ AboutComponent = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/admin/admin-dashboard.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__login_auth_service__ = __webpack_require__("../../../../../src/app/login/auth.service.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminDashboardComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var AdminDashboardComponent = (function () {
-    function AdminDashboardComponent(authService) {
-        this.authService = authService;
-    }
-    AdminDashboardComponent.prototype.logout = function () {
-        this.authService.isLoggedIn.next(false);
-        ///        console.log('LoginComponent AuthService  - TEST', this.authService.test);
-    };
-    return AdminDashboardComponent;
-}());
-AdminDashboardComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
-        template: "\n    <p>Dashboard</p>\n    <button (click)=\"logout()\">wyloguj</button>\n  "
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__login_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__login_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
-], AdminDashboardComponent);
-
-var _a;
-//# sourceMappingURL=admin-dashboard.component.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/admin/admin-routing.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -121,7 +81,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__admin_component__ = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__admin_dashboard_component__ = __webpack_require__("../../../../../src/app/admin/admin-dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__logout_admin_dashboard_component__ = __webpack_require__("../../../../../src/app/admin/logout/admin-dashboard.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__manage_users_manage_users_component__ = __webpack_require__("../../../../../src/app/admin/manage-users/manage-users.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_auth_guard_service__ = __webpack_require__("../../../../../src/app/login/auth-guard.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminRoutingModule; });
@@ -147,7 +107,7 @@ var adminRoutes = [
                 path: '',
                 children: [
                     { path: 'users-manage', component: __WEBPACK_IMPORTED_MODULE_4__manage_users_manage_users_component__["a" /* ManageUsersComponent */] },
-                    { path: '', component: __WEBPACK_IMPORTED_MODULE_3__admin_dashboard_component__["a" /* AdminDashboardComponent */] }
+                    { path: 'logout', component: __WEBPACK_IMPORTED_MODULE_3__logout_admin_dashboard_component__["a" /* AdminDashboardComponent */] }
                 ],
             }
         ]
@@ -193,7 +153,7 @@ var AdminComponent = (function () {
 }());
 AdminComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
-        template: "\n    <h3>ADMIN</h3>\n    <nav>\n      <a routerLink=\"./\" routerLinkActive=\"active\"\n        [routerLinkActiveOptions]=\"{ exact: true }\">Dashboard</a>\n      <a routerLink=\"./users-manage\" routerLinkActive=\"active\">Manage users</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
+        template: "\n    <h3>Administrative panel</h3>\n    <nav>\n      <a routerLink=\"./logout\" routerLinkActive=\"active\"\n        [routerLinkActiveOptions]=\"{ exact: true }\">Logout</a>\n      <a routerLink=\"./users-manage\" routerLinkActive=\"active\">Manage users</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
     })
 ], AdminComponent);
 
@@ -208,7 +168,7 @@ AdminComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__admin_component__ = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__admin_dashboard_component__ = __webpack_require__("../../../../../src/app/admin/admin-dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__logout_admin_dashboard_component__ = __webpack_require__("../../../../../src/app/admin/logout/admin-dashboard.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__manage_users_manage_users_component__ = __webpack_require__("../../../../../src/app/admin/manage-users/manage-users.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__admin_routing_module__ = __webpack_require__("../../../../../src/app/admin/admin-routing.module.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminModule; });
@@ -234,7 +194,7 @@ AdminModule = __decorate([
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_5__admin_routing_module__["a" /* AdminRoutingModule */]],
         declarations: [
             __WEBPACK_IMPORTED_MODULE_2__admin_component__["a" /* AdminComponent */],
-            __WEBPACK_IMPORTED_MODULE_3__admin_dashboard_component__["a" /* AdminDashboardComponent */],
+            __WEBPACK_IMPORTED_MODULE_3__logout_admin_dashboard_component__["a" /* AdminDashboardComponent */],
             __WEBPACK_IMPORTED_MODULE_4__manage_users_manage_users_component__["a" /* ManageUsersComponent */]
         ]
     })
@@ -244,17 +204,83 @@ AdminModule = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/admin/logout/admin-dashboard.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"btn btn-warning logout\" (click)=\"logout()\">Logout</button>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/logout/admin-dashboard.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".logout {\n  margin: 30px 0; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/logout/admin-dashboard.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__login_auth_service__ = __webpack_require__("../../../../../src/app/login/auth.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminDashboardComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AdminDashboardComponent = (function () {
+    function AdminDashboardComponent(authService) {
+        this.authService = authService;
+    }
+    AdminDashboardComponent.prototype.logout = function () {
+        this.authService.logout();
+        this.authService.isLoggedIn.next(false);
+        this.message = "Logging out ...";
+    };
+    return AdminDashboardComponent;
+}());
+AdminDashboardComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
+        template: __webpack_require__("../../../../../src/app/admin/logout/admin-dashboard.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/admin/logout/admin-dashboard.component.scss")],
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__login_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__login_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
+], AdminDashboardComponent);
+
+var _a;
+//# sourceMappingURL=admin-dashboard.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/admin/manage-users/manage-users.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__manage_users_service__ = __webpack_require__("../../../../../src/app/admin/manage-users/manage-users.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_auth_service__ = __webpack_require__("../../../../../src/app/login/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_auth_service__ = __webpack_require__("../../../../../src/app/login/auth.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ManageUsersComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -269,15 +295,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var ManageUsersComponent = (function () {
-    function ManageUsersComponent(manageUsersService, authService) {
-        this.manageUsersService = manageUsersService;
+    function ManageUsersComponent(authService) {
         this.authService = authService;
     }
     ManageUsersComponent.prototype.delete = function (user) {
         this.authService.deleteUser(user).subscribe(function (users) {
-            console.log(users);
+        });
+    };
+    ManageUsersComponent.prototype.changeApproval = function (user) {
+        if (user.approved) {
+            user.approved = false;
+        }
+        else {
+            user.approved = true;
+        }
+        this.authService.upadeApprovedStatus(user).subscribe(function (users) {
         });
     };
     ManageUsersComponent.prototype.ngOnInit = function () {
@@ -292,10 +325,10 @@ ManageUsersComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
         template: __webpack_require__("../../../../../src/app/admin/manage-users/manage-users.html")
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__manage_users_service__["a" /* ManageUsersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__manage_users_service__["a" /* ManageUsersService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__login_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__login_auth_service__["a" /* AuthService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__login_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__login_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
 ], ManageUsersComponent);
 
-var _a, _b;
+var _a;
 //# sourceMappingURL=manage-users.component.js.map
 
 /***/ }),
@@ -303,50 +336,7 @@ var _a, _b;
 /***/ "../../../../../src/app/admin/manage-users/manage-users.html":
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th> # </th>\r\n          <th> Imię </th>\r\n          <th> Mail </th>\r\n          <th> Zatwierdzony </th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let user of users; let i = index\" class=\"playlist-row\" (click)=\"delete(user)\">\r\n          <td> {{ i + 1 }}. </td>\r\n          <td> {{ user.name }} </td>\r\n          <td> {{ user.email }} </td>\r\n          <td> {{ user.approved }} </td>\r\n          <td>\r\n              <button *ngIf=\"user.approved==true\" class=\"btn btn-primary\">Tak</button>\r\n              <button *ngIf=\"!user.approved\" class=\"btn btn-danger\">Nie</button>\r\n          </td>\r\n        </tr>\r\n        \r\n      </tbody>\r\n      \r\n    </table>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/manage-users/manage-users.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__registration_registration_service__ = __webpack_require__("../../../../../src/app/registration/registration.service.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ManageUsersService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var ManageUsersService = (function () {
-    function ManageUsersService(registrationService, http) {
-        this.registrationService = registrationService;
-        this.http = http;
-    }
-    return ManageUsersService;
-}());
-ManageUsersService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__registration_registration_service__["a" /* RegistrationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__registration_registration_service__["a" /* RegistrationService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _b || Object])
-], ManageUsersService);
-
-var _a, _b;
-//# sourceMappingURL=manage-users.service.js.map
+module.exports = "<table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th> # </th>\r\n          <th> Name </th>\r\n          <th> Mail </th>\r\n          <th> Approved </th>\r\n          <th> Delete </th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let user of users; let i = index\" class=\"playlist-row\">\r\n          <td> {{ i + 1 }}. </td>\r\n          <td> {{ user.name }} </td>\r\n          <td> {{ user.email }} </td>\r\n          <td>\r\n              <button (click)=\"changeApproval(user)\" class=\"btn btn-primary\">{{user.approved ? 'Yes' : 'No'}}</button>\r\n          </td>\r\n            <td>\r\n              <button class=\"btn btn-danger\" (click)=\"delete(user)\">Delete</button>\r\n            </td>\r\n        </tr>\r\n        \r\n      </tbody>\r\n      \r\n    </table>"
 
 /***/ }),
 
@@ -454,7 +444,6 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__books_books_service__ = __webpack_require__("../../../../../src/app/books/books.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__registration_registration_component__ = __webpack_require__("../../../../../src/app/registration/registration.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__registration_registration_service__ = __webpack_require__("../../../../../src/app/registration/registration.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__admin_manage_users_manage_users_service__ = __webpack_require__("../../../../../src/app/admin/manage-users/manage-users.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -465,7 +454,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -559,6 +547,10 @@ AppModule = __decorate([
                     component: __WEBPACK_IMPORTED_MODULE_14__login_login_component__["a" /* LoginComponent */]
                 },
                 {
+                    path: "logout",
+                    redirectTo: '/blog',
+                },
+                {
                     path: "admin",
                     component: __WEBPACK_IMPORTED_MODULE_15__admin_admin_component__["a" /* AdminComponent */]
                 },
@@ -575,7 +567,7 @@ AppModule = __decorate([
                 }
             ])
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_11__reviews_service__["a" /* ReviewsService */], __WEBPACK_IMPORTED_MODULE_20__login_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_21__login_auth_guard_service__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_24__books_books_service__["a" /* BooksService */], __WEBPACK_IMPORTED_MODULE_26__registration_registration_service__["a" /* RegistrationService */], __WEBPACK_IMPORTED_MODULE_27__admin_manage_users_manage_users_service__["a" /* ManageUsersService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_11__reviews_service__["a" /* ReviewsService */], __WEBPACK_IMPORTED_MODULE_20__login_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_21__login_auth_guard_service__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_24__books_books_service__["a" /* BooksService */], __WEBPACK_IMPORTED_MODULE_26__registration_registration_service__["a" /* RegistrationService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _a || Object])
@@ -767,7 +759,7 @@ var BooksComponent = (function () {
 BooksComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
         selector: "app-books",
-        template: "\n        <h2>Kolekcja ksi\u0105\u017Cek</h2>\n        <books-list></books-list>\n\n        <div class=\"form-group\">\n          <button class=\"btn btn-primary float-xs-right\" [routerLink]=\"['new']\">Dodaj ksi\u0105\u017Ck\u0119</button>\n        </div>\n    ",
+        template: "\n        <h2>Books collection</h2>\n        <books-list></books-list>\n\n        <div class=\"form-group\">\n          <button class=\"btn btn-primary float-xs-right\" [routerLink]=\"['new']\">Dodaj ksi\u0105\u017Ck\u0119</button>\n        </div>\n    ",
         providers: [__WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object])
@@ -814,12 +806,8 @@ var BooksService = (function () {
     }
     BooksService.prototype.saveBook = function (books) {
         var _this = this;
-        //books = JSON.stringify(books);
-        console.log("save book._id type", typeof books._id);
-        console.log("save book._id type", books._id);
-        console.log("save", books);
         var request;
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ "Content-Type": "application/json" });
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ "Content-Type": "application/json" });
         if (books._id) {
             console.log("id z patch z service", books._id);
             request = this.http.patch("" + this.server_url + books._id + "/edit", books, {
@@ -898,7 +886,7 @@ var BooksService = (function () {
 }());
 BooksService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object])
 ], BooksService);
 
 var _a;
@@ -1129,7 +1117,7 @@ var AuthService = (function () {
     }
     AuthService.prototype.signin = function (user) {
         var body = JSON.stringify(user);
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ "Content-Type": "application/json" });
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ "Content-Type": "application/json" });
         return this.http
             .post(this.users_url + "login", body, { headers: headers })
             .map(function (response) { return response.json(); })
@@ -1152,9 +1140,19 @@ var AuthService = (function () {
             _this.usersStream$.next(_this.users);
         });
     };
+    AuthService.prototype.upadeApprovedStatus = function (user) {
+        console.log(user._id);
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ "Content-Type": "application/json" });
+        var request;
+        request = this.http.patch("" + this.users_url_manage + user._id, user, {
+            headers: headers
+        });
+        return request
+            .map(function (response) { return response.json().obj; })
+            .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(error.json()); });
+    };
     AuthService.prototype.deleteUser = function (user) {
         var _this = this;
-        console.log(user);
         var request;
         request = this.http.delete("" + this.users_url_manage + user._id);
         return request
@@ -1162,18 +1160,35 @@ var AuthService = (function () {
             .do(function (users) {
             console.log(users);
             _this.getUsers();
-            //this.usersStream$.next(this.users);
         });
     };
     return AuthService;
 }());
 AuthService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object])
 ], AuthService);
 
 var _a;
 //# sourceMappingURL=auth.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/login/login.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
@@ -1209,42 +1224,42 @@ var LoginComponent = (function () {
         this.errorMessage = "";
         this.authService.isLoggedIn.subscribe(function (value) {
             _this.isLogged = value;
+            _this.setMessage();
         });
     }
     LoginComponent.prototype.setMessage = function () {
+        console.log("set");
         this.message =
-            "Jesteś " +
-                (this.authService.isLoggedIn ? "zalogowana/y" : "wylogowana/y");
+            "You are " +
+                (this.isLogged ? "logged in" : "logged out");
     };
     LoginComponent.prototype.loginSubmit = function (userData) {
+        var _this = this;
         this.message = "Loguję ...";
         this.authService.signin(userData)
             .subscribe(function (data) {
             localStorage.setItem('token', data.token);
             localStorage.setItem('userId', data.userId);
+            _this.isLoggedIn();
         }, function (error) { return console.error(error); });
         this.loginForm.reset();
-        this.isLoggedIn();
     };
     LoginComponent.prototype.isLoggedIn = function () {
         if (localStorage.getItem('token') !== null) {
             this.authService.isLoggedIn.next(true);
-            console.log("logowanie ok");
         }
         else {
             this.authService.isLoggedIn.next(false);
-            this.message = "Nie ma takiego uzytkownika ...";
-            console.log("logowanie nieudane ok");
+            this.message = "Email or/and password are incorrect";
         }
         if (this.authService.redirectUrl)
             this.router.navigate([this.authService.redirectUrl]);
         else
             this.router.navigate(["/"]);
-        // return this.loggedInUser(userData);
     };
     LoginComponent.prototype.logout = function () {
         this.authService.logout();
-        this.message = "Wylogowuję ...";
+        this.message = "Logging out ...";
         this.authService.isLoggedIn.next(false);
     };
     LoginComponent.prototype.ngOnInit = function () {
@@ -1255,12 +1270,14 @@ var LoginComponent = (function () {
             ]),
             password: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required)
         });
+        this.setMessage();
     };
     return LoginComponent;
 }());
 LoginComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
-        template: __webpack_require__("../../../../../src/app/login/login.html")
+        template: __webpack_require__("../../../../../src/app/login/login.html"),
+        styles: [__webpack_require__("../../../../../src/app/login/login.component.scss")],
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* FormBuilder */]) === "function" && _d || Object])
 ], LoginComponent);
@@ -1318,14 +1335,14 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/login/login.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Strona logowania</h2>\r\n<p>Message: {{message}}</p>\r\n<form [formGroup]=\"loginForm\" #lgForm=\"ngForm\" (ngSubmit)=\"loginSubmit(lgForm.value)\">\r\n    <button (click)=\"logout()\" *ngIf=\"isLogged\">wyloguj</button>\r\n    <input formControlName=\"email\" type=\"email\" placeholder=\"Your email\" *ngIf=\"!isLogged\">\r\n    <input formControlName=\"password\" type=\"password\" placeholder=\"Your password\" *ngIf=\"!isLogged\">\r\n    <button type=\"submit\" *ngIf=\"!isLogged\">Zaloguj się</button>\r\n</form>"
+module.exports = "<h2>Strona logowania</h2>\r\n<p>Message: {{message}}</p>\r\n<form [formGroup]=\"loginForm\" #lgForm=\"ngForm\" (ngSubmit)=\"loginSubmit(lgForm.value)\">\r\n    \r\n    <button class=\"btn btn-warning\" (click)=\"logout()\" *ngIf=\"isLogged\">wyloguj</button>\r\n\r\n    <div class=\"form-group\">\r\n        <input class=\"form-control\" formControlName=\"email\" type=\"email\" placeholder=\"Your email\" *ngIf=\"!isLogged\">\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <input class=\"form-control\" formControlName=\"password\" type=\"password\" placeholder=\"Your password\" *ngIf=\"!isLogged\">\r\n    </div>\r\n        <button class=\"btn btn-primary\" type=\"submit\" *ngIf=\"!isLogged\">Log in</button>\r\n</form>\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
 /***/ "../../../../../src/app/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n\r\n  <a class=\"navbar-brand\" href=\"#\">Library</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\r\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"blog\" routerLinkActive=\"active\">Strona powitalna dla wszystkich</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"books\" routerLinkActive=\"active\">My library</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"searchBooks\" routerLinkActive=\"active\">Find books</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"about\" routerLinkActive=\"active\">Borrowed books</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"reviews\" routerLinkActive=\"active\">Waiting for books</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/admin\" routerLinkActive=\"active\">Panel administracyjny</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Zaloguj się</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/users/register\" routerLinkActive=\"active\">Zaprzyjaźnij się z biblioteką</a>\r\n      </li>\r\n\r\n      <div class=\"invitation\">{{invitation}}</div>\r\n\r\n    </ul>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n\r\n  <a class=\"navbar-brand\" href=\"#\">Library</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\r\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"blog\" routerLinkActive=\"active\">Strona powitalna dla wszystkich</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"books\" routerLinkActive=\"active\">My library</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"searchBooks\" routerLinkActive=\"active\">Find books</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"about\" routerLinkActive=\"active\">Borrowed books</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"reviews\" routerLinkActive=\"active\">Waiting for books</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/admin\" routerLinkActive=\"active\">Administrative panel</a>\r\n      </li>\r\n\r\n      <li *ngIf=\"!isLogged\" class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Log in</a>\r\n      </li>\r\n       <li *ngIf=\"isLogged\" class=\"nav-item\" (click)=\"logout()\">\r\n        <a class=\"nav-link\" routerLinkActive=\"active\">Log out</a>\r\n      </li> \r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/users/register\" routerLinkActive=\"active\">Friend of library</a>\r\n      </li>\r\n\r\n      <div class=\"invitation\">{{invitation}}</div>\r\n\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -1352,6 +1369,7 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__login_auth_service__ = __webpack_require__("../../../../../src/app/login/auth.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1363,10 +1381,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var NavbarComponent = (function () {
-    function NavbarComponent() {
+    function NavbarComponent(authService) {
+        var _this = this;
+        this.authService = authService;
+        this.authService.isLoggedIn.subscribe(function (value) {
+            _this.isLogged = value;
+        });
     }
     NavbarComponent.prototype.ngOnInit = function () {
+    };
+    NavbarComponent.prototype.logout = function () {
+        this.authService.logout();
+        this.message = "Logging out ...";
+        this.authService.isLoggedIn.next(false);
     };
     return NavbarComponent;
 }());
@@ -1377,9 +1406,10 @@ NavbarComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/navbar/navbar.component.scss")],
         encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* ViewEncapsulation */].None
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__login_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__login_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
 ], NavbarComponent);
 
+var _a;
 //# sourceMappingURL=navbar.component.js.map
 
 /***/ }),
@@ -1483,7 +1513,7 @@ var RegistrationService = (function () {
         this.users = [];
     }
     RegistrationService.prototype.registerUser = function (users) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ "Content-Type": "application/json" });
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ "Content-Type": "application/json" });
         return this.http
             .post(this.server_url, users, { headers: headers })
             .map(function (response) { return response.json().obj; })
@@ -1495,7 +1525,7 @@ var RegistrationService = (function () {
 }());
 RegistrationService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object])
 ], RegistrationService);
 
 var _a;
@@ -1551,7 +1581,7 @@ var ReviewsService = (function () {
 }());
 ReviewsService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object])
 ], ReviewsService);
 
 var _a;
@@ -1741,7 +1771,7 @@ var BooksSearchService = (function () {
 }());
 BooksSearchService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object])
 ], BooksSearchService);
 
 var _a;

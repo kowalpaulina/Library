@@ -15,10 +15,6 @@ export class BooksService {
   booksStream$ = new Subject<Books[]>();
 
   saveBook(books) {
-    //books = JSON.stringify(books);
-    console.log("save book._id type", typeof books._id);
-    console.log("save book._id type", books._id);
-    console.log("save", books);
     let request;
     const headers = new Headers({ "Content-Type": "application/json" });
     if (books._id) {

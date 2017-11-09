@@ -14,11 +14,12 @@ import {
 } from "@angular/forms";
 
 @Component({
-  templateUrl: "./login.html"
+  templateUrl: "./login.html",
+  styleUrls: ["./login.component.scss"],
 })
+
 export class LoginComponent {
   message: string;
-  invitation: string;
   isLogged: boolean;
   users: Users[];
   private errorMessage: any = "";
@@ -34,13 +35,15 @@ export class LoginComponent {
   ) {
     this.authService.isLoggedIn.subscribe(value => {
       this.isLogged = value;
+      this.setMessage();
     });
   }
 
   setMessage():any {
+    console.log("set");
     this.message =
-      "Jesteś " +
-      (this.authService.isLoggedIn ? "zalogowana/y" : "wylogowana/y");
+      "You are " +
+      (this.isLogged ? "logged in" : "logged out");
   }
 
   loginSubmit(userData:Users) {
@@ -50,34 +53,33 @@ export class LoginComponent {
         data => {
             localStorage.setItem('token', data.token);
             localStorage.setItem('userId', data.userId);
+            this.isLoggedIn();
         },
         error => console.error(error)
       );
+    
     this.loginForm.reset();
-    this.isLoggedIn();
+    
     }
 
   isLoggedIn() {
         if(localStorage.getItem('token') !== null){
             this.authService.isLoggedIn.next(true);
-            console.log("logowanie ok")
         }else{
             this.authService.isLoggedIn.next(false);
-            this.message = "Nie ma takiego uzytkownika ...";
-            console.log("logowanie nieudane ok")
+            this.message = "Email or/and password are incorrect";
         }
 
         if (this.authService.redirectUrl)
           this.router.navigate([this.authService.redirectUrl]);
         else this.router.navigate(["/"]);
-            // return this.loggedInUser(userData);
   }
 
 
 
   logout() {
     this.authService.logout();
-    this.message = "Wylogowuję ...";
+    this.message = "Logging out ...";
     this.authService.isLoggedIn.next(false);
   }
 
@@ -91,6 +93,7 @@ export class LoginComponent {
           ),
       password: new FormControl("", Validators.required)
     });
+    this.setMessage();
   }
 }
 
