@@ -6,7 +6,8 @@ import { Subject, Observable } from "rxjs";
 import { AuthService } from "../../login/auth.service";
 
 @Component({
-  templateUrl: "./manage-users.html"
+  templateUrl: "./manage-users.html",
+  styleUrls: ["./manage-users.component.scss"],
 })
 export class ManageUsersComponent implements OnInit {
   users: Users[];

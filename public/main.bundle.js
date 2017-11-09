@@ -133,6 +133,24 @@ AdminRoutingModule = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/admin/admin.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "h3 {\n  margin-bottom: 30px; }\n\nnav {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n\nli {\n  list-style: none;\n  margin-right: 30px;\n  text-transform: uppercase; }\n  li a {\n    color: orange;\n    font-size: 15px; }\n    li a:hover, li a:focus {\n      color: orange; }\n  li.active {\n    font-weight: bold; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
 /***/ "../../../../../src/app/admin/admin.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -153,7 +171,8 @@ var AdminComponent = (function () {
 }());
 AdminComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
-        template: "\n    <h3>Administrative panel</h3>\n    <nav>\n      <a routerLink=\"./logout\" routerLinkActive=\"active\"\n        [routerLinkActiveOptions]=\"{ exact: true }\">Logout</a>\n      <a routerLink=\"./users-manage\" routerLinkActive=\"active\">Manage users</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
+        styles: [__webpack_require__("../../../../../src/app/admin/admin.component.scss")],
+        template: "\n    <h3>Administrative panel</h3>\n    <nav>\n      <li>\n        <a routerLink=\"./logout\" routerLinkActive=\"active\"\n        [routerLinkActiveOptions]=\"{ exact: true }\">Logout\n        </a>\n      </li>\n      <li>\n        <a routerLink=\"./users-manage\" routerLinkActive=\"active\">Manage users</a>\n      </li>\n    </nav>\n    <router-outlet></router-outlet>\n  "
     })
 ], AdminComponent);
 
@@ -271,6 +290,24 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/admin/manage-users/manage-users.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".table {\n  margin-top: 30px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
 /***/ "../../../../../src/app/admin/manage-users/manage-users.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -323,7 +360,8 @@ var ManageUsersComponent = (function () {
 }());
 ManageUsersComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
-        template: __webpack_require__("../../../../../src/app/admin/manage-users/manage-users.html")
+        template: __webpack_require__("../../../../../src/app/admin/manage-users/manage-users.html"),
+        styles: [__webpack_require__("../../../../../src/app/admin/manage-users/manage-users.component.scss")],
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__login_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__login_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
 ], ManageUsersComponent);
