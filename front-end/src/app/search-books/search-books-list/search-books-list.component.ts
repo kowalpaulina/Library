@@ -5,7 +5,7 @@ import { BooksSearchService } from '../books-search.service'
 @Component({
   selector: 'app-search-books-list',
   templateUrl: './search-books-list.component.html',
-  styles: [],
+  styleUrls: ["./search-books-list.component.scss"],
 })
 export class SearchBooksListComponent implements OnInit {
 

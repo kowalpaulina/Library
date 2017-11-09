@@ -2,8 +2,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './login/auth-guard.service';
 import { AuthService } from './login/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { Review } from './review';
-import { ReviewsService } from './reviews.service';
+
 
 
 
@@ -16,21 +15,11 @@ import { ReviewsService } from './reviews.service';
 
 
 export class AppComponent implements OnInit {
-  title = 'Moja biblioteka';
-  invitation: string;
+  title = 'My library';
 
-
-  reviews: Review[];
-
-
-  constructor(private reviewsService: ReviewsService, private authService:AuthService) { }
-
-//  getReviews(): void {
-//     this.reviewsService.getReviews().then(reviews => this.reviews = reviews);
-//   }
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
-    // this.getReviews();
   }
 
 

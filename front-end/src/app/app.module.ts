@@ -10,11 +10,9 @@ import { ReactiveFormsModule } from "@angular/forms";
 import * as $ from "jquery";
 
 import { AppComponent } from "./app.component";
-import { CompanyComponent } from "./company/company.component";
-import { AboutComponent } from "./about/about.component";
-import { ServicesComponent } from "./reviews/services.component";
+import { LendComponent } from "./lend/lend.component";
+import { PendingComponent } from "./pending/pending.component";
 import { FooterComponent } from "./footer/footer.component";
-import { ReviewsService } from "./reviews.service";
 import { BooksComponent } from "./books/books.component";
 import { BooksListComponent } from "./books/books-list.component";
 import { LoginComponent } from "./login/login.component";
@@ -31,14 +29,14 @@ import { SearchBooksListComponent } from './search-books/search-books-list/searc
 
 import {BooksService} from './books/books.service';
 import { RegistrationComponent } from './registration/registration.component';
-import { RegistrationService } from './registration/registration.service'
+import { RegistrationService } from './registration/registration.service';
+import { LibraryComponent } from './library/library.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    CompanyComponent,
-    AboutComponent,
-    ServicesComponent,
+    LendComponent,
+    PendingComponent,
     FooterComponent,
     BooksComponent,
     BooksListComponent,
@@ -48,7 +46,8 @@ import { RegistrationService } from './registration/registration.service'
     SearchBooksComponent,
     BooksSearchFormComponent,
     SearchBooksListComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LibraryComponent
   ],
 
   imports: [
@@ -60,12 +59,12 @@ import { RegistrationService } from './registration/registration.service'
     CommonModule,
     RouterModule.forRoot([
       {
-        path: "blog",
-        component: CompanyComponent
+        path: "",
+        component: LibraryComponent
       },
       {
-        path: "about",
-        component: AboutComponent
+        path: "lend",
+        component: LendComponent
       },
       {
         path: "books",
@@ -82,8 +81,8 @@ import { RegistrationService } from './registration/registration.service'
         component: SearchBooksComponent
       },
       {
-        path: "reviews",
-        component: ServicesComponent
+        path: "pending",
+        component: PendingComponent
       },
       {
         path: "login",
@@ -91,7 +90,7 @@ import { RegistrationService } from './registration/registration.service'
       },
       {
         path: "logout",
-        redirectTo: '/blog',
+        redirectTo: '/',
       },
 
       {
@@ -105,14 +104,19 @@ import { RegistrationService } from './registration/registration.service'
 
         ],
       },
-      {
-        path: "",
-        redirectTo: "blog",
-        pathMatch: "full"
-      }
+      // {
+      //   path: "",
+      //   redirectTo: "/",
+      //   pathMatch: "full"
+      // }
+      { 
+        path: '**', 
+        redirectTo: '/',
+        pathMatch: 'full' 
+      },
     ])
   ],
-  providers: [ReviewsService, AuthService, AuthGuard, BooksService,RegistrationService],
+  providers: [AuthService, AuthGuard, BooksService,RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

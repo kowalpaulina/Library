@@ -1,0 +1,16 @@
+.table-striped tbody tr:nth-of-type(odd){
+    background-color:rgba(167,190,211,0.3);
+}
+
+.table-striped tbody tr:nth-of-type(even){
+    background-color: rgba(167,190,211,0.1);
+}
+
+
+.table th, .table td{
+    border-top-color: transparent;
+}
+
+table{
+    margin-top: 50px;
+}

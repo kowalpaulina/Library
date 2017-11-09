@@ -62,7 +62,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nh2 {\n  padding-top: 30px;\n  padding-bottom: 30px; }\n\n.jumbotron {\n  padding: 2rem; }\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nh2 {\n  padding-top: 30px;\n  padding-bottom: 30px; }\n\n.jumbotron {\n  padding: 2rem; }\n\nbody {\n  font-family: 'Source Sans Pro', sans-serif; }\n", ""]);
 
 // exports
 

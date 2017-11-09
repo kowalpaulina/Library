@@ -13,67 +13,6 @@ webpackEmptyContext.id = "../../../../../src async recursive";
 
 /***/ }),
 
-/***/ "../../../../../src/app/about/about.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/about/about.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<h3>\r\n  <ul>\r\n    Lista książek pożyczonych:\r\n    <li>tytuł</li>\r\n    <li>autor</li>\r\n    <li>kto pożyczył</li>\r\n    <li>notatki</li>\r\n    <li>button do zwrotu</li>\r\n\r\n  </ul>\r\n</h3>\r\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/about/about.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var AboutComponent = (function () {
-    function AboutComponent() {
-    }
-    AboutComponent.prototype.ngOnInit = function () {
-    };
-    return AboutComponent;
-}());
-AboutComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
-        selector: 'app-about',
-        template: __webpack_require__("../../../../../src/app/about/about.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/about/about.component.css")]
-    }),
-    __metadata("design:paramtypes", [])
-], AboutComponent);
-
-//# sourceMappingURL=about.component.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/admin/admin-routing.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -141,7 +80,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h3 {\n  margin-bottom: 30px; }\n\nnav {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n\nli {\n  list-style: none;\n  margin-right: 30px;\n  text-transform: uppercase; }\n  li a {\n    color: orange;\n    font-size: 15px; }\n    li a:hover, li a:focus {\n      color: orange; }\n  li.active {\n    font-weight: bold; }\n", ""]);
+exports.push([module.i, "h3 {\n  margin-bottom: 30px; }\n\nnav {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n\nli {\n  list-style: none;\n  margin-right: 30px;\n  text-transform: uppercase; }\n  li a {\n    color: orange;\n    font-size: 14px; }\n    li a:hover, li a:focus {\n      color: orange; }\n  li.active {\n    font-weight: bold; }\n", ""]);
 
 // exports
 
@@ -409,7 +348,6 @@ module.exports = "<app-navbar></app-navbar>\r\n<div class=\"container\">\r\n  <r
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__login_auth_service__ = __webpack_require__("../../../../../src/app/login/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reviews_service__ = __webpack_require__("../../../../../src/app/reviews.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -422,18 +360,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 var AppComponent = (function () {
-    function AppComponent(reviewsService, authService) {
-        this.reviewsService = reviewsService;
+    function AppComponent(authService) {
         this.authService = authService;
-        this.title = 'Moja biblioteka';
+        this.title = 'My library';
     }
-    //  getReviews(): void {
-    //     this.reviewsService.getReviews().then(reviews => this.reviews = reviews);
-    //   }
     AppComponent.prototype.ngOnInit = function () {
-        // this.getReviews();
     };
     return AppComponent;
 }());
@@ -443,10 +375,10 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__reviews_service__["a" /* ReviewsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__reviews_service__["a" /* ReviewsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__login_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__login_auth_service__["a" /* AuthService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__login_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__login_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
 ], AppComponent);
 
-var _a, _b;
+var _a;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -462,26 +394,25 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__company_company_component__ = __webpack_require__("../../../../../src/app/company/company.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__about_about_component__ = __webpack_require__("../../../../../src/app/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__reviews_services_component__ = __webpack_require__("../../../../../src/app/reviews/services.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__footer_footer_component__ = __webpack_require__("../../../../../src/app/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__reviews_service__ = __webpack_require__("../../../../../src/app/reviews.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__books_books_component__ = __webpack_require__("../../../../../src/app/books/books.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__books_books_list_component__ = __webpack_require__("../../../../../src/app/books/books-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__admin_admin_component__ = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__books_books_detail_component__ = __webpack_require__("../../../../../src/app/books/books-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__search_books_books_search_form_component__ = __webpack_require__("../../../../../src/app/search-books/books-search-form.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__navbar_navbar_component__ = __webpack_require__("../../../../../src/app/navbar/navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__search_books_search_books_component__ = __webpack_require__("../../../../../src/app/search-books/search-books.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__login_auth_service__ = __webpack_require__("../../../../../src/app/login/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__login_auth_guard_service__ = __webpack_require__("../../../../../src/app/login/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__admin_admin_module__ = __webpack_require__("../../../../../src/app/admin/admin.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__search_books_search_books_list_search_books_list_component__ = __webpack_require__("../../../../../src/app/search-books/search-books-list/search-books-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__books_books_service__ = __webpack_require__("../../../../../src/app/books/books.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__registration_registration_component__ = __webpack_require__("../../../../../src/app/registration/registration.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__registration_registration_service__ = __webpack_require__("../../../../../src/app/registration/registration.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__lend_lend_component__ = __webpack_require__("../../../../../src/app/lend/lend.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pending_pending_component__ = __webpack_require__("../../../../../src/app/pending/pending.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__footer_footer_component__ = __webpack_require__("../../../../../src/app/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__books_books_component__ = __webpack_require__("../../../../../src/app/books/books.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__books_books_list_component__ = __webpack_require__("../../../../../src/app/books/books-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__admin_admin_component__ = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__books_books_detail_component__ = __webpack_require__("../../../../../src/app/books/books-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__search_books_books_search_form_component__ = __webpack_require__("../../../../../src/app/search-books/books-search-form.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__navbar_navbar_component__ = __webpack_require__("../../../../../src/app/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__search_books_search_books_component__ = __webpack_require__("../../../../../src/app/search-books/search-books.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__login_auth_service__ = __webpack_require__("../../../../../src/app/login/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__login_auth_guard_service__ = __webpack_require__("../../../../../src/app/login/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__admin_admin_module__ = __webpack_require__("../../../../../src/app/admin/admin.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__search_books_search_books_list_search_books_list_component__ = __webpack_require__("../../../../../src/app/search-books/search-books-list/search-books-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__books_books_service__ = __webpack_require__("../../../../../src/app/books/books.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__registration_registration_component__ = __webpack_require__("../../../../../src/app/registration/registration.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__registration_registration_service__ = __webpack_require__("../../../../../src/app/registration/registration.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__library_library_component__ = __webpack_require__("../../../../../src/app/library/library.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -492,7 +423,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -532,80 +462,85 @@ AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* NgModule */])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__company_company_component__["a" /* CompanyComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__about_about_component__["a" /* AboutComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__reviews_services_component__["a" /* ServicesComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__footer_footer_component__["a" /* FooterComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__books_books_component__["a" /* BooksComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__books_books_list_component__["a" /* BooksListComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__login_login_component__["a" /* LoginComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__books_books_detail_component__["a" /* BooksDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__navbar_navbar_component__["a" /* NavbarComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__search_books_search_books_component__["a" /* SearchBooksComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__search_books_books_search_form_component__["a" /* BooksSearchFormComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__search_books_search_books_list_search_books_list_component__["a" /* SearchBooksListComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__registration_registration_component__["a" /* RegistrationComponent */]
+            __WEBPACK_IMPORTED_MODULE_7__lend_lend_component__["a" /* LendComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__pending_pending_component__["a" /* PendingComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__footer_footer_component__["a" /* FooterComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__books_books_component__["a" /* BooksComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__books_books_list_component__["a" /* BooksListComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__login_login_component__["a" /* LoginComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__books_books_detail_component__["a" /* BooksDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__navbar_navbar_component__["a" /* NavbarComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__search_books_search_books_component__["a" /* SearchBooksComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__search_books_books_search_form_component__["a" /* BooksSearchFormComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__search_books_search_books_list_search_books_list_component__["a" /* SearchBooksListComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__registration_registration_component__["a" /* RegistrationComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__library_library_component__["a" /* LibraryComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_22__admin_admin_module__["a" /* AdminModule */],
+            __WEBPACK_IMPORTED_MODULE_20__admin_admin_module__["a" /* AdminModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["b" /* ReactiveFormsModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* RouterModule */].forRoot([
                 {
-                    path: "blog",
-                    component: __WEBPACK_IMPORTED_MODULE_7__company_company_component__["a" /* CompanyComponent */]
+                    path: "",
+                    component: __WEBPACK_IMPORTED_MODULE_25__library_library_component__["a" /* LibraryComponent */]
                 },
                 {
-                    path: "about",
-                    component: __WEBPACK_IMPORTED_MODULE_8__about_about_component__["a" /* AboutComponent */]
+                    path: "lend",
+                    component: __WEBPACK_IMPORTED_MODULE_7__lend_lend_component__["a" /* LendComponent */]
                 },
                 {
                     path: "books",
-                    canActivate: [__WEBPACK_IMPORTED_MODULE_21__login_auth_guard_service__["a" /* AuthGuard */]],
-                    component: __WEBPACK_IMPORTED_MODULE_12__books_books_component__["a" /* BooksComponent */],
+                    canActivate: [__WEBPACK_IMPORTED_MODULE_19__login_auth_guard_service__["a" /* AuthGuard */]],
+                    component: __WEBPACK_IMPORTED_MODULE_10__books_books_component__["a" /* BooksComponent */],
                     children: [
-                        { path: 'new', component: __WEBPACK_IMPORTED_MODULE_16__books_books_detail_component__["a" /* BooksDetailComponent */] },
-                        { path: ':id', component: __WEBPACK_IMPORTED_MODULE_16__books_books_detail_component__["a" /* BooksDetailComponent */] },
-                        { path: ':id/edit', component: __WEBPACK_IMPORTED_MODULE_16__books_books_detail_component__["a" /* BooksDetailComponent */] },
+                        { path: 'new', component: __WEBPACK_IMPORTED_MODULE_14__books_books_detail_component__["a" /* BooksDetailComponent */] },
+                        { path: ':id', component: __WEBPACK_IMPORTED_MODULE_14__books_books_detail_component__["a" /* BooksDetailComponent */] },
+                        { path: ':id/edit', component: __WEBPACK_IMPORTED_MODULE_14__books_books_detail_component__["a" /* BooksDetailComponent */] },
                     ],
                 },
                 {
                     path: "searchBooks",
-                    component: __WEBPACK_IMPORTED_MODULE_19__search_books_search_books_component__["a" /* SearchBooksComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_17__search_books_search_books_component__["a" /* SearchBooksComponent */]
                 },
                 {
-                    path: "reviews",
-                    component: __WEBPACK_IMPORTED_MODULE_9__reviews_services_component__["a" /* ServicesComponent */]
+                    path: "pending",
+                    component: __WEBPACK_IMPORTED_MODULE_8__pending_pending_component__["a" /* PendingComponent */]
                 },
                 {
                     path: "login",
-                    component: __WEBPACK_IMPORTED_MODULE_14__login_login_component__["a" /* LoginComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_12__login_login_component__["a" /* LoginComponent */]
                 },
                 {
                     path: "logout",
-                    redirectTo: '/blog',
+                    redirectTo: '/',
                 },
                 {
                     path: "admin",
-                    component: __WEBPACK_IMPORTED_MODULE_15__admin_admin_component__["a" /* AdminComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_13__admin_admin_component__["a" /* AdminComponent */]
                 },
                 {
                     path: "users",
                     children: [
-                        { path: 'register', component: __WEBPACK_IMPORTED_MODULE_25__registration_registration_component__["a" /* RegistrationComponent */] },
+                        { path: 'register', component: __WEBPACK_IMPORTED_MODULE_23__registration_registration_component__["a" /* RegistrationComponent */] },
                     ],
                 },
+                // {
+                //   path: "",
+                //   redirectTo: "/",
+                //   pathMatch: "full"
+                // }
                 {
-                    path: "",
-                    redirectTo: "blog",
-                    pathMatch: "full"
-                }
+                    path: '**',
+                    redirectTo: '/',
+                    pathMatch: 'full'
+                },
             ])
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_11__reviews_service__["a" /* ReviewsService */], __WEBPACK_IMPORTED_MODULE_20__login_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_21__login_auth_guard_service__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_24__books_books_service__["a" /* BooksService */], __WEBPACK_IMPORTED_MODULE_26__registration_registration_service__["a" /* RegistrationService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_18__login_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_19__login_auth_guard_service__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_22__books_books_service__["a" /* BooksService */], __WEBPACK_IMPORTED_MODULE_24__registration_registration_service__["a" /* RegistrationService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _a || Object])
@@ -932,63 +867,6 @@ var _a;
 
 /***/ }),
 
-/***/ "../../../../../src/app/company/company.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".btn{\r\n    margin-top: 30px;\r\n}\r\n\r\n.jumbotron{\r\n    width: 100%;\r\n}", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/company/company.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<h3>\r\n  Hello!\r\n</h3>\r\n\r\n\r\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/company/company.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompanyComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var CompanyComponent = (function () {
-    function CompanyComponent() {
-    }
-    CompanyComponent.prototype.ngOnInit = function () {
-    };
-    return CompanyComponent;
-}());
-CompanyComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
-        selector: 'app-company',
-        template: __webpack_require__("../../../../../src/app/company/company.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/company/company.component.css")]
-    })
-], CompanyComponent);
-
-//# sourceMappingURL=company.component.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/footer/footer.component.html":
 /***/ (function(module, exports) {
 
@@ -1048,6 +926,132 @@ FooterComponent = __decorate([
 ], FooterComponent);
 
 //# sourceMappingURL=footer.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/lend/lend.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/lend/lend.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\r\n  <ul>\r\n    Lista książek pożyczonych:\r\n    <li>tytuł</li>\r\n    <li>autor</li>\r\n    <li>kto pożyczył</li>\r\n    <li>notatki</li>\r\n    <li>button do zwrotu</li>\r\n\r\n  </ul>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/lend/lend.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LendComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LendComponent = (function () {
+    function LendComponent() {
+    }
+    LendComponent.prototype.ngOnInit = function () {
+    };
+    return LendComponent;
+}());
+LendComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
+        selector: 'app-lend',
+        template: __webpack_require__("../../../../../src/app/lend/lend.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/lend/lend.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], LendComponent);
+
+//# sourceMappingURL=lend.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/library/library.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  {{invitation}}\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/library/library.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/library/library.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LibraryComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LibraryComponent = (function () {
+    function LibraryComponent() {
+    }
+    LibraryComponent.prototype.ngOnInit = function () {
+        this.setInvitation();
+    };
+    LibraryComponent.prototype.setInvitation = function () {
+        this.invitation = "Welcome to my library";
+    };
+    return LibraryComponent;
+}());
+LibraryComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
+        selector: 'app-library',
+        template: __webpack_require__("../../../../../src/app/library/library.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/library/library.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], LibraryComponent);
+
+//# sourceMappingURL=library.component.js.map
 
 /***/ }),
 
@@ -1373,14 +1377,14 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/login/login.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Strona logowania</h2>\r\n<p>Message: {{message}}</p>\r\n<form [formGroup]=\"loginForm\" #lgForm=\"ngForm\" (ngSubmit)=\"loginSubmit(lgForm.value)\">\r\n    \r\n    <button class=\"btn btn-warning\" (click)=\"logout()\" *ngIf=\"isLogged\">wyloguj</button>\r\n\r\n    <div class=\"form-group\">\r\n        <input class=\"form-control\" formControlName=\"email\" type=\"email\" placeholder=\"Your email\" *ngIf=\"!isLogged\">\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <input class=\"form-control\" formControlName=\"password\" type=\"password\" placeholder=\"Your password\" *ngIf=\"!isLogged\">\r\n    </div>\r\n        <button class=\"btn btn-primary\" type=\"submit\" *ngIf=\"!isLogged\">Log in</button>\r\n</form>\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<h2>Strona logowania</h2>\r\n<p>{{message}}</p>\r\n<form [formGroup]=\"loginForm\" #lgForm=\"ngForm\" (ngSubmit)=\"loginSubmit(lgForm.value)\">\r\n    \r\n    <button class=\"btn btn-warning\" (click)=\"logout()\" *ngIf=\"isLogged\">wyloguj</button>\r\n\r\n    <div class=\"form-group\">\r\n        <input class=\"form-control\" formControlName=\"email\" type=\"email\" placeholder=\"Your email\" *ngIf=\"!isLogged\">\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <input class=\"form-control\" formControlName=\"password\" type=\"password\" placeholder=\"Your password\" *ngIf=\"!isLogged\">\r\n    </div>\r\n        <button class=\"btn btn-primary\" type=\"submit\" *ngIf=\"!isLogged\">Log in</button>\r\n</form>\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
 /***/ "../../../../../src/app/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n\r\n  <a class=\"navbar-brand\" href=\"#\">Library</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\r\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"blog\" routerLinkActive=\"active\">Strona powitalna dla wszystkich</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"books\" routerLinkActive=\"active\">My library</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"searchBooks\" routerLinkActive=\"active\">Find books</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"about\" routerLinkActive=\"active\">Borrowed books</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"reviews\" routerLinkActive=\"active\">Waiting for books</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/admin\" routerLinkActive=\"active\">Administrative panel</a>\r\n      </li>\r\n\r\n      <li *ngIf=\"!isLogged\" class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Log in</a>\r\n      </li>\r\n       <li *ngIf=\"isLogged\" class=\"nav-item\" (click)=\"logout()\">\r\n        <a class=\"nav-link\" routerLinkActive=\"active\">Log out</a>\r\n      </li> \r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/users/register\" routerLinkActive=\"active\">Friend of library</a>\r\n      </li>\r\n\r\n      <div class=\"invitation\">{{invitation}}</div>\r\n\r\n    </ul>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\r\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/\" routerLinkActive=\"active\">Library</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"books\" routerLinkActive=\"active\">My library</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"searchBooks\" routerLinkActive=\"active\">Find books</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"lend\" routerLinkActive=\"active\">Lend books</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"pending\" routerLinkActive=\"active\">Waiting for books</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/admin\" routerLinkActive=\"active\">Administrative panel</a>\r\n      </li>\r\n\r\n      <li *ngIf=\"!isLogged\" class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Log in</a>\r\n      </li>\r\n       <li *ngIf=\"isLogged\" class=\"nav-item\" (click)=\"logout()\">\r\n        <a class=\"nav-link\" routerLinkActive=\"active\">Log out</a>\r\n      </li> \r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/users/register\" routerLinkActive=\"active\">Friend of library</a>\r\n      </li>\r\n\r\n      <div class=\"invitation\">{{invitation}}</div>\r\n\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -1449,6 +1453,67 @@ NavbarComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=navbar.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pending/pending.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "li{\r\n    border:1px solid transparent;\r\n    list-style: none;\r\n}\r\n\r\nul{\r\n    width: 40%;\r\n    height: 500px;\r\n}\r\n\r\n.book-list{\r\n    cursor: pointer;\r\n    margin: 10px;\r\n    background-color: rgba(15,82,139,0.2);\r\n    padding: 10px;\r\n    \r\n}\r\n\r\n.selectedReview{\r\n    margin-top: 50px;\r\n    margin-bottom: 50px;\r\n    height: 400px;\r\n}\r\n\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/pending/pending.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "Lista oczekujących na pożyczenie książki z informacją\r\n  <ul>\r\n    <li>autor i tutył</li>\r\n    <li>kto oczekuje</li>\r\n  </ul>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/pending/pending.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PendingComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var PendingComponent = (function () {
+    function PendingComponent() {
+    }
+    PendingComponent.prototype.ngOnInit = function () {
+    };
+    return PendingComponent;
+}());
+PendingComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
+        selector: 'services-app',
+        template: __webpack_require__("../../../../../src/app/pending/pending.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pending/pending.component.css")],
+    }),
+    __metadata("design:paramtypes", [])
+], PendingComponent);
+
+//# sourceMappingURL=pending.component.js.map
 
 /***/ }),
 
@@ -1571,135 +1636,6 @@ var _a;
 
 /***/ }),
 
-/***/ "../../../../../src/app/review-mock.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return REVIEWS; });
-var REVIEWS = [
-    { id: 1, title: 'Harry Potter', author: 'Autor', tag: '' },
-    { id: 2, title: 'Potop', author: 'Autor', tag: '' },
-    { id: 3, title: 'Mistrz i Małgorzata', author: 'Autor', tag: '' },
-    { id: 4, title: 'Dom duchów', author: 'Autor', tag: '' },
-    { id: 5, title: 'Jaś i Małgosia', author: 'Autor', tag: '' },
-    { id: 6, title: 'Kubuś Puchatek', author: 'Autor', tag: '' },
-];
-//# sourceMappingURL=review-mock.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/reviews.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__review_mock__ = __webpack_require__("../../../../../src/app/review-mock.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReviewsService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var ReviewsService = (function () {
-    function ReviewsService(http) {
-        this.http = http;
-    }
-    ReviewsService.prototype.getReviews = function () {
-        return Promise.resolve(__WEBPACK_IMPORTED_MODULE_2__review_mock__["a" /* REVIEWS */]);
-    };
-    return ReviewsService;
-}());
-ReviewsService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object])
-], ReviewsService);
-
-var _a;
-//# sourceMappingURL=reviews.service.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/reviews/services.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "li{\r\n    border:1px solid transparent;\r\n    list-style: none;\r\n}\r\n\r\nul{\r\n    width: 40%;\r\n    height: 500px;\r\n}\r\n\r\n.book-list{\r\n    cursor: pointer;\r\n    margin: 10px;\r\n    background-color: rgba(15,82,139,0.2);\r\n    padding: 10px;\r\n    \r\n}\r\n\r\n.selectedReview{\r\n    margin-top: 50px;\r\n    margin-bottom: 50px;\r\n    height: 400px;\r\n}\r\n\r\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/reviews/services.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<h3>\r\n  Tutaj będzie lista oczekujących na pożyczenia książki z informacją\r\n  <ul>\r\n    <li>autor i tutył</li>\r\n    <li>kto oczekuje</li>\r\n  </ul>\r\n</h3>\r\n\r\n\r\n<ul>\r\n  <li class=\"book-list\" *ngFor=\"let review of reviews\" (click)=\"onSelect(review)\" [ngStyle]=\"{'border-color': review.tag}\">\r\n    <span>{{review.id}}</span> \r\n    <span>{{review.title}}:</span>\r\n    <span>{{review.author}}</span>\r\n\r\n  </li>\r\n</ul>\r\n\r\n\r\n<div class=\"selectedReview\" *ngIf=\"selectedReview\">\r\n  <h2>Szczegóły recenzji {{selectedReview.title}}</h2>\r\n    <div><label>id: </label>{{selectedReview.id}}</div>\r\n    <div>\r\n        <label>Edytuj tytuł: </label>\r\n        <input [(ngModel)]=\"selectedReview.title\" placeholder=\"name\"/>\r\n        <div>\r\n          <label for=\"\">Nadaj kolor</label>\r\n          <input [(ngModel)]=\"selectedReview.tag\" type=\"color\" placeholder=\"name\"/>\r\n        </div>\r\n    </div>\r\n</div>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/reviews/services.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__reviews_service__ = __webpack_require__("../../../../../src/app/reviews.service.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ServicesComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var ServicesComponent = (function () {
-    function ServicesComponent(reviewsService) {
-        this.reviewsService = reviewsService;
-    }
-    ServicesComponent.prototype.getReviews = function () {
-        var _this = this;
-        this.reviewsService.getReviews().then(function (reviews) { return _this.reviews = reviews; });
-    };
-    ServicesComponent.prototype.ngOnInit = function () {
-        this.getReviews();
-    };
-    ServicesComponent.prototype.onSelect = function (review) {
-        this.selectedReview = review;
-    };
-    return ServicesComponent;
-}());
-ServicesComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
-        selector: 'services-app',
-        template: __webpack_require__("../../../../../src/app/reviews/services.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/reviews/services.component.css")],
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__reviews_service__["a" /* ReviewsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__reviews_service__["a" /* ReviewsService */]) === "function" && _a || Object])
-], ServicesComponent);
-
-var _a;
-//# sourceMappingURL=services.component.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/search-books/books-search-form.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1745,7 +1681,7 @@ var BooksSearchFormComponent = (function () {
 BooksSearchFormComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
         selector: 'app-books-search-form',
-        template: "\n     <form [formGroup]=\"searchBooksForm\">\n      <div class=\"input-group\">\n        <input type=\"text\" formControlName=\"query\" class=\"form-control\" placeholder=\"Tytu\u0142\">\n      </div>\n    </form>\n  ",
+        template: "\n     <form class=\"search-books\" [formGroup]=\"searchBooksForm\">\n      <div class=\"input-group\">\n        <input type=\"text\" formControlName=\"query\" class=\"form-control\" placeholder=\"Title\">\n      </div>\n    </form>\n  ",
         styles: []
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__books_search_service__["a" /* BooksSearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__books_search_service__["a" /* BooksSearchService */]) === "function" && _a || Object])
@@ -1823,7 +1759,25 @@ var _a;
 /***/ "../../../../../src/app/search-books/search-books-list/search-books-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th> # </th>\r\n          <th> Nazwa </th>\r\n          <th> Autor </th>\r\n          <th> Wydawca </th>\r\n          <th> Description </th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let book of books | async let i =index\" (click)=\"chosen(book)\">\r\n          <td> {{ i + 1 }}. </td>\r\n          <td> {{ book.title }} </td>\r\n          <td> {{ book.author }} </td>\r\n          <td> {{ book.publisher }} </td>\r\n          <td> {{ book.description }} </td>\r\n        </tr>\r\n        \r\n      </tbody>\r\n    </table>"
+module.exports = "<table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th> # </th>\r\n          <th> Title </th>\r\n          <th> Author </th>\r\n          <th> Publisher </th>\r\n          <th> Description </th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let book of books | async let i =index\" (click)=\"chosen(book)\">\r\n          <td> {{ i + 1 }}. </td>\r\n          <td> {{ book.title }} </td>\r\n          <td> {{ book.author }} </td>\r\n          <td> {{ book.publisher }} </td>\r\n          <td> {{ book.description }} </td>\r\n        </tr>\r\n        \r\n      </tbody>\r\n    </table>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/search-books/search-books-list/search-books-list.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".table-striped tbody tr:nth-of-type(odd) {\n  background-color: rgba(167, 190, 211, 0.3); }\n\n.table-striped tbody tr:nth-of-type(even) {\n  background-color: rgba(167, 190, 211, 0.1); }\n\n.table th, .table td {\n  border-top-color: transparent; }\n\ntable {\n  margin-top: 50px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
@@ -1869,7 +1823,7 @@ SearchBooksListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
         selector: 'app-search-books-list',
         template: __webpack_require__("../../../../../src/app/search-books/search-books-list/search-books-list.component.html"),
-        styles: [],
+        styles: [__webpack_require__("../../../../../src/app/search-books/search-books-list/search-books-list.component.scss")],
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_books_service__["a" /* BooksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__books_search_service__["a" /* BooksSearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__books_search_service__["a" /* BooksSearchService */]) === "function" && _b || Object])
 ], SearchBooksListComponent);
@@ -1882,7 +1836,7 @@ var _a, _b;
 /***/ "../../../../../src/app/search-books/search-books.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row mt-1\">\r\n  <div class=\"col-xs\">\r\n    <h4 class=\"loat-xs-right mb-2\">Znajdź ksiażki</h4>\r\n    <app-books-search-form></app-books-search-form>\r\n  </div>\r\n</div>\r\n\r\n<app-search-books-list [books]=\"books\"></app-search-books-list>\r\n\r\n"
+module.exports = "<div class=\"row mt-1\">\r\n  <div class=\"col-xs\">\r\n    <h4 class=\"loat-xs-right mb-2\">Find books</h4>\r\n    <app-books-search-form></app-books-search-form>\r\n  </div>\r\n</div>\r\n\r\n<app-search-books-list [books]=\"books\"></app-search-books-list>\r\n\r\n"
 
 /***/ }),
 
@@ -1894,7 +1848,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "table.table-striped {\n  margin-top: 50px; }\n  table.table-striped tbody tr td {\n    text-transform: capitalize;\n    cursor: pointer; }\n", ""]);
+exports.push([module.i, "table.table-striped {\n  margin-top: 50px; }\n  table.table-striped tbody tr td {\n    text-transform: capitalize;\n    cursor: pointer; }\n\nform.search-books {\n  margin-top: 30px; }\n", ""]);
 
 // exports
 

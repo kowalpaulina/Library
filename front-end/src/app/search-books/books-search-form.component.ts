@@ -5,9 +5,9 @@ import {BooksSearchService } from './books-search.service'
 @Component({
   selector: 'app-books-search-form',
   template: `
-     <form [formGroup]="searchBooksForm">
+     <form class="search-books" [formGroup]="searchBooksForm">
       <div class="input-group">
-        <input type="text" formControlName="query" class="form-control" placeholder="Tytuł">
+        <input type="text" formControlName="query" class="form-control" placeholder="Title">
       </div>
     </form>
   `,
