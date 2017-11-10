@@ -1636,6 +1636,24 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/search-books/books-search-form.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "form.search-books {\n  margin-top: 39px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
 /***/ "../../../../../src/app/search-books/books-search-form.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1681,6 +1699,7 @@ var BooksSearchFormComponent = (function () {
 BooksSearchFormComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
         selector: 'app-books-search-form',
+        styles: [__webpack_require__("../../../../../src/app/search-books/books-search-form.component.scss")],
         template: "\n     <form class=\"search-books\" [formGroup]=\"searchBooksForm\">\n      <div class=\"input-group\">\n        <input type=\"text\" formControlName=\"query\" class=\"form-control\" placeholder=\"Title\">\n      </div>\n    </form>\n  ",
         styles: []
     }),
@@ -1771,7 +1790,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".table-striped tbody tr:nth-of-type(odd) {\n  background-color: rgba(167, 190, 211, 0.3); }\n\n.table-striped tbody tr:nth-of-type(even) {\n  background-color: rgba(167, 190, 211, 0.1); }\n\n.table th, .table td {\n  border-top-color: transparent; }\n\ntable {\n  margin-top: 50px; }\n", ""]);
+exports.push([module.i, ".table-striped tbody tr:nth-of-type(odd) {\n  background-color: rgba(167, 190, 211, 0.3); }\n\n.table-striped tbody tr:nth-of-type(even) {\n  background-color: rgba(167, 190, 211, 0.1); }\n\n.table th, .table td {\n  border-top-color: transparent; }\n\ntable {\n  margin-top: 30px; }\n", ""]);
 
 // exports
 
@@ -1836,7 +1855,7 @@ var _a, _b;
 /***/ "../../../../../src/app/search-books/search-books.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row mt-1\">\r\n  <div class=\"col-xs\">\r\n    <h4 class=\"loat-xs-right mb-2\">Find books</h4>\r\n    <app-books-search-form></app-books-search-form>\r\n  </div>\r\n</div>\r\n\r\n<app-search-books-list [books]=\"books\"></app-search-books-list>\r\n\r\n"
+module.exports = "<div class=\"row mt-1\">\r\n  <div class=\"col-xs\">\r\n    <h4 class=\"search-books-header loat-xs-right mb-2\">Find books</h4>\r\n    <app-books-search-form></app-books-search-form>\r\n  </div>\r\n</div>\r\n\r\n<app-search-books-list [books]=\"books\"></app-search-books-list>\r\n\r\n"
 
 /***/ }),
 
@@ -1848,7 +1867,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "table.table-striped {\n  margin-top: 50px; }\n  table.table-striped tbody tr td {\n    text-transform: capitalize;\n    cursor: pointer; }\n\nform.search-books {\n  margin-top: 30px; }\n", ""]);
+exports.push([module.i, "table.table-striped {\n  margin-top: 50px; }\n  table.table-striped tbody tr td {\n    text-transform: capitalize;\n    cursor: pointer; }\n\nh4.search-books-header {\n  margin-bottom: 40px !important; }\n", ""]);
 
 // exports
 

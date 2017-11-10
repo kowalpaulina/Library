@@ -4,12 +4,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 const mongooseUniqueValidator = require('mongoose-unique-validator');
+const validator = require('validator');
 let Books = require('../models/books');
 
 
-
-
-var user = new Schema({
+const user = new Schema({
     name: {
         type: String, 
         trim: true,
@@ -22,6 +21,7 @@ var user = new Schema({
         lowercase: true,
         trim: true,
         required: 'Email is required',
+        //validate: [validator.isEmail, 'Invalid Email Adress'],
     },
     password: {
         type: String,

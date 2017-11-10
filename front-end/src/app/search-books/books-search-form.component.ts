@@ -4,6 +4,8 @@ import {BooksSearchService } from './books-search.service'
 
 @Component({
   selector: 'app-books-search-form',
+  styleUrls: ["./books-search-form.component.scss"],
+
   template: `
      <form class="search-books" [formGroup]="searchBooksForm">
       <div class="input-group">

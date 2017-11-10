@@ -20,12 +20,12 @@
     "stack",
     "Express.js",
     "MongoDB",
-    "Angular",
+    "Angular2+",
     "MEAN"
   ],
-  "author": "Manjunath",
-  "license": "ISC",
+  "author": "Paulina Kowal",
   "devDependencies": {
-    "ejs": "^2.5.7"
+    "ejs": "^2.5.7",
+    "validator": "^9.1.1"
   }
 }
