@@ -551,13 +551,39 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/books/books-detail/books-detail.component.html":
+/***/ (function(module, exports) {
+
+module.exports = " <div class=\"books-details\" *ngIf=\"books\">\r\n          <form #formRef=\"ngForm\" (ngSubmit)=\"save(formRef.valid, books)\">\r\n          <div class=\"form-group\">\r\n            <label>Title:</label>\r\n            <input type=\"text\" #nameRef=\"ngModel\" required minlength=\"2\" [(ngModel)]=\"books.title\" name=\"name\" class=\"form-control\">\r\n            <div class=\"has-danger\" *ngIf=\"nameRef.touched || nameRef.dirty || formRef.submitted\">\r\n              <div class=\"form-control-feedback\" \r\n                    *ngIf=\"nameRef.errors?.required\">\r\n                    To pole jest wymagane\r\n              </div>\r\n              <div class=\"form-control-feedback\" \r\n                    *ngIf=\"nameRef.errors?.minlength\">\r\n                    To pole musi mieć przynajmniej {{nameRef.errors.minlength.requiredLength}} znaki\r\n              </div>\r\n            </div>\r\n\r\n            <label for=\"author\">Author:</label>\r\n            <input type=\"text\" required minlength=\"3\" [(ngModel)]=\"books.author\" name=\"author\" class=\"form-control\" id=\"author\">\r\n            <div class=\"has-danger\" *ngIf=\"nameRef.touched || nameRef.dirty || formRef.submitted\">\r\n              <div class=\"form-control-feedback\" \r\n                    *ngIf=\"nameRef.errors?.required\">\r\n                    To pole jest wymagane\r\n              </div>\r\n              <div class=\"form-control-feedback\" \r\n                    *ngIf=\"nameRef.errors?.minlength\">\r\n                    To pole musi mieć przynajmniej {{nameRef.errors.minlength.requiredLength}} znaki\r\n              </div>\r\n            </div>\r\n            \r\n\r\n            <label for=\"borrower\">Borrower:</label>\r\n            <select name=\"borrower\" id=\"borrower\" [(ngModel)]=\"books.borrower\">\r\n                <option value=\"\" *ngFor=\"let user of user\">{{user.name}}</option>\r\n            </select>\r\n            <!-- <input type=\"text\" [(ngModel)]=\"books.borrower\" name=\"borrower\" class=\"form-control\" id=\"borrower\"> -->\r\n      \r\n            <label for=\"dateFrom\">Date From</label>\r\n            <input type=\"date\" [(ngModel)]=\"books.dateFrom\" name=\"dateFrom\" class=\"form-control\" id=\"dateFrom\">\r\n\r\n            <label for=\"dateTo\">Date To</label>\r\n            <input type=\"date\" [(ngModel)]=\"books.dateTo\" name=\"dateTo\" class=\"form-control\" id=\"dateTo\">\r\n\r\n\r\n          </div>\r\n         \r\n      \r\n          \r\n          <div class=\"form-group\">\r\n            <label><input type=\"checkbox\" [(ngModel)]=\"books.read\" name=\"read\"> \r\n            Read?</label>\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <label><input type=\"checkbox\" [(ngModel)]=\"books.lend\" name=\"lend\"> \r\n            Lend?</label>\r\n          </div>\r\n\r\n\r\n          <div class=\"form-group\">\r\n            <button class=\"btn btn-success float-xs-right\" type=\"submit\">Save</button>\r\n            <button \r\n              *ngIf=\"books._id\" \r\n              class=\"btn btn-warning float-xs-right\" \r\n              type=\"button\" \r\n              (click)=\"delete(books); \r\n              $event.stopPropagation()\">\r\n              Delete\r\n            </button>\r\n          </div>\r\n          </form>\r\n        </div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/books/books-detail/books-detail.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "input.ng-dirty.ng-invalid,\ntextarea.ng-dirty.ng-invalid,\ninput.ng-touched.ng-invalid,\ntextarea.ng-touched.ng-invalid {\n  border: 1px solid red; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
 /***/ "../../../../../src/app/books/books-detail/books-detail.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__books_service__ = __webpack_require__("../../../../../src/app/books/books.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__login_auth_service__ = __webpack_require__("../../../../../src/app/login/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__books_service__ = __webpack_require__("../../../../../src/app/books/books.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BooksDetailComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -571,11 +597,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var BooksDetailComponent = (function () {
-    function BooksDetailComponent(activeRoute, booksDataService, router) {
+    function BooksDetailComponent(activeRoute, booksDataService, router, authService) {
         this.activeRoute = activeRoute;
         this.booksDataService = booksDataService;
         this.router = router;
+        this.authService = authService;
     }
     BooksDetailComponent.prototype.save = function (valid, books) {
         var _this = this;
@@ -593,7 +621,7 @@ var BooksDetailComponent = (function () {
             _this.router.navigate(["books"]);
         });
     };
-    BooksDetailComponent.prototype.ngOnInit = function () {
+    BooksDetailComponent.prototype.getId = function () {
         var _this = this;
         this.activeRoute.params.subscribe(function (params) {
             var id = params["id"];
@@ -609,20 +637,26 @@ var BooksDetailComponent = (function () {
             }
         });
     };
+    BooksDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.authService.getUserStream().subscribe(function (users) {
+            _this.users = users;
+            console.log("users from book.component", _this.users);
+            _this.getId();
+        });
+    };
     return BooksDetailComponent;
 }());
 BooksDetailComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_11" /* Component */])({
         selector: "app-books-detail",
-        template: "\n        <div class=\"books-details\" *ngIf=\"books\">\n          <form #formRef=\"ngForm\" (ngSubmit)=\"save(formRef.valid, books)\">\n          <div class=\"form-group\">\n            <label>Title:</label>\n            <input type=\"text\" #nameRef=\"ngModel\" required minlength=\"2\" [(ngModel)]=\"books.title\" name=\"name\" class=\"form-control\">\n            <div class=\"has-danger\" *ngIf=\"nameRef.touched || nameRef.dirty || formRef.submitted\">\n              <div class=\"form-control-feedback\" \n                    *ngIf=\"nameRef.errors?.required\">\n                    To pole jest wymagane\n              </div>\n              <div class=\"form-control-feedback\" \n                    *ngIf=\"nameRef.errors?.minlength\">\n                    To pole musi mie\u0107 przynajmniej {{nameRef.errors.minlength.requiredLength}} znaki\n              </div>\n            </div>\n\n            <label for=\"author\">Author:</label>\n            <input type=\"text\" required minlength=\"3\" [(ngModel)]=\"books.author\" name=\"author\" class=\"form-control\" id=\"author\">\n            <div class=\"has-danger\" *ngIf=\"nameRef.touched || nameRef.dirty || formRef.submitted\">\n              <div class=\"form-control-feedback\" \n                    *ngIf=\"nameRef.errors?.required\">\n                    To pole jest wymagane\n              </div>\n              <div class=\"form-control-feedback\" \n                    *ngIf=\"nameRef.errors?.minlength\">\n                    To pole musi mie\u0107 przynajmniej {{nameRef.errors.minlength.requiredLength}} znaki\n              </div>\n            </div>\n            \n\n            <label for=\"borrower\">Borrower:</label>\n            <input type=\"text\" [(ngModel)]=\"books.borrower\" name=\"borrower\" class=\"form-control\" id=\"borrower\">\n      \n            <label for=\"dateFrom\">Date From</label>\n            <input type=\"date\" [(ngModel)]=\"books.dateFrom\" name=\"dateFrom\" class=\"form-control\" id=\"dateFrom\">\n\n            <label for=\"dateTo\">Date To</label>\n            <input type=\"date\" [(ngModel)]=\"books.dateTo\" name=\"dateTo\" class=\"form-control\" id=\"dateTo\">\n\n\n          </div>\n         \n      \n          \n          <div class=\"form-group\">\n            <label><input type=\"checkbox\" [(ngModel)]=\"books.read\" name=\"read\"> \n            Read?</label>\n          </div>\n\n          <div class=\"form-group\">\n            <label><input type=\"checkbox\" [(ngModel)]=\"books.lend\" name=\"lend\"> \n            Lend?</label>\n          </div>\n\n\n          <div class=\"form-group\">\n            <button class=\"btn btn-success float-xs-right\" type=\"submit\">Save</button>\n            <button \n              *ngIf=\"books._id\" \n              class=\"btn btn-warning float-xs-right\" \n              type=\"button\" \n              (click)=\"delete(books); \n              $event.stopPropagation()\">\n              Delete\n            </button>\n          </div>\n          </form>\n        </div>\n  ",
-        styles: [
-            "\n    input.ng-dirty.ng-invalid, \n    textarea.ng-dirty.ng-invalid,\n    input.ng-touched.ng-invalid, \n    textarea.ng-touched.ng-invalid{\n      border: 1px solid red;\n    }\n  "
-        ]
+        template: __webpack_require__("../../../../../src/app/books/books-detail/books-detail.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/books/books-detail/books-detail.component.scss")],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__books_service__["a" /* BooksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__books_service__["a" /* BooksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__login_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__login_auth_service__["a" /* AuthService */]) === "function" && _d || Object])
 ], BooksDetailComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=books-detail.component.js.map
 
 /***/ }),
@@ -733,7 +767,8 @@ var BooksComponent = (function () {
     function BooksComponent(booksDataService) {
         this.booksDataService = booksDataService;
     }
-    BooksComponent.prototype.ngOnInit = function () { };
+    BooksComponent.prototype.ngOnInit = function () {
+    };
     return BooksComponent;
 }());
 BooksComponent = __decorate([
@@ -838,7 +873,6 @@ var BooksService = (function () {
             _this.booksStream$.next(_this.books);
         });
     };
-    //{_id: "59e79d2018722d34b0ca5486", author: "Zlj", title: "Z2", read: false, __v: 0}
     BooksService.prototype.getBooksStream = function () {
         if (!this.books.length) {
             this.getBooks();
@@ -848,7 +882,6 @@ var BooksService = (function () {
         return __WEBPACK_IMPORTED_MODULE_4_rxjs__["Observable"].from(this.booksStream$).startWith(this.books);
     };
     BooksService.prototype.getBook = function (id) {
-        console.log(id);
         return this.http
             .get("" + this.server_url + id + "/edit")
             .map(function (response) { return response.json().obj; });

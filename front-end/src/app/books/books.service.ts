@@ -70,8 +70,6 @@ export class BooksService {
       });
   }
 
-  //{_id: "59e79d2018722d34b0ca5486", author: "Zlj", title: "Z2", read: false, __v: 0}
-
   getBooksStream() {
     if (!this.books.length) {
       this.getBooks();
@@ -82,7 +80,6 @@ export class BooksService {
   }
 
   getBook(id) {
-    console.log(id);
     return this.http
       .get(`${this.server_url}${id}/edit`)
       .map(response => response.json().obj);
