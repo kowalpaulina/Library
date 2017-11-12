@@ -24,10 +24,10 @@ const books = new Schema({
         type: String, 
     },
     dateFrom: {
-        type: Number, 
+        type: String, 
     },
     dateTo: {
-        type: Number, 
+        type: String, 
     },
     created: {
         type: Date, 

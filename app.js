@@ -29,8 +29,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-
-
 /*express.static is a built in middleware function to serve static files.
  We are telling express server public folder is the place to look for the static files
 
@@ -51,8 +49,13 @@ app.use(function (req, res, next) {
 app.use('/books', booksRoutes);
 app.use('/users', usersRoutes);
 app.use('/admin', adminRoutes);
-//app.use('/users',usersRoutes);
 app.use('/', appRoutes);
+
+
+// catch 404 and forward to error handler
+// app.use(function (req, res, next) {
+//     return res.render('index');
+// });
 
 
 

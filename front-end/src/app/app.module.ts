@@ -14,10 +14,10 @@ import { LendComponent } from "./lend/lend.component";
 import { PendingComponent } from "./pending/pending.component";
 import { FooterComponent } from "./footer/footer.component";
 import { BooksComponent } from "./books/books.component";
-import { BooksListComponent } from "./books/books-list.component";
+import { BooksListComponent } from "./books/books-list/books-list.component";
 import { LoginComponent } from "./login/login.component";
 import { AdminComponent } from "./admin/admin.component";
-import { BooksDetailComponent } from './books/books-detail.component'
+import { BooksDetailComponent } from './books/books-detail/books-detail.component'
 import { BooksSearchFormComponent } from './search-books/books-search-form.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchBooksComponent } from './search-books/search-books.component';

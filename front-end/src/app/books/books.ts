@@ -3,7 +3,7 @@ export interface Books {
     author: string,
     title: string,
     read?: boolean,
-    borrowed?: boolean,
+    lend?: boolean,
     borrower?:string
     dateFrom?:number,
     dateTo?:number

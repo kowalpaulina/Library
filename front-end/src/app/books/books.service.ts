@@ -18,12 +18,10 @@ export class BooksService {
     let request;
     const headers = new Headers({ "Content-Type": "application/json" });
     if (books._id) {
-      console.log("id z patch z service", books._id);
       request = this.http.patch(`${this.server_url}${books._id}/edit`, books, {
         headers: headers
       });
     } else {
-      console.log("id z post z service", books.id);
       request = this.http.post(`${this.server_url}new`, books, {
         headers: headers
       });
@@ -37,7 +35,6 @@ export class BooksService {
   }
 
   deleteBook(books) {
-    console.log("usun", books);
     let request;
     request = this.http.delete(`${this.server_url}${books._id}/edit`);
 
@@ -54,7 +51,7 @@ export class BooksService {
       author: "",
       title: "",
       read: false,
-      borrowed: false,
+      lend: false,
       borrower: "",
       dateFrom: 0,
       dateTo: 0

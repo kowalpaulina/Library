@@ -2,7 +2,7 @@
 
 <form action="" #registrationForm="ngForm" (ngSubmit)="registerUser(registrationForm.value)">
   <div class="form-group">
-    <label for="">Imię i nazwisko</label>
+    <label for="">Name:</label>
     <input type="text" class="form-control" name="name" ngControl="name" #name="ngModel" ngModel required>
   </div>
 
@@ -12,10 +12,10 @@
   </div>
 
   <div class="form-group">
-    <label for="">Hasło</label>
+    <label for="">Password</label>
     <input type="text" class="form-control" name="password" ngModel required>
   </div>
 
-  <button type="submit" class="btn btn-success float-xs-right">Zarejestruj</button>
+  <button type="submit" class="btn btn-success float-xs-right">Register</button>
 
 </form>

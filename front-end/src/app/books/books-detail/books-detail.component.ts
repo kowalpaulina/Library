@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { BooksService } from "./books.service";
-import { Books } from "./books";
+import { BooksService } from "../books.service";
+import { Books } from "../books";
 import { NgForm } from "@angular/forms";
 
 @Component({
@@ -57,14 +57,21 @@ import { NgForm } from "@angular/forms";
           </div>
 
           <div class="form-group">
-            <label><input type="checkbox" [(ngModel)]="books.borrowed" name="borrow"> 
-            Borrowed?</label>
+            <label><input type="checkbox" [(ngModel)]="books.lend" name="lend"> 
+            Lend?</label>
           </div>
 
 
           <div class="form-group">
             <button class="btn btn-success float-xs-right" type="submit">Save</button>
-            <button *ngIf="books._id" class="btn btn-warning float-xs-right" type="button" (click)="delete(books); $event.stopPropagation()">Delete</button>
+            <button 
+              *ngIf="books._id" 
+              class="btn btn-warning float-xs-right" 
+              type="button" 
+              (click)="delete(books); 
+              $event.stopPropagation()">
+              Delete
+            </button>
           </div>
           </form>
         </div>
