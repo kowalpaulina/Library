@@ -24,7 +24,8 @@ router.get('/', function (req, res, next) {
 
 router.get('/:id/edit', function (req, res, next) {
     // let id = req.params._id;
-    Book.findOne({_id:req.params.id}, function (err, book){
+    Book
+    .findOne({_id:req.params.id}, function (err, book){
         if (err) {
             return res.status(500).json({
                 title: 'No books',
@@ -52,8 +53,9 @@ router.post('/new', function (req, res, next) {
         author: req.body.author,
         title: req.body.title,
         read: req.body.read,
-        borrowed: req.body.borrowed,
-        borrower: req.body.borrower,
+        lend: req.body.lend,
+        borrowedByUserId: req.body.borrower,
+        borrowedByUser: req.body.borrower,
         dateFrom: req.body.dateFrom,
         dateTo: req.body.dateTo,
     });
@@ -90,8 +92,9 @@ router.patch('/:id/edit', function (req, res, next) {
         book.author = req.body.author,
         book.title = req.body.title,
         book.read = req.body.read,
-        book.borrowed = req.body.borrowed,
-        book.borrower = req.body.borrower,
+        book.lend = req.body.lend,
+        borrowedByUserId= req.body.borrower,
+        borrowedByUser= req.body.borrower,
         book.dateFrom = req.body.dateFrom,
         book.dateTo = req.body.dateTo,
         book.save(function(err, result) {

@@ -24,6 +24,7 @@ export class BooksListComponent implements OnInit {
 
   ngOnInit() {
     this.booksDataService.getBooksStream().subscribe((books: Books[]) => {
+      console.log("this.books from list",this.books);
       this.books = books;
     });
   }

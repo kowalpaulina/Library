@@ -52,9 +52,11 @@ export class BooksService {
       title: "",
       read: false,
       lend: false,
-      borrower: "",
-      dateFrom: 0,
-      dateTo: 0
+      borrower: {},
+      borrowedByUserId: "",
+      borrowedByUser: {},
+      dateFrom: "",
+      dateTo: "",
     };
   }
 
@@ -64,8 +66,10 @@ export class BooksService {
       .map(response => response.json().obj)
       .subscribe(books => {
         console.log("getBooks", books);
+        
 
         this.books = books;
+        console.log("this.getBooks", this.books);
         this.booksStream$.next(this.books);
       });
   }
@@ -88,7 +92,6 @@ export class BooksService {
   addBookToLibrary(chosenBook) {
     console.log("Books from search", chosenBook);
     this.saveBook(chosenBook).subscribe(() => {
-      //musi być subscribe żeby działało
     });
   }
 }

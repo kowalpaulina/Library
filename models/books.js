@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
+const User = require('./users');
 
 const books = new Schema({
     author: {
@@ -17,11 +18,23 @@ const books = new Schema({
     read: {
         type: Boolean, 
     },
-    borrowed: {
+    lend: {
         type: Boolean, 
     },
-    borrower: {
-        type: String, 
+    borrowedByUserId: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User',
+    },
+    borrowedByUser: {
+        name:{
+            type: String,
+        },
+        email: {
+            type: String,
+        },
+        approved: {
+            type: Boolean,
+        },
     },
     dateFrom: {
         type: String, 
@@ -32,10 +45,6 @@ const books = new Schema({
     created: {
         type: Date, 
         default: Date.now,
-    },
-    borrowedByUser: {
-        type: Schema.Types.ObjectId, 
-        ref: 'User',
     },
     reservedByUsers: {
         type: Schema.Types.ObjectId, 

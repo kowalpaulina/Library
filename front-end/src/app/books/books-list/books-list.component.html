@@ -4,8 +4,8 @@
             <th> # </th>
             <th> Title </th>
             <th> Author </th>
-            <th> Read? </th>
-            <th> Lend? </th>
+            <th> Read </th>
+            <th> Lend </th>
 
             <th> Borrower </th>
             <th> Date From </th>
@@ -29,11 +29,13 @@
                 <button *ngIf="!book.lend" class="btn btn-danger">No</button>
             </td>
 
-            <td disabled="!book.borrowed"> {{ book.borrower || "" }} </td>
-            <td disabled="!book.borrowed"> {{ book.dateFrom || "" }} </td>
-            <td disabled="!book.borrowed"> {{ book.dateTo || "" }} </td>
+            <td> {{ book.borrowedByUser.email || "" }} </td>
+            <td> {{ book.dateFrom || "" }} </td>
+            <td> {{ book.dateTo || "" }} </td>
 
         </tr>
+
+ 
 
     </tbody>
 
