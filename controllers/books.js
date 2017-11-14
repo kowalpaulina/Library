@@ -23,7 +23,6 @@ router.get('/', function (req, res, next) {
 
 
 router.get('/:id/edit', function (req, res, next) {
-    // let id = req.params._id;
     Book
     .findOne({_id:req.params.id}, function (err, book){
         if (err) {
@@ -54,8 +53,7 @@ router.post('/new', function (req, res, next) {
         title: req.body.title,
         read: req.body.read,
         lend: req.body.lend,
-        borrowedByUserId: req.body.borrower,
-        borrowedByUser: req.body.borrower,
+        borrower: req.body.borrower,
         dateFrom: req.body.dateFrom,
         dateTo: req.body.dateTo,
     });
@@ -72,6 +70,8 @@ router.post('/new', function (req, res, next) {
         });
     });
 });
+
+
 
 
 
@@ -93,10 +93,27 @@ router.patch('/:id/edit', function (req, res, next) {
         book.title = req.body.title,
         book.read = req.body.read,
         book.lend = req.body.lend,
-        borrowedByUserId= req.body.borrower,
-        borrowedByUser= req.body.borrower,
+        book.borrower = req.body.borrower,
         book.dateFrom = req.body.dateFrom,
         book.dateTo = req.body.dateTo,
+
+        User.findById(book.borrower, function(err, user){
+            if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+            if (!user) {
+                return res.status(500).json({
+                    title: 'No User Found!',
+                    error: {message: 'User not found (adding borrowed book'}
+                });
+            }
+                user.booksBorrowed.push(book);
+                user.save();
+
+        }),
         book.save(function(err, result) {
             if (err) {
                 return res.status(500).json({
@@ -111,7 +128,6 @@ router.patch('/:id/edit', function (req, res, next) {
         });
     });
 });
-
 
 router.delete('/:id/edit', function(req, res, next) {
     Book.findById(req.params.id, function (err, book) {

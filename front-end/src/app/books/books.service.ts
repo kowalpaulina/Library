@@ -18,6 +18,7 @@ export class BooksService {
     let request;
     const headers = new Headers({ "Content-Type": "application/json" });
     if (books._id) {
+      console.log("saveBooks from service", books);
       request = this.http.patch(`${this.server_url}${books._id}/edit`, books, {
         headers: headers
       });
@@ -52,9 +53,7 @@ export class BooksService {
       title: "",
       read: false,
       lend: false,
-      borrower: {},
-      borrowedByUserId: "",
-      borrowedByUser: {},
+      borrower: "",
       dateFrom: "",
       dateTo: "",
     };

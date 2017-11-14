@@ -29,7 +29,7 @@
                 <button *ngIf="!book.lend" class="btn btn-danger">No</button>
             </td>
 
-            <td> {{ book.borrowedByUser.email || "" }} </td>
+            <td> {{ book.borrower || "" }} </td>
             <td> {{ book.dateFrom || "" }} </td>
             <td> {{ book.dateTo || "" }} </td>
 

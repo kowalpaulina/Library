@@ -30,9 +30,8 @@
 
             <label for="borrower">Borrower:</label>
             <select class="borrower" name="borrower" id="borrower" [(ngModel)]="books.borrower" (ngModelChange)="onChangeUser($event)">
-                <option *ngFor="let user of users" [ngValue]="user">{{user.email}}</option>
+                <option *ngFor="let user of users" [ngValue]="user._id">{{user.email}}</option>
             </select>
-            <!-- <input type="text" [(ngModel)]="books.borrower" name="borrower" class="form-control" id="borrower"> -->
       
             <label for="dateFrom">Date From</label>
             <input type="date" [(ngModel)]="books.dateFrom" name="dateFrom" class="form-control" id="dateFrom">

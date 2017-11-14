@@ -22,18 +22,18 @@ export class BooksDetailComponent implements OnInit {
   books: Books;
   users: Users[];
   borrower;
+  newUser:string;
 
   onChangeUser(newUser) {
     console.log(newUser);
-    this.borrower = newUser;
+    this.newUser = newUser;
   }
 
   save(valid, books) {
     if (!valid) {
       return;
     }
-    this.books.borrower = this.borrower;
-    console.log("this.books.borrower",this.books)
+    this.books.borrower = this.newUser;
     this.booksDataService.saveBook(this.books).subscribe(books => {
       this.router.navigate(["books", books._id]);
     });
@@ -64,8 +64,8 @@ export class BooksDetailComponent implements OnInit {
     this.getId();
 
         this.authService.getUserStream().subscribe((users: Users[]) => {
-        this.users = users;
+        this.users = users;});
         console.log("users from book.component", this.users);
-    });
+    
   }
 }
