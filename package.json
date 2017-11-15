@@ -26,6 +26,7 @@
   "author": "Paulina Kowal",
   "devDependencies": {
     "ejs": "^2.5.7",
+    "request": "^2.83.0",
     "validator": "^9.1.1"
   }
 }

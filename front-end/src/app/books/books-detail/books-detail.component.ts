@@ -26,14 +26,16 @@ export class BooksDetailComponent implements OnInit {
 
   onChangeUser(newUser) {
     console.log(newUser);
-    this.newUser = newUser;
+    //this.newUser = newUser;
+    this.borrower = newUser;
   }
 
   save(valid, books) {
     if (!valid) {
       return;
     }
-    this.books.borrower = this.newUser;
+    //this.books.borrower = this.borrower;
+    console.log(this.books.borrower);
     this.booksDataService.saveBook(this.books).subscribe(books => {
       this.router.navigate(["books", books._id]);
     });

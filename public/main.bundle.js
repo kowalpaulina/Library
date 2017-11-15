@@ -607,14 +607,16 @@ var BooksDetailComponent = (function () {
     }
     BooksDetailComponent.prototype.onChangeUser = function (newUser) {
         console.log(newUser);
-        this.newUser = newUser;
+        //this.newUser = newUser;
+        this.borrower = newUser;
     };
     BooksDetailComponent.prototype.save = function (valid, books) {
         var _this = this;
         if (!valid) {
             return;
         }
-        this.books.borrower = this.newUser;
+        //this.books.borrower = this.borrower;
+        console.log(this.books.borrower);
         this.booksDataService.saveBook(this.books).subscribe(function (books) {
             _this.router.navigate(["books", books._id]);
         });
@@ -1761,7 +1763,9 @@ var BooksSearchService = (function () {
     BooksSearchService.prototype.search = function (query) {
         var _this = this;
         console.log("query", query);
-        var url = "http://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=e13a1f4cefca4afba7016dcc43e832ca&author=" + query + "&sort-by=title&sort-order=desc";
+        var url = 
+        //`http://data.bn.org.pl/docs/bibs/api/bibs.json?author=${query}`
+        "http://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=e13a1f4cefca4afba7016dcc43e832ca&author=" + query + "&sort-by=title&sort-order=desc";
         return this.http
             .get(url)
             .map(function (response) { return response.json(); })
