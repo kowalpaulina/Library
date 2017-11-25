@@ -27,17 +27,22 @@
               </div>
             </div>
             
+            <div class="borrow-return-book">
+              <label for="borrower">Borrower:</label>
+              <select class="borrower" name="borrower" id="borrower" [(ngModel)]="books.borrower" (ngModelChange)="onChangeUser($event)">
+                  <option *ngFor="let user of users" [ngValue]="user._id">{{user.email}}</option>
+              </select>
 
-            <label for="borrower">Borrower:</label>
-            <select class="borrower" name="borrower" id="borrower" [(ngModel)]="books.borrower" (ngModelChange)="onChangeUser($event)">
-                <option *ngFor="let user of users" [ngValue]="user._id">{{user.email}}</option>
-            </select>
+            <button class="btn btn-danger" (click)="return(book)">Return</button>
+            </div>
       
             <label for="dateFrom">Date From</label>
             <input type="date" [(ngModel)]="books.dateFrom" name="dateFrom" class="form-control" id="dateFrom">
 
             <label for="dateTo">Date To</label>
             <input type="date" [(ngModel)]="books.dateTo" name="dateTo" class="form-control" id="dateTo">
+
+           
 
 
           </div>

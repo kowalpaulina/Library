@@ -12,3 +12,16 @@
     label{
       margin-top: 0.6rem;
     }
+
+    .borrow-return-book{
+      display: flex;
+      margin-top: 0.6rem;
+
+      label{
+        margin-right: 10px;
+      }
+
+      select{
+        margin-right: 15px;
+      }
+    }

@@ -4,7 +4,7 @@ export interface Books {
     title: string,
     read?: boolean,
     lend?: boolean,
-    borrower: string,
+    borrower: any,
     dateFrom?:string,
     dateTo?:string
 }

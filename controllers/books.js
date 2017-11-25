@@ -89,13 +89,42 @@ router.patch('/:id/edit', function (req, res, next) {
                 error: {message: 'Book not found'}
             });
         }
+        if(book.borrower){
+            var previousBorrower = book.borrower.toString();
+            console.log(previousBorrower);
+        }
+        
         book.author = req.body.author,
         book.title = req.body.title,
         book.read = req.body.read,
         book.lend = req.body.lend,
         book.borrower = req.body.borrower,
         book.dateFrom = req.body.dateFrom,
-        book.dateTo = req.body.dateTo,
+        book.dateTo = req.body.dateTo;
+        const currentBorrower = book.borrower.toString();
+
+        if(previousBorrower){
+
+            if(currentBorrower){
+                    if(previousBorrower != currentBorrower){
+                        User.findById(previousBorrower, function(err, user){
+                            if (err) {
+                                return res.status(500).json({
+                                    title: 'An error occurred',
+                                    error: err
+                                });
+                            }
+                            user.booksBorrowed.pull(book._id);
+                            user.save();
+                            
+                        })
+                    }
+            }else{
+
+            }
+
+        }
+
 
         User.findById(book.borrower, function(err, user){
             if (err) {
@@ -103,17 +132,20 @@ router.patch('/:id/edit', function (req, res, next) {
                 title: 'An error occurred',
                 error: err
             });
-        }
-            if (!user) {
-                return res.status(500).json({
-                    title: 'No User Found!',
-                    error: {message: 'User not found (adding borrowed book'}
-                });
             }
-                user.booksBorrowed.push(book);
-                user.save();
-
+            if(user){
+                if(!user.booksBorrowed.find(bookId=>bookId==book._id.toString())){
+                    user.booksBorrowed.push(book);
+                    user.save();
+                }
+            }else{
+                
+            }
         }),
+
+
+
+
         book.save(function(err, result) {
             if (err) {
                 return res.status(500).json({
@@ -128,6 +160,8 @@ router.patch('/:id/edit', function (req, res, next) {
         });
     });
 });
+
+
 
 router.delete('/:id/edit', function(req, res, next) {
     Book.findById(req.params.id, function (err, book) {

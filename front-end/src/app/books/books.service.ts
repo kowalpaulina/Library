@@ -53,7 +53,7 @@ export class BooksService {
       title: "",
       read: false,
       lend: false,
-      borrower: "",
+      borrower: null,
       dateFrom: "",
       dateTo: "",
     };
