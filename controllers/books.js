@@ -91,7 +91,7 @@ router.patch('/:id/edit', function (req, res, next) {
         }
         if(book.borrower){
             var previousBorrower = book.borrower.toString();
-            console.log(previousBorrower);
+            console.log("previousBorrower",previousBorrower);
         }
         
         book.author = req.body.author,
@@ -101,7 +101,12 @@ router.patch('/:id/edit', function (req, res, next) {
         book.borrower = req.body.borrower,
         book.dateFrom = req.body.dateFrom,
         book.dateTo = req.body.dateTo;
-        const currentBorrower = book.borrower.toString();
+        
+        if(book.borrower){
+            var currentBorrower = book.borrower.toString();
+            console.log("currentBorrower",currentBorrower);
+        }
+
 
         if(previousBorrower){
 
@@ -119,8 +124,19 @@ router.patch('/:id/edit', function (req, res, next) {
                             
                         })
                     }
-            }else{
-
+            }
+            
+            if(currentBorrower == null){
+                User.findById(previousBorrower, function(err, user){
+                            if (err) {
+                                return res.status(500).json({
+                                    title: 'An error occurred',
+                                    error: err
+                                });
+                            }
+                            user.booksBorrowed.pull(book._id);
+                            user.save();    
+                        })
             }
 
         }

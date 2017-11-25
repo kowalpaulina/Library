@@ -30,7 +30,8 @@
             <div class="borrow-return-book">
               <label for="borrower">Borrower:</label>
               <select class="borrower" name="borrower" id="borrower" [(ngModel)]="books.borrower" (ngModelChange)="onChangeUser($event)">
-                  <option *ngFor="let user of users" [ngValue]="user._id">{{user.email}}</option>
+                <option value="" [ngValue]="null">return a book</option> 
+                <option *ngFor="let user of users" [ngValue]="user._id">{{user.email}}</option>
               </select>
 
             <button class="btn btn-danger" (click)="return(book)">Return</button>

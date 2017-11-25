@@ -35,6 +35,10 @@ export class BooksDetailComponent implements OnInit {
       return;
     }
     //this.books.borrower = this.borrower;
+    console.log(typeof this.books.borrower);
+    if(this.books.borrower ==""){
+      this.books.borrower = null;
+    }
     console.log(this.books.borrower);
     this.booksDataService.saveBook(this.books).subscribe(books => {
       this.router.navigate(["books", books._id]);
