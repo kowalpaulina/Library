@@ -9,8 +9,18 @@
 
 .table th, .table td{
     border-top-color: transparent;
+    cursor: pointer;
 }
 
 table{
     margin-top: 30px;
+}
+
+.message{
+    color: rgba(2, 117, 216, 0.8);
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
+    text-transform: uppercase;
+    font-size: 14px;
 }
