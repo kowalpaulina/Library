@@ -5,7 +5,7 @@
 # dependencies
 /node_modules
 node_modules/
-/public/*
+/front-end/public/*
 
 
 # IDEs and editors
