@@ -66,12 +66,22 @@ router.post('/login', function(req, res, next) {
                 error: {message: 'Invalid login credentials'}
             });
         }
-        var token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
-        res.status(200).json({
-            message: 'Successfully logged in',
-            token: token,
-            userId: user._id
-        });
+
+        if(user.approved){
+            var token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
+            res.status(200).json({
+                message: 'Successfully logged in',
+                token: token,
+                userId: user._id
+            });
+        }else{
+            return res.status(401).json({
+                title: 'User not approved',
+                error: {message: 'User not approved'}
+            });
+        }
+            
+
     });
 });
 
