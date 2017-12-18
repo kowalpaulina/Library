@@ -1,8 +1,4 @@
-    .table {
-        width: 60%;
-        max-width: 60%;
-    }
-    td{
+     td{
         cursor:pointer;
     }
 
@@ -21,4 +17,8 @@
     }
     .button-blue{
       background-color: blue;
+    }
+
+    .btn {
+      border: none;
     }

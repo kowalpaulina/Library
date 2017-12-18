@@ -14,6 +14,10 @@ import { Component } from '@angular/core';
       <li>
         <a routerLink="./users-manage" routerLinkActive="active">Manage users</a>
       </li>
+
+      <li>
+        <a routerLink="../users/register" routerLinkActive="active">Add user</a>
+      </li>
     </nav>
     <router-outlet></router-outlet>
   `
