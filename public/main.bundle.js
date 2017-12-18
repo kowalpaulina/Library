@@ -620,7 +620,7 @@ var BooksDetailComponent = (function () {
         if (this.books.borrower == "") {
             this.books.borrower = null;
         }
-        console.log(typeof this.books.borrower);
+        console.log(this.books.borrower);
         this.booksDataService.saveBook(this.books).subscribe(function (books) {
             _this.router.navigate(["books", books._id]);
         });
