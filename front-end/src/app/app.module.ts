@@ -1,3 +1,4 @@
+import { ErrorService } from './errors/error.service';
 import { BrowserModule } from "@angular/platform-browser";
 import { CommonModule } from '@angular/common';
 import { NgModule } from "@angular/core";
@@ -27,10 +28,11 @@ import { AuthGuard } from "./login/auth-guard.service";
 import { AdminModule } from "./admin/admin.module";
 import { SearchBooksListComponent } from './search-books/search-books-list/search-books-list.component';
 
-import {BooksService} from './books/books.service';
+import { BooksService } from './books/books.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { RegistrationService } from './registration/registration.service';
-import { LibraryComponent } from './library/library.component'
+import { LibraryComponent } from './library/library.component';
+import { ErrorsComponent } from './errors/errors.component'
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { LibraryComponent } from './library/library.component'
     BooksSearchFormComponent,
     SearchBooksListComponent,
     RegistrationComponent,
-    LibraryComponent
+    LibraryComponent,
+    ErrorsComponent
   ],
 
   imports: [
@@ -116,7 +119,7 @@ import { LibraryComponent } from './library/library.component'
       },
     ])
   ],
-  providers: [AuthService, AuthGuard, BooksService,RegistrationService],
+  providers: [AuthService, AuthGuard, BooksService,RegistrationService, ErrorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

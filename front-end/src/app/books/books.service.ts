@@ -4,15 +4,19 @@ import { Books } from "./books";
 import "rxjs/add/operator/map";
 import "rxjs/Rx";
 import { Subject, Observable } from "rxjs";
+import { ErrorService } from "../errors/error.service";
+
 
 @Injectable()
 export class BooksService {
-  constructor(private http: Http) {}
+  constructor(private http: Http, private errorService: ErrorService) {}
 
   server_url = "http://localhost:3000/books/";
   books: Books[] = [];
   chosenBook;
   booksStream$ = new Subject<Books[]>();
+
+
 
   saveBook(books) {
     let request;
@@ -32,7 +36,10 @@ export class BooksService {
       .do(books => {
         this.getBooks();
       })
-      .catch((error: Response) => Observable.throw(error.json()));
+      .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+      })
   }
 
   deleteBook(books) {
@@ -43,7 +50,11 @@ export class BooksService {
       .map(response => response.json().obj)
       .do(books => {
         this.getBooks();
-    });
+    })
+      .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+      })
   }
 
   createBook(): Books {
@@ -63,6 +74,10 @@ export class BooksService {
     return this.http
       .get(this.server_url)
       .map(response => response.json().obj)
+      .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+      })
       .subscribe(books => {
         console.log("getBooks", books);
         
@@ -85,7 +100,11 @@ export class BooksService {
   getBook(id) {
     return this.http
       .get(`${this.server_url}${id}/edit`)
-      .map(response => response.json().obj);
+      .map(response => response.json().obj)
+      .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+      })
   }
 
   addBookToLibrary(chosenBook) {

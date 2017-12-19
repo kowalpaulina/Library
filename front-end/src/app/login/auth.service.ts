@@ -6,6 +6,7 @@ import { Observable } from "rxjs/Observable";
 import { Subject } from "rxjs/Subject";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { AsyncSubject } from "rxjs/AsyncSubject";
+import { ErrorService } from "../errors/error.service";
 
 import "rxjs/add/observable/of";
 import "rxjs/add/operator/do";
@@ -21,7 +22,7 @@ export class AuthService {
   userLoggedIn: Users;
   redirectUrl: string;
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, private errorService: ErrorService) {}
 
   signin(user: Users) {
     const body = JSON.stringify(user);
@@ -29,7 +30,10 @@ export class AuthService {
     return this.http
       .post(`${this.users_url}login`, body, { headers: headers })
       .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json()));
+      .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+      })
   }
 
   logout() {
@@ -45,6 +49,10 @@ export class AuthService {
     return this.http
       .get(this.users_url)
       .map(response => response.json().obj)
+      .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            })
       .subscribe(users => {
         this.users = users;
         this.usersStream$.next(this.users);
@@ -60,7 +68,10 @@ export class AuthService {
       });
     return request
       .map(response => response.json().obj)
-      .catch((error: Response) => Observable.throw(error.json()));
+      .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+      })
   }
 
   deleteUser(user: Users) {
@@ -71,6 +82,10 @@ export class AuthService {
       .do(users => {
         console.log(users);
         this.getUsers();
-    });
+    })
+      .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+      })
   }
 }

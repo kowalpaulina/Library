@@ -13,15 +13,10 @@ export class RegistrationComponent implements OnInit {
   constructor(private registrationService:RegistrationService, 
               private router: Router) { }
 
-
-
-
   registerUser(user:Users){
     this.registrationService.registerUser(user);
 
     this.router.navigate(["/admin/users-manage"]);
-
-
   }
 
   

@@ -61,6 +61,7 @@ router.delete('/users-manage/:id', function(req, res, next) {
                     error: err
                 });
             }
+
             res.status(200).json({
                 message: 'Deleted user',
                 obj: result
