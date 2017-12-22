@@ -14,11 +14,13 @@ export class RegistrationService {
   users: Users[] = [];
 
   registerUser(users: Users) {
+    console.log(users);
     const headers = new Headers({ "Content-Type": "application/json" });
     return this.http
       .post(this.server_url, users, { headers: headers })
       .map(response => response.json().obj)
       .catch((error: Response) => {
+        console.log(error);
                 this.errorService.handleError(error.json());
                 return Observable.throw(error.json());
       })

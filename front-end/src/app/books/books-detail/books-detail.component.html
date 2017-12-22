@@ -3,12 +3,12 @@
           <div class="form-group">
             <label>Title:</label>
             <input type="text" #nameRef="ngModel" required minlength="2" [(ngModel)]="books.title" name="name" class="form-control">
-            <div class="has-danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
-              <div class="form-control-feedback" 
+            <div class="danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
+              <div class="error" 
                     *ngIf="nameRef.errors?.required">
-                    This field is required
+                    Title is required
               </div>
-              <div class="form-control-feedback" 
+              <div class="error" 
                     *ngIf="nameRef.errors?.minlength">
                     This field must have at least {{nameRef.errors.minlength.requiredLength}} characters.
               </div>
@@ -16,12 +16,12 @@
 
             <label for="author">Author:</label>
             <input type="text" required minlength="3" [(ngModel)]="books.author" name="author" class="form-control" id="author">
-            <div class="has-danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
-              <div class="form-control-feedback" 
+            <div class="danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
+              <div class="error" 
                     *ngIf="nameRef.errors?.required">
-                    This field is required
+                    Author is required
               </div>
-              <div class="form-control-feedback" 
+              <div class="error" 
                     *ngIf="nameRef.errors?.minlength">
                     This field must have at least {{nameRef.errors.minlength.requiredLength}} characters.
               </div>
