@@ -17,7 +17,7 @@ router.patch('/users-manage/:id', function (req, res, next) {
         }
         if (!user) {
             return res.status(500).json({
-                title: 'No user Found!',
+                title: 'No user found!',
                 error: {message: 'user not found'}
             });
         }

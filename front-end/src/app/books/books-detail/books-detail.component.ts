@@ -66,10 +66,6 @@ export class BooksDetailComponent implements OnInit {
     });
   }
 
-  return(book){
-    
-  }
-
   ngOnInit() {
     this.getId();
 

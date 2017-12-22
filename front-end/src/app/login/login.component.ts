@@ -35,19 +35,18 @@ export class LoginComponent {
   ) {
     this.authService.isLoggedIn.subscribe(value => {
       this.isLogged = value;
-      this.setMessage();
+      //this.setMessage();
     });
   }
 
-  setMessage():any {
-    console.log("set");
-    this.message =
-      "You are " +
-      (this.isLogged ? "logged in" : "logged out");
-  }
+  // setMessage():any {
+  //   console.log("set");
+  //   this.message =
+  //     "You are " +
+  //     (this.isLogged ? "logged in" : "logged out");
+  // }
 
   loginSubmit(userData:Users) {
-    this.message = "Loguję ...";
     this.authService.signin(userData)
       .subscribe(
         data => {
@@ -79,7 +78,6 @@ export class LoginComponent {
 
   logout() {
     this.authService.logout();
-    this.message = "Logging out ...";
     this.authService.isLoggedIn.next(false);
   }
 
@@ -93,6 +91,6 @@ export class LoginComponent {
           ),
       password: new FormControl("", Validators.required)
     });
-    this.setMessage();
+    //this.setMessage();
   }
 }

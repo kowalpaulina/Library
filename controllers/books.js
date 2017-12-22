@@ -27,13 +27,13 @@ router.get('/:id/edit', function (req, res, next) {
     .findOne({_id:req.params.id}, function (err, book){
         if (err) {
             return res.status(500).json({
-                title: 'No books',
+                title: 'An error occurred',
                 error: err
             });
         }
         if (!book) {
             return res.status(500).json({
-                title: 'No Book Found!',
+                title: 'An error occurred',
                 error: {message: 'Book not found'}
             });
         }
@@ -85,7 +85,7 @@ router.patch('/:id/edit', function (req, res, next) {
         }
         if (!book) {
             return res.status(500).json({
-                title: 'No Book Found!',
+                title: 'No book found!',
                 error: {message: 'Book not found'}
             });
         }
@@ -104,7 +104,6 @@ router.patch('/:id/edit', function (req, res, next) {
         
         if(book.borrower){
             var currentBorrower = book.borrower.toString();
-            console.log("currentBorrower",currentBorrower);
         }
 
 
@@ -189,8 +188,8 @@ router.delete('/:id/edit', function(req, res, next) {
         }
         if (!book) {
             return res.status(500).json({
-                title: 'No book Found!',
-                error: {message: 'book not found'}
+                title: 'No book found!',
+                error: {message: 'Book not found'}
             });
         }
         book.remove(function(err, result) {

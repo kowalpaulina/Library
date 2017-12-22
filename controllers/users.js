@@ -57,13 +57,13 @@ router.post('/login', function(req, res, next) {
         if (!user) {
             return res.status(401).json({
                 title: 'Login failed',
-                error: {message: 'Invalid login credentials'}
+                error: {message: 'No user found'}
             });
         }
         if (!bcrypt.compareSync(req.body.password, user.password)) {
             return res.status(401).json({
                 title: 'Login failed',
-                error: {message: 'Invalid login credentials'}
+                error: {message: 'Invalid login credentials - wrong password'}
             });
         }
 
@@ -76,7 +76,7 @@ router.post('/login', function(req, res, next) {
             });
         }else{
             return res.status(401).json({
-                title: 'User not approved',
+                title: 'Login failed',
                 error: {message: 'User not approved'}
             });
         }
