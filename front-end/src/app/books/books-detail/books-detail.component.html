@@ -6,11 +6,11 @@
             <div class="has-danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
               <div class="form-control-feedback" 
                     *ngIf="nameRef.errors?.required">
-                    To pole jest wymagane
+                    This field is required
               </div>
               <div class="form-control-feedback" 
                     *ngIf="nameRef.errors?.minlength">
-                    To pole musi mieć przynajmniej {{nameRef.errors.minlength.requiredLength}} znaki
+                    This field must have at least {{nameRef.errors.minlength.requiredLength}} characters.
               </div>
             </div>
 
@@ -19,11 +19,11 @@
             <div class="has-danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
               <div class="form-control-feedback" 
                     *ngIf="nameRef.errors?.required">
-                    To pole jest wymagane
+                    This field is required
               </div>
               <div class="form-control-feedback" 
                     *ngIf="nameRef.errors?.minlength">
-                    To pole musi mieć przynajmniej {{nameRef.errors.minlength.requiredLength}} znaki
+                    This field must have at least {{nameRef.errors.minlength.requiredLength}} characters.
               </div>
             </div>
             

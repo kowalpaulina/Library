@@ -46,8 +46,9 @@ export class LoginComponent {
   //     (this.isLogged ? "logged in" : "logged out");
   // }
 
-  loginSubmit(userData:Users) {
-    this.authService.signin(userData)
+  loginSubmit({ value, valid }: { value: Users, valid: boolean }) {
+    console.log(this.loginForm.value, this.loginForm.valid);
+    this.authService.signin(value)
       .subscribe(
         data => {
             localStorage.setItem('token', data.token);
@@ -66,7 +67,6 @@ export class LoginComponent {
             this.authService.isLoggedIn.next(true);
         }else{
             this.authService.isLoggedIn.next(false);
-            this.message = "Email or/and password are incorrect";
         }
 
         if (this.authService.redirectUrl)
@@ -84,6 +84,7 @@ export class LoginComponent {
   
 
   ngOnInit() {
+    
     this.loginForm = new FormGroup({
       email: new FormControl("", [
             Validators.required,

@@ -28,9 +28,9 @@ export class ManageUsersComponent implements OnInit {
       this.deleteForbidden.emit(this.message);
       return;
     }else{
-    this.message = '';
-    this.authService.deleteUser(user).subscribe(users => {
-    });
+      this.message = '';
+      this.authService.deleteUser(user).subscribe(users => {
+      });
     }
   }
 
