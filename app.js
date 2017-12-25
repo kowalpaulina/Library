@@ -11,6 +11,7 @@ const booksRoutes = require('./controllers/books');
 const appRoutes = require('./controllers/app');
 const usersRoutes = require('./controllers/users');
 const adminRoutes = require('./controllers/admin');
+const loginRoutes = require('./controllers/login');
 
 //Connect mongoose to our database
 //mongoose.connect(config.database);
@@ -49,6 +50,7 @@ app.use(function (req, res, next) {
 app.use('/books', booksRoutes);
 app.use('/users', usersRoutes);
 app.use('/admin', adminRoutes);
+app.use('/login', loginRoutes);
 app.use('/', appRoutes);
 
 

@@ -28,7 +28,7 @@ export class AuthService {
     const body = JSON.stringify(user);
     const headers = new Headers({ "Content-Type": "application/json" });
     return this.http
-      .post(`${this.users_url}login`, body, { headers: headers })
+      .post(`http://localhost:3000/login/`, body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => {
                 this.errorService.handleError(error.json());
