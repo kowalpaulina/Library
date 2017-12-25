@@ -12,7 +12,7 @@ The angular front-end code is located inside the `front-end`.
 
 Inside the `front-end` directory run `npm install`.
 
-Make sure you have installed angular/cli (if not: npm install -g @angular/cli).
+Make sure you have installed angular/cli (if not: `npm install -g @angular/cli`).
 
 Then:
 
