@@ -74,6 +74,15 @@ export class LoginComponent {
         else this.router.navigate(["/"]);
   }
 
+  //   initialIsLoggedIn() {
+  //       if(localStorage.getItem('token') !== null){
+  //           this.authService.isLoggedIn.next(true);
+  //           console.log("isloggedin");
+  //       }else{
+  //           this.authService.isLoggedIn.next(false);
+  //       }
+  // }
+
 
 
   logout() {
@@ -92,6 +101,8 @@ export class LoginComponent {
           ),
       password: new FormControl("", Validators.required)
     });
-    //this.setMessage();
+    
+    
+    // this.initialIsLoggedIn();
   }
 }

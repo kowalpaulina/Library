@@ -11,7 +11,7 @@ import { AuthService } from "./auth.service";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  protected isLogged: boolean = false;
+  protected isLogged: boolean;
 
   constructor(private authService: AuthService, private router: Router) {
     this.authService.isLoggedIn.subscribe(value => {

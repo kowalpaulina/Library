@@ -52,6 +52,9 @@ app.use('/users', usersRoutes);
 app.use('/admin', adminRoutes);
 app.use('/login', loginRoutes);
 app.use('/', appRoutes);
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 
 // catch 404 and forward to error handler
