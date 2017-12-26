@@ -98,10 +98,12 @@ import { ErrorsComponent } from './errors/errors.component'
 
       {
         path: "admin",
+        canActivate: [AuthGuard],
         component: AdminComponent
       },
       {
         path: "users",
+        canActivate: [AuthGuard],
         children: [
           {path:'register', component: RegistrationComponent },
 
