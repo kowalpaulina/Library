@@ -7,15 +7,19 @@ import { Subject, Observable } from "rxjs";
 import { ErrorService } from "../errors/error.service";
 
 
+
+
 @Injectable()
-export class BooksService {
+export class BooksService{
   constructor(private http: Http, private errorService: ErrorService) {}
+
 
   server_url = "http://localhost:3000/books/";
   books: Books[] = [];
   chosenBook;
   booksStream$ = new Subject<Books[]>();
-
+  token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+  userId = localStorage.getItem('userId') ? '?userId=' + localStorage.getItem('userId') : '';
 
 
   saveBook(books) {
@@ -98,8 +102,10 @@ export class BooksService {
   }
 
   getBook(id) {
+    console.log(this.userId);
+    console.log(this.token);
     return this.http
-      .get(`${this.server_url}${id}/edit`)
+      .get(`${this.server_url}${id}/edit${this.userId}`)
       .map(response => response.json().obj)
       .catch((error: Response) => {
                 this.errorService.handleError(error.json());

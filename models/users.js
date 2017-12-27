@@ -36,6 +36,9 @@ const user = new Schema({
     reservedBooks: {
         type: [{type: Schema.Types.ObjectId, ref: 'Books'}]
     },
+    role: {
+        type: String
+    }
 });
 
 user.plugin(mongooseUniqueValidator);

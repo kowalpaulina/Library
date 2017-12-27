@@ -29,14 +29,12 @@ export class BooksListComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.authService.getUserStream().subscribe((users: Users[]) => {
         this.users = users;
     });
 
 
     this.booksDataService.getBooksStream().subscribe((books: Books[]) => {
-      console.log("this.books from list",books);
 
       books.forEach(book => {
         this.userWhoBorrow = this.users.find(user => user._id == book.borrower);
