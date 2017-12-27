@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
       console.log("VALUE OF isLoggedIn", value);
       if (!value) this.router.navigate(["/login"]);
       this.isLogged = value;
+      console.log("this.isLogged",this.isLogged);
     });
   }
 
@@ -27,13 +28,22 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url:string): boolean {
+    if (localStorage.getItem("token") !== null) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+      console.log("isloggedin false");
+    }
+    
     if (this.isLogged) {
+      console.log("true");
       return true;
     }
 
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
     this.router.navigate(["/login"]);
+    console.log("false");
     return false;
   }
 }

@@ -14,7 +14,7 @@ import "rxjs/add/operator/delay";
 
 @Injectable()
 export class AuthService {
-  isLoggedIn: Subject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn: Subject<boolean> = new Subject<boolean>();
   usersStream$ = new Subject<Users[]>();
   users_url = "http://localhost:3000/users/";
   users_url_manage = "http://localhost:3000/admin/users-manage/"
@@ -22,7 +22,21 @@ export class AuthService {
   userLoggedIn: Users;
   redirectUrl: string;
 
-  constructor(private http: Http, private errorService: ErrorService) {}
+  constructor(private http: Http, private errorService: ErrorService) {
+    // this.initialIsLoggedIn();
+  }
+
+  
+  //   initialIsLoggedIn() {
+  //       if(localStorage.getItem('token') !== null){
+  //           this.isLoggedIn.next(true);
+  //           console.log("isloggedin");
+  //       }else{
+  //           this.isLoggedIn.next(false);
+  //       }
+  // }
+
+    
 
   signin(user: Users) {
     const body = JSON.stringify(user);
@@ -89,3 +103,5 @@ export class AuthService {
       })
   }
 }
+
+

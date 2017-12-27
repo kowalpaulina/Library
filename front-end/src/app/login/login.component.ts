@@ -33,18 +33,11 @@ export class LoginComponent {
     public fb: FormBuilder,
     private formBuilder: FormBuilder
   ) {
+
     this.authService.isLoggedIn.subscribe(value => {
       this.isLogged = value;
-      //this.setMessage();
     });
   }
-
-  // setMessage():any {
-  //   console.log("set");
-  //   this.message =
-  //     "You are " +
-  //     (this.isLogged ? "logged in" : "logged out");
-  // }
 
   loginSubmit({ value, valid }: { value: Users, valid: boolean }) {
     console.log(this.loginForm.value, this.loginForm.valid);
@@ -74,17 +67,6 @@ export class LoginComponent {
         else this.router.navigate(["/"]);
   }
 
-  //   initialIsLoggedIn() {
-  //       if(localStorage.getItem('token') !== null){
-  //           this.authService.isLoggedIn.next(true);
-  //           console.log("isloggedin");
-  //       }else{
-  //           this.authService.isLoggedIn.next(false);
-  //       }
-  // }
-
-
-
   logout() {
     this.authService.logout();
     this.authService.isLoggedIn.next(false);
@@ -101,8 +83,6 @@ export class LoginComponent {
           ),
       password: new FormControl("", Validators.required)
     });
-    
-    
-    // this.initialIsLoggedIn();
+  
   }
 }

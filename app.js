@@ -57,13 +57,6 @@ app.get('*', (req, res) => {
 });
 
 
-// catch 404 and forward to error handler
-// app.use(function (req, res, next) {
-//     return res.render('index');
-// });
-
-
-
 //Listen to port 3000
 app.listen(port, () => {
 	console.log(`Starting the server at port ${port}`);
