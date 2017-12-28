@@ -88,6 +88,20 @@ export class AuthService {
       })
   }
 
+  updateFriendStatus(user:Users){
+    const headers = new Headers({ "Content-Type": "application/json" });
+    let request;
+    request = this.http.patch(`${this.users_url_manage}${user._id}`, user, {
+        headers: headers
+      });
+    return request
+      .map(response => response.json().obj)
+      .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+      })
+  }
+
   deleteUser(user: Users) {
     let request;
     request = this.http.delete(`${this.users_url_manage}${user._id}`);

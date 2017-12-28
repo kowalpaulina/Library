@@ -30,6 +30,9 @@ const user = new Schema({
     approved: {
         type: Boolean, 
     },
+    friend: {
+        type: Boolean, 
+    },
     booksBorrowed: {
         type: [{type: Schema.Types.ObjectId, ref: 'Books'}]
     },

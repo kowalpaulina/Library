@@ -22,6 +22,7 @@ router.patch('/users-manage/:id', function (req, res, next) {
             });
         }
         user.approved = req.body.approved,
+        user.friend = req.body.friend,
         user.save(function(err, result) {
             if (err) {
                 return res.status(500).json({

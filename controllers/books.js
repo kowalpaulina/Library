@@ -34,7 +34,7 @@ router.use('/', function (req, res, next) {
     // })
 
     User.findById(req.query.userId, function(err, user){
-        if(user.email == 'ewa@ewa.com'){
+        if(user.approved){
             next();
         }
     });

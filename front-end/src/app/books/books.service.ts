@@ -27,7 +27,7 @@ export class BooksService{
     const headers = new Headers({ "Content-Type": "application/json" });
     if (books._id) {
       console.log("saveBooks from service", books);
-      request = this.http.patch(`${this.server_url}${books._id}/edit`, books, {
+      request = this.http.patch(`${this.server_url}${books._id}/edit${this.userId}`, books, {
         headers: headers
       });
     } else {

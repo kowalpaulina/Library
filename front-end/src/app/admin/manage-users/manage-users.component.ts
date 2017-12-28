@@ -41,11 +41,23 @@ export class ManageUsersComponent implements OnInit {
     }else{
       user.approved = true;
     }
-
     this.authService.upadeApprovedStatus(user).subscribe(users => {
-
-    })
+    });
   }
+
+  changeFriend(user:Users){
+    if(user.friend){
+      user.friend = false;
+    }else{
+      user.friend = true;
+    }
+
+      this.authService.updateFriendStatus(user).subscribe(users => {
+
+  })
+  }
+
+
 
 
 

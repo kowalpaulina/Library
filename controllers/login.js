@@ -30,7 +30,7 @@ router.post('/', function(req, res, next) {
             });
         }
 
-        if(user.approved){
+        if(user.approved || user.friend){
             var token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
             res.status(200).json({
                 message: 'Successfully logged in',
@@ -40,7 +40,7 @@ router.post('/', function(req, res, next) {
         }else{
             return res.status(401).json({
                 title: 'Login failed',
-                error: {message: 'User not approved'}
+                error: {message: 'User not approved or not a friend of library'}
             });
         }
             

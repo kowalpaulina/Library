@@ -6,6 +6,7 @@
           <th> Name </th>
           <th> Mail </th>
           <th> Approved </th>
+          <th> Friend </th>
           <th> Delete </th>
         </tr>
       </thead>
@@ -16,6 +17,9 @@
           <td> {{ user.email }} </td>
           <td>
               <button (click)="changeApproval(user)" class="btn btn-primary">{{user.approved ? 'Yes' : 'No'}}</button>
+          </td>
+             <td>
+              <button (click)="changeFriend(user)" class="btn btn-primary">{{user.friend ? 'Yes' : 'No'}}</button>
           </td>
             <td>
               <button class="btn btn-danger" (click)="delete(user)">Delete</button>

@@ -5,6 +5,7 @@ export class Users {
       public email: string,
       public password: string,
       public approved?: boolean,
+      public friend?: boolean,
       public booksBorrowed? : string,
       public reservedBooks? : string,
     ) { }
