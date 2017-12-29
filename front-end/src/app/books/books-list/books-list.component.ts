@@ -4,6 +4,8 @@ import { BooksService } from "../books.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "./../../login/auth.service";
 import { Users } from "../../registration/user";
+import { StatusService } from '../../login/user-status.service';
+
 
 @Component({
   selector: "books-list",
@@ -17,14 +19,19 @@ export class BooksListComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
+    private statusService: StatusService,
   ) {}
 
   books;
   users: Users[];
   userWhoBorrow;
   AllUser;
+  isApproved: boolean;
 
   edit(book) {
+    if(!this.isApproved){
+      return;
+    }
     this.router.navigate(["books", book._id, "edit"]);
   }
 
@@ -32,6 +39,11 @@ export class BooksListComponent implements OnInit {
     this.authService.getUserStream().subscribe((users: Users[]) => {
         this.users = users;
     });
+      
+
+    this.statusService.getStatusStream().subscribe(value=>{
+      this.isApproved = value;
+    })
 
 
     this.booksDataService.getBooksStream().subscribe((books: Books[]) => {

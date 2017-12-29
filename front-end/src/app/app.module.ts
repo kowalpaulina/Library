@@ -24,6 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchBooksComponent } from './search-books/search-books.component';
 
 import { AuthService } from "./login/auth.service";
+import { StatusService } from "./login/user-status.service";
 import { AuthGuard } from "./login/auth-guard.service";
 import { AdminModule } from "./admin/admin.module";
 import { SearchBooksListComponent } from './search-books/search-books-list/search-books-list.component';
@@ -121,7 +122,7 @@ import { ErrorsComponent } from './errors/errors.component'
       },
     ])
   ],
-  providers: [AuthService, AuthGuard, BooksService,RegistrationService, ErrorService],
+  providers: [AuthService, AuthGuard, BooksService,RegistrationService, ErrorService, StatusService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

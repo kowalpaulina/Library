@@ -114,7 +114,6 @@ export class BooksService{
   }
 
   addBookToLibrary(chosenBook) {
-    console.log("Books from search", chosenBook);
     this.saveBook(chosenBook).subscribe(() => {
     });
   }

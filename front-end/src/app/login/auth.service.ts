@@ -8,9 +8,9 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { AsyncSubject } from "rxjs/AsyncSubject";
 import { ErrorService } from "../errors/error.service";
 
-import "rxjs/add/observable/of";
-import "rxjs/add/operator/do";
-import "rxjs/add/operator/delay";
+// import "rxjs/add/observable/of";
+// import "rxjs/add/operator/do";
+// import "rxjs/add/operator/delay";
 
 @Injectable()
 export class AuthService {
@@ -23,20 +23,8 @@ export class AuthService {
   redirectUrl: string;
 
   constructor(private http: Http, private errorService: ErrorService) {
-    // this.initialIsLoggedIn();
   }
 
-  
-  //   initialIsLoggedIn() {
-  //       if(localStorage.getItem('token') !== null){
-  //           this.isLoggedIn.next(true);
-  //           console.log("isloggedin");
-  //       }else{
-  //           this.isLoggedIn.next(false);
-  //       }
-  // }
-
-    
 
   signin(user: Users) {
     const body = JSON.stringify(user);
@@ -53,6 +41,7 @@ export class AuthService {
   logout() {
     localStorage.clear();
   }
+
 
   getUserStream(): Observable<Users[]> {
     this.getUsers();

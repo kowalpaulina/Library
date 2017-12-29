@@ -1,3 +1,4 @@
+import { StatusService } from './user-status.service';
 import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
@@ -26,12 +27,14 @@ export class LoginComponent {
   value: boolean;
   userData: Users;
   loginForm: FormGroup;
+  userId: string;
 
   constructor(
     private authService: AuthService,
     public router: Router,
     public fb: FormBuilder,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private statusService: StatusService
   ) {
 
     this.authService.isLoggedIn.subscribe(value => {
@@ -47,6 +50,7 @@ export class LoginComponent {
             localStorage.setItem('token', data.token);
             localStorage.setItem('userId', data.userId);
             this.isLoggedIn();
+            this.userStatus();
         },
         error => console.error(error)
       );
@@ -65,6 +69,13 @@ export class LoginComponent {
         if (this.authService.redirectUrl)
           this.router.navigate([this.authService.redirectUrl]);
         else this.router.navigate(["/"]);
+  }
+
+  userStatus(){
+     if(localStorage.getItem('userId') !== null){
+            this.userId = localStorage.getItem('userId');
+            this.statusService.checkStatus(this.userId);
+        }
   }
 
   logout() {
