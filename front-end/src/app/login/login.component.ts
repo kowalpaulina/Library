@@ -49,6 +49,7 @@ export class LoginComponent {
         data => {
             localStorage.setItem('token', data.token);
             localStorage.setItem('userId', data.userId);
+            localStorage.setItem('approved', data.approved);
             this.isLoggedIn();
             this.userStatus();
         },
@@ -74,6 +75,7 @@ export class LoginComponent {
   userStatus(){
      if(localStorage.getItem('userId') !== null){
             this.userId = localStorage.getItem('userId');
+            console.log(this.userId);
             this.statusService.checkStatus(this.userId);
         }
   }

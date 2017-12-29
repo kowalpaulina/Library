@@ -21,6 +21,9 @@ export class AuthService {
   users: Users[];
   userLoggedIn: Users;
   redirectUrl: string;
+  token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+  userId = localStorage.getItem('userId') ? '?userId=' + localStorage.getItem('userId') : '';
+
 
   constructor(private http: Http, private errorService: ErrorService) {
   }
@@ -42,7 +45,6 @@ export class AuthService {
     localStorage.clear();
   }
 
-
   getUserStream(): Observable<Users[]> {
     this.getUsers();
     return Observable.from(this.usersStream$).startWith(this.users);
@@ -50,7 +52,7 @@ export class AuthService {
 
   getUsers() {
     return this.http
-      .get(this.users_url)
+      .get(`${this.users_url}${this.userId}`)
       .map(response => response.json().obj)
       .catch((error: Response) => {
                 this.errorService.handleError(error.json());
@@ -66,7 +68,7 @@ export class AuthService {
   upadeApprovedStatus(user: Users){
     const headers = new Headers({ "Content-Type": "application/json" });
     let request;
-    request = this.http.patch(`${this.users_url_manage}${user._id}`, user, {
+    request = this.http.patch(`${this.users_url_manage}${user._id}${this.userId}`, user, {
         headers: headers
       });
     return request
@@ -80,7 +82,7 @@ export class AuthService {
   updateFriendStatus(user:Users){
     const headers = new Headers({ "Content-Type": "application/json" });
     let request;
-    request = this.http.patch(`${this.users_url_manage}${user._id}`, user, {
+    request = this.http.patch(`${this.users_url_manage}${user._id}${this.userId}`, user, {
         headers: headers
       });
     return request
@@ -93,7 +95,7 @@ export class AuthService {
 
   deleteUser(user: Users) {
     let request;
-    request = this.http.delete(`${this.users_url_manage}${user._id}`);
+    request = this.http.delete(`${this.users_url_manage}${user._id}${this.userId}`);
     return request
       .map(response => response.json().obj)
       .do(users => {

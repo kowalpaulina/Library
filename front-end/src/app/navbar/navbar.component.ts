@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from "../login/auth.service";
+import { StatusService } from '../login/user-status.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +11,10 @@ import { AuthService } from "../login/auth.service";
 export class NavbarComponent implements OnInit {
   isLogged: boolean;
   message: string;
+  isApproved: boolean;
 
   constructor(
-     private authService: AuthService,
+     private authService: AuthService, private statusService: StatusService,
   ) {
       this.authService.isLoggedIn.subscribe(value => {
       this.isLogged = value;
@@ -25,6 +27,21 @@ export class NavbarComponent implements OnInit {
       this.isLogged = false;
       console.log("isloggedin false");
     }
+
+    //check after signin
+    this.statusService.getStatusStream().subscribe(value => {
+      this.isApproved = value;
+    });
+
+    //check after refresh page
+    if (localStorage.getItem("approved")) {
+      if (localStorage.getItem("approved") == "true") {
+        console.log();
+        this.isApproved = true;
+      } else {
+        this.isApproved = false;
+      }
+    }
    }
   
 
@@ -34,7 +51,6 @@ export class NavbarComponent implements OnInit {
 
     logout() {
     this.authService.logout();
-    this.message = "Logging out ...";
     this.authService.isLoggedIn.next(false);
   }
 

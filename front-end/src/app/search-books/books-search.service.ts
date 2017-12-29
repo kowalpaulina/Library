@@ -6,8 +6,6 @@ import { Observable, Subject } from "rxjs";
 export class BooksSearchService {
   books = [];
   chosenBook = {};
-  
-
   booksStream = new Subject();
 
   constructor(private http: Http) {

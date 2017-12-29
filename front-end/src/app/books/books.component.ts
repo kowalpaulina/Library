@@ -13,16 +13,34 @@ import { Users } from "../registration/user";
   providers: <any>[BooksService]
 })
 export class BooksComponent implements OnInit {
-  constructor(private booksDataService:BooksService, private authService: AuthService, private statusService: StatusService) {}
+  constructor(private booksDataService:BooksService, 
+              private authService: AuthService, 
+              private statusService: StatusService) {}
     users: Users[];
     isApproved: boolean;
  
 
   ngOnInit() {
 
+    //check after signin
     this.statusService.getStatusStream().subscribe(value=>{
       this.isApproved = value;
-    })
+    });
+
+    //check after refresh page
+    if(localStorage.getItem('approved')){
+      if(localStorage.getItem('approved') == "true"){
+        this.isApproved = true;
+      }else{
+        this.isApproved = false;
+      }
+    }
+
+        console.log("books component",this.isApproved);
+
+
+
+
   
 
 

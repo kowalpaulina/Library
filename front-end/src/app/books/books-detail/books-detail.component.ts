@@ -5,6 +5,7 @@ import { BooksService } from "../books.service";
 import { Books } from "../books";
 import { NgForm } from "@angular/forms";
 import { Users } from "../../registration/user";
+import { StatusService } from "../../login/user-status.service";
 
 @Component({
   selector: "app-books-detail",
@@ -16,13 +17,15 @@ export class BooksDetailComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private booksDataService: BooksService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private statusService: StatusService
   ) {}
 
   books: Books;
   users: Users[];
   borrower;
-  newUser:string;
+  newUser: string;
+  isApproved: boolean;
 
   onChangeUser(newUser) {
     console.log(newUser);
@@ -36,7 +39,7 @@ export class BooksDetailComponent implements OnInit {
     }
     //this.books.borrower = this.borrower;
     console.log(typeof this.books.borrower);
-    if(this.books.borrower ==""){
+    if (this.books.borrower == "") {
       this.books.borrower = null;
     }
     console.log(this.books.borrower);
@@ -69,9 +72,26 @@ export class BooksDetailComponent implements OnInit {
   ngOnInit() {
     this.getId();
 
-        this.authService.getUserStream().subscribe((users: Users[]) => {
-        this.users = users;});
-        console.log("users from book.component", this.users);
-    
+    this.authService.getUserStream().subscribe((users: Users[]) => {
+      this.users = users;
+    });
+    console.log("users from book.component", this.users);
+
+    //check after signin
+    this.statusService.getStatusStream().subscribe(value => {
+      this.isApproved = value;
+    });
+
+    //check after refresh page
+    if (localStorage.getItem("approved")) {
+      if (localStorage.getItem("approved") == "true") {
+        console.log();
+        this.isApproved = true;
+      } else {
+        this.isApproved = false;
+      }
+    }
+
+    console.log(this.isApproved);
   }
 }

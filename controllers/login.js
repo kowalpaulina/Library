@@ -35,7 +35,8 @@ router.post('/', function(req, res, next) {
             res.status(200).json({
                 message: 'Successfully logged in',
                 token: token,
-                userId: user._id
+                userId: user._id,
+                approved: user.approved
             });
         }else{
             return res.status(401).json({

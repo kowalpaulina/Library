@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BooksService } from '../../books/books.service'
 import { BooksSearchService } from '../books-search.service'
 import { AuthService } from "../../login/auth.service";
+import { StatusService } from '../../login/user-status.service';
 
 @Component({
   selector: 'app-search-books-list',
@@ -10,24 +11,45 @@ import { AuthService } from "../../login/auth.service";
 })
 export class SearchBooksListComponent implements OnInit {
     isLogged: boolean;
+    isApproved: boolean;
+    chosenBook={};
+    message: string = "Click chosen book to add it to your book collection";
 
 
-  constructor(private booksService:BooksService, private booksSearchService:BooksSearchService, private authService: AuthService) {
+  constructor(private booksService:BooksService, 
+              private booksSearchService:BooksSearchService, 
+              private statusService: StatusService, 
+              private authService: AuthService) {
     this.authService.isLoggedIn.subscribe(value => {
       this.isLogged = value;
     });
-   }
 
-  chosenBook={};
+    //this.statusService.checkStatusAfterRefreash();
+    this.statusService.getStatusStream().subscribe(value=>{
+      this.isApproved = value;
+    });
+
+        //check after refresh page
+        if(localStorage.getItem('approved')){
+      if(localStorage.getItem('approved') == "true"){
+        console.log()
+        this.isApproved = true;
+      }else{
+        this.isApproved = false;
+      }
+    }
+   }
 
   @Input()
   books;
-  message: string = "Click chosen book to add it to your book collection";
+  
  
 
 
   chosen(chosenBook){
-    console.log("kliknięta ksiązka z szukanych",chosenBook);
+    if(!this.isApproved){
+      return;
+    }
     this.booksService.addBookToLibrary(chosenBook);
   }
 

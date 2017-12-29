@@ -7,6 +7,16 @@ const Book = require('../models/books');
 const User = require('../models/users');
 
 
+router.use('/', function (req, res, next) {
+    User.findById(req.query.userId, function(err, user){
+        if(user.approved){
+            next();
+        }
+    });
+
+});
+
+
 router.patch('/users-manage/:id', function (req, res, next) {
     User.findById(req.params.id, function (err, user) {
         if (err) {

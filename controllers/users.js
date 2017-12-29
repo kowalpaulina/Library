@@ -7,6 +7,7 @@ const Book = require('../models/books');
 const User = require('../models/users');
 
 
+
 router.get('/', function (req, res, next) {
     User.find()
         .exec(function (err, books) {
@@ -21,6 +22,16 @@ router.get('/', function (req, res, next) {
                 obj: books
             });
         });
+});
+
+
+router.use('/', function (req, res, next) {
+    User.findById(req.query.userId, function(err, user){
+        if(user.approved){
+            next();
+        }
+    });
+
 });
 
 

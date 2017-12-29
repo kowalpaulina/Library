@@ -31,7 +31,7 @@ export class BooksService{
         headers: headers
       });
     } else {
-      request = this.http.post(`${this.server_url}new`, books, {
+      request = this.http.post(`${this.server_url}new${this.userId}`, books, {
         headers: headers
       });
     }
@@ -48,7 +48,7 @@ export class BooksService{
 
   deleteBook(books) {
     let request;
-    request = this.http.delete(`${this.server_url}${books._id}/edit`);
+    request = this.http.delete(`${this.server_url}${books._id}/edit${this.userId}`);
 
     return request
       .map(response => response.json().obj)
@@ -76,7 +76,7 @@ export class BooksService{
 
   getBooks() {
     return this.http
-      .get(this.server_url)
+      .get(`${this.server_url}${this.userId}`)
       .map(response => response.json().obj)
       .catch((error: Response) => {
                 this.errorService.handleError(error.json());
@@ -114,6 +114,7 @@ export class BooksService{
   }
 
   addBookToLibrary(chosenBook) {
+    console.log(chosenBook);
     this.saveBook(chosenBook).subscribe(() => {
     });
   }
