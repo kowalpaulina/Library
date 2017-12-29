@@ -24,20 +24,22 @@ export class SearchBooksListComponent implements OnInit {
       this.isLogged = value;
     });
 
-    //this.statusService.checkStatusAfterRefreash();
+    this.statusService.checkStatusAfterRefreash();
     this.statusService.getStatusStream().subscribe(value=>{
       this.isApproved = value;
     });
 
+    
+
         //check after refresh page
-        if(localStorage.getItem('approved')){
-      if(localStorage.getItem('approved') == "true"){
-        console.log()
-        this.isApproved = true;
-      }else{
-        this.isApproved = false;
-      }
-    }
+    //     if(localStorage.getItem('approved')){
+    //   if(localStorage.getItem('approved') == "true"){
+    //     console.log()
+    //     this.isApproved = true;
+    //   }else{
+    //     this.isApproved = false;
+    //   }
+    // }
    }
 
   @Input()

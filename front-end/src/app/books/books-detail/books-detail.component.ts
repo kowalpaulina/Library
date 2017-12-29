@@ -77,20 +77,21 @@ export class BooksDetailComponent implements OnInit {
     });
     console.log("users from book.component", this.users);
 
+    this.statusService.checkStatusAfterRefreash();
     //check after signin
     this.statusService.getStatusStream().subscribe(value => {
       this.isApproved = value;
     });
 
     //check after refresh page
-    if (localStorage.getItem("approved")) {
-      if (localStorage.getItem("approved") == "true") {
-        console.log();
-        this.isApproved = true;
-      } else {
-        this.isApproved = false;
-      }
-    }
+    // if (localStorage.getItem("approved")) {
+    //   if (localStorage.getItem("approved") == "true") {
+    //     console.log();
+    //     this.isApproved = true;
+    //   } else {
+    //     this.isApproved = false;
+    //   }
+    // }
 
     console.log(this.isApproved);
   }

@@ -41,16 +41,16 @@ export class StatusService implements OnInit {
     this.userStatusStream.next(this.approvedStatus);
   }
 
-//   checkStatusAfterRefreash(){
-//     if(localStorage.getItem('approved')){
-//       if(localStorage.getItem('approved') == "true"){
-//         console.log()
-//         this.approvedStatus = true;
-//       }else{
-//         this.approvedStatus = false;
-//       }
-//     }
-//   }
+  checkStatusAfterRefreash(){
+    if(localStorage.getItem('approved')){
+      if(localStorage.getItem('approved') == "true"){
+        console.log()
+        this.approvedStatus = true;
+      }else{
+        this.approvedStatus = false;
+      }
+    }
+  }
 
   getStatusStream(){
       return Observable.from(this.userStatusStream).startWith(this.approvedStatus);

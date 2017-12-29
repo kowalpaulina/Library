@@ -22,19 +22,20 @@ export class BooksComponent implements OnInit {
 
   ngOnInit() {
 
+    this.statusService.checkStatusAfterRefreash();
     //check after signin
     this.statusService.getStatusStream().subscribe(value=>{
       this.isApproved = value;
     });
 
-    //check after refresh page
-    if(localStorage.getItem('approved')){
-      if(localStorage.getItem('approved') == "true"){
-        this.isApproved = true;
-      }else{
-        this.isApproved = false;
-      }
-    }
+    // //check after refresh page
+    // if(localStorage.getItem('approved')){
+    //   if(localStorage.getItem('approved') == "true"){
+    //     this.isApproved = true;
+    //   }else{
+    //     this.isApproved = false;
+    //   }
+    // }
 
         console.log("books component",this.isApproved);
 
