@@ -1,5 +1,5 @@
 import { AuthService } from "./../../login/auth.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, EventEmitter } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BooksService } from "../books.service";
 import { Books } from "../books";
@@ -26,6 +26,8 @@ export class BooksDetailComponent implements OnInit {
   borrower;
   newUser: string;
   isApproved: boolean;
+  message: string = "";
+  deleteForbidden = new EventEmitter<string>();
 
   onChangeUser(newUser) {
     console.log(newUser);
@@ -48,16 +50,24 @@ export class BooksDetailComponent implements OnInit {
   }
 
   delete(books) {
-    this.booksDataService.deleteBook(this.books).subscribe(books => {
-      this.router.navigate(["books"]);
-    });
+    if (books.borrower.length > 0) {
+      this.message = "You can not delete the book until it is borrowed";
+      this.deleteForbidden.emit(this.message);
+      return;
+    } else {
+      this.message = "";
+      this.booksDataService.deleteBook(this.books).subscribe(books => {
+        this.router.navigate(["books"]);
+      });
+    }
   }
 
   getId() {
     this.activeRoute.params.subscribe(params => {
       let id = params["id"];
-      console.log(typeof id);
       if (id) {
+        this.message = "";
+        this.deleteForbidden.emit(this.message);
         this.booksDataService.getBook(id).subscribe((books: Books) => {
           this.books = Object.assign({}, books);
           console.log(this.books);
@@ -70,28 +80,14 @@ export class BooksDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
-
     this.authService.getUserStream().subscribe((users: Users[]) => {
       this.users = users;
     });
-    console.log("users from book.component", this.users);
 
     this.statusService.checkStatusAfterRefreash();
     //check after signin
     this.statusService.getStatusStream().subscribe(value => {
       this.isApproved = value;
     });
-
-    //check after refresh page
-    // if (localStorage.getItem("approved")) {
-    //   if (localStorage.getItem("approved") == "true") {
-    //     console.log();
-    //     this.isApproved = true;
-    //   } else {
-    //     this.isApproved = false;
-    //   }
-    // }
-
-    console.log(this.isApproved);
   }
 }

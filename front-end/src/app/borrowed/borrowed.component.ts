@@ -16,7 +16,6 @@ export class BorrowedComponent implements OnInit {
   message: string = "";
   book: Books;
   listOfBorrowedBooks: object[] = [];
-  showTable: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private borrowedService: BorrowedService,
@@ -24,21 +23,14 @@ export class BorrowedComponent implements OnInit {
   ) {
     if (localStorage.getItem("userId") !== null) {
       this.loggedUserId = localStorage.getItem("userId");
-      console.log(this.loggedUserId);
     }
 
     this.borrowedService.getUserData(this.loggedUserId).subscribe(user => {
-      console.log("getUser", user);
       this.user = user;
-      console.log(this.user.booksBorrowed);
       if (this.user.booksBorrowed.length > 0) {
         this.findBorrowedBooks(this.user.booksBorrowed);
-        this.showTable.next(true);
-        console.log(this.showTable);
       } else {
         this.message = "You have no borrowed books";
-        this.showTable.next(false);
-        console.log(this.showTable);
       }
     });
   }

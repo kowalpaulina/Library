@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from "../login/auth.service";
 import { StatusService } from '../login/user-status.service';
+import { BorrowedService } from "../borrowed/borrowed.service";
+import { Users } from "./../registration/user";
+
+
 
 @Component({
   selector: 'app-navbar',
@@ -12,13 +16,15 @@ export class NavbarComponent implements OnInit {
   isLogged: boolean;
   message: string;
   isApproved: boolean;
+  loggedUserId: string;
+  user: Users;
+  name: string;
 
   constructor(
-     private authService: AuthService, private statusService: StatusService,
+     private authService: AuthService, private statusService: StatusService, private borrowedService: BorrowedService,
   ) {
       this.authService.isLoggedIn.subscribe(value => {
       this.isLogged = value;
-      console.log("navbar",this.isLogged);
     });
 
     if (localStorage.getItem("token") !== null) {
@@ -27,22 +33,11 @@ export class NavbarComponent implements OnInit {
       this.isLogged = false;
       console.log("isloggedin false");
     }
-
+  
     this.statusService.checkStatusAfterRefreash();
-    //check after signin
     this.statusService.getStatusStream().subscribe(value => {
       this.isApproved = value;
     });
-
-    //check after refresh page
-    // if (localStorage.getItem("approved")) {
-    //   if (localStorage.getItem("approved") == "true") {
-    //     console.log();
-    //     this.isApproved = true;
-    //   } else {
-    //     this.isApproved = false;
-    //   }
-    // }
    }
   
 

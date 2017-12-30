@@ -75,6 +75,7 @@ import { BorrowedComponent } from './borrowed/borrowed.component'
       },
       {
         path: "borrowed-books",
+        canActivate: [AuthGuard],
         component: BorrowedComponent
       },
       {

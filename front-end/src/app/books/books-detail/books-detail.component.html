@@ -1,4 +1,5 @@
- <div class="books-details" *ngIf="books">
+<div *ngIf="message!=''" class="message">{{message}}</div> 
+<div class="books-details" *ngIf="books">
           <form #formRef="ngForm" (ngSubmit)="save(formRef.valid, books)">
           <div class="form-group">
             <label>Title:</label>

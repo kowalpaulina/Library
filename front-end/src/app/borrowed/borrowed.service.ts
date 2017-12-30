@@ -14,7 +14,7 @@ export class BorrowedService {
     private errorService: ErrorService,
     public router: Router
   ) {}
-  
+
   user: Users;
   url: string;
   loggedUserId: string;
@@ -26,18 +26,14 @@ export class BorrowedService {
     : "";
 
   getUserData(id) {
-    if (id != undefined) {
-      this.url = `http://localhost:3000/users/${id}`;
-      console.log(this.url);
-      return this.http
-        .get(this.url)
-        .map(response => response.json().obj)
-        .catch((error: Response) => {
-          this.errorService.handleError(error);
-          return Observable.throw(error);
-        });
-    } else {
-      this.router.navigate(["/login"]);
-    }
+    this.url = `http://localhost:3000/users/${id}`;
+    console.log(this.url);
+    return this.http
+      .get(this.url)
+      .map(response => response.json().obj)
+      .catch((error: Response) => {
+        this.errorService.handleError(error);
+        return Observable.throw(error);
+      });
   }
 }
