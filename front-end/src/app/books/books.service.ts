@@ -102,7 +102,6 @@ export class BooksService{
   }
 
   getBook(id) {
-    console.log(this.userId);
     console.log(this.token);
     return this.http
       .get(`${this.server_url}${id}/edit${this.userId}`)

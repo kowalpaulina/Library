@@ -1,0 +1,22 @@
+{{message}}
+<table *ngIf="book" class="table table-striped">
+    <thead>
+        <tr>
+            <th> # </th>
+            <th> Title </th>
+            <th> Author </th>
+            <th> Date From </th>
+            <th> Date To </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of listOfBorrowedBooks; let i = index">
+            <td> {{ i + 1 || "" }}. </td>
+            <td> {{ book.title || "" }} </td>
+            <td> {{ book.author || "" }} </td>
+            <td> {{ book.dateFrom || "" }} </td>
+            <td> {{ book.dateTo || "" }} </td>
+        </tr>
+    </tbody>
+
+</table>

@@ -1,3 +1,4 @@
+import { BorrowedService } from './borrowed/borrowed.service';
 import { ErrorService } from './errors/error.service';
 import { BrowserModule } from "@angular/platform-browser";
 import { CommonModule } from '@angular/common';
@@ -33,7 +34,8 @@ import { BooksService } from './books/books.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { RegistrationService } from './registration/registration.service';
 import { LibraryComponent } from './library/library.component';
-import { ErrorsComponent } from './errors/errors.component'
+import { ErrorsComponent } from './errors/errors.component';
+import { BorrowedComponent } from './borrowed/borrowed.component'
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { ErrorsComponent } from './errors/errors.component'
     SearchBooksListComponent,
     RegistrationComponent,
     LibraryComponent,
-    ErrorsComponent
+    ErrorsComponent,
+    BorrowedComponent
   ],
 
   imports: [
@@ -69,6 +72,10 @@ import { ErrorsComponent } from './errors/errors.component'
       {
         path: "lend",
         component: LendComponent
+      },
+      {
+        path: "borrowed-books",
+        component: BorrowedComponent
       },
       {
         path: "books",
@@ -122,7 +129,7 @@ import { ErrorsComponent } from './errors/errors.component'
       },
     ])
   ],
-  providers: [AuthService, AuthGuard, BooksService,RegistrationService, ErrorService, StatusService],
+  providers: [AuthService, AuthGuard, BooksService,RegistrationService, ErrorService, StatusService, BorrowedService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

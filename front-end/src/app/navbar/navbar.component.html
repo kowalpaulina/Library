@@ -13,6 +13,10 @@
       </li>
       <li  class="nav-item">
         <a class="nav-link" routerLink="searchBooks" routerLinkActive="active">Find books</a>
+      </li> 
+
+      <li *ngIf="isLogged" class="nav-item">
+        <a class="nav-link" routerLink="borrowed-books" routerLinkActive="active">Borrowed Books</a>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link" routerLink="lend" routerLinkActive="active">Lend books</a>
@@ -21,7 +25,7 @@
         <a class="nav-link" routerLink="pending" routerLinkActive="active">Waiting for books</a>
       </li> -->
 
-      <li *ngIf="isApproved" class="nav-item">
+      <li *ngIf="isApproved && isLogged" class="nav-item">
         <a class="nav-link" routerLink="/admin" routerLinkActive="active">Administrative panel</a>
       </li>
 

@@ -24,7 +24,6 @@ export class StatusService implements OnInit {
   }
 
   ngOnInit(){
-
         this.checkStatus(this.userId);  
   }
 

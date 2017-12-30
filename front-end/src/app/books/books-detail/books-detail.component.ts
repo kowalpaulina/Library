@@ -38,7 +38,6 @@ export class BooksDetailComponent implements OnInit {
       return;
     }
     //this.books.borrower = this.borrower;
-    console.log(typeof this.books.borrower);
     if (this.books.borrower == "") {
       this.books.borrower = null;
     }
@@ -57,7 +56,7 @@ export class BooksDetailComponent implements OnInit {
   getId() {
     this.activeRoute.params.subscribe(params => {
       let id = params["id"];
-      console.log(id);
+      console.log(typeof id);
       if (id) {
         this.booksDataService.getBook(id).subscribe((books: Books) => {
           this.books = Object.assign({}, books);

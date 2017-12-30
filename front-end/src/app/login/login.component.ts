@@ -23,6 +23,7 @@ export class LoginComponent {
   message: string;
   isLogged: boolean;
   users: Users[];
+  user: Users;
   private errorMessage: any = "";
   value: boolean;
   userData: Users;
@@ -57,7 +58,6 @@ export class LoginComponent {
       );
     
     this.loginForm.reset();
-    
     }
 
   isLoggedIn() {

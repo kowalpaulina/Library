@@ -51,9 +51,7 @@ export class ManageUsersComponent implements OnInit {
     }else{
       user.friend = true;
     }
-
       this.authService.updateFriendStatus(user).subscribe(users => {
-
   })
   }
 

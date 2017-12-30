@@ -34,7 +34,7 @@ router.use('/', function (req, res, next) {
     // })
 
     User.findById(req.query.userId, function(err, user){
-        if(user.approved){
+        if(user.approved || user.friend){
             next();
         }
     });
@@ -66,6 +66,24 @@ router.get('/:id/edit', function (req, res, next) {
 
 });
 
+router.use('/', function (req, res, next) {
+    // jwt.verify(req.query.token, 'secret', function (err, decoded) {
+    //     if (err) {
+    //         return res.status(401).json({
+    //             title: 'Not Authenticated',
+    //             error: err
+    //         });
+    //     }
+    //     next();
+    // })
+
+    User.findById(req.query.userId, function(err, user){
+        if(user.approved){
+            next();
+        }
+    });
+
+});
 
 router.post('/new', function (req, res, next) {
     let book = new Book({
