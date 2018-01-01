@@ -9,6 +9,7 @@ const User = require('../models/users');
 
 router.use('/', function (req, res, next) {
     User.findById(req.query.userId, function(err, user){
+        console.log(user.approved);
         if(user.approved){
             next();
         }

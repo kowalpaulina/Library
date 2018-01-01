@@ -4,6 +4,7 @@ import "rxjs/add/operator/map";
 import "rxjs/Rx";
 import { Subject, Observable } from "rxjs";
 import { AuthService } from "../../login/auth.service";
+import { StatusService } from '../../login/user-status.service';
 
 @Component({
   templateUrl: "./manage-users.html",
@@ -14,11 +15,13 @@ export class ManageUsersComponent implements OnInit {
   appovedMessage: string;
   deleteForbidden = new EventEmitter<string>();
   message: string = '';
+  isApproved: boolean;
   
   
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private statusService: StatusService
   ) {}
 
   delete(user: Users) {
@@ -62,6 +65,12 @@ export class ManageUsersComponent implements OnInit {
   ngOnInit() {
     this.authService.getUserStream().subscribe((users: Users[]) => {
       this.users = users;
+    });
+
+    this.statusService.checkStatusAfterRefreash();
+    //check after signin
+    this.statusService.getStatusStream().subscribe(value=>{
+      this.isApproved = value;
     });
   }
 }

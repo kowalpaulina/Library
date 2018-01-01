@@ -6,8 +6,31 @@
     max-width: 100%;
 }
 
+.navbar{
+    background-color: #0D3757;
+    width: 100%;
+
+    .nav-link{
+        color: #fff;
+    }
+}
+
+.navbar-expand-lg .navbar-nav .nav-link{
+    color: #fff;
+}
+
+
+.navbar ul {
+       width: 100%;
+       justify-content: space-between;
+}
+
+.navbar ul li{
+    cursor: pointer;
+}
+
 .nav-item a{
-    color:#999;
+    color:#fff;
 }
 
 .nav-item a.active{
@@ -18,20 +41,3 @@
     color:#7E7E7E;
 }
 
-.navbar-brand{
-    color: #000;
-    font-weight: 700;
-}
-
- .navbar-brand:hover{
-        color: #000;
-    }
-
-.navbar{
-    width: 100%;
-}
-
-.navbar ul {
-       width: 100%;
-       justify-content: space-between;
-}

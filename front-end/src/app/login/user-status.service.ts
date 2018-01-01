@@ -16,45 +16,41 @@ export class StatusService implements OnInit {
   userStatusStream: Subject<boolean> = new Subject<boolean>();
   approvedStatus: boolean;
 
-
   constructor(private authService: AuthService) {
-        this.authService.getUserStream().subscribe((users: Users[]) => {
-        this.users = users;
+    this.authService.getUserStream().subscribe((users: Users[]) => {
+      this.users = users;
     });
   }
 
-  ngOnInit(){
-        this.checkStatus(this.userId);  
+  ngOnInit() {
+    this.checkStatus(this.userId);
   }
 
-
-  checkStatus(userId){
+  checkStatus(userId) {
     const loggedUser = this.users.find(user => userId == user._id);
-    if(!loggedUser.approved){
-        this.approvedStatus = false;
-    }
-    else{
-        this.approvedStatus = true;
+    if (!loggedUser.approved) {
+      this.approvedStatus = false;
+    } else {
+      this.approvedStatus = true;
     }
     console.log(this.approvedStatus);
     this.userStatusStream.next(this.approvedStatus);
   }
 
-  checkStatusAfterRefreash(){
-    if(localStorage.getItem('approved')){
-      if(localStorage.getItem('approved') == "true"){
-        console.log()
+  checkStatusAfterRefreash() {
+    if (localStorage.getItem("approved")) {
+      if (localStorage.getItem("approved") == "true") {
+        console.log();
         this.approvedStatus = true;
-      }else{
+      } else {
         this.approvedStatus = false;
       }
     }
   }
 
-  getStatusStream(){
-      return Observable.from(this.userStatusStream).startWith(this.approvedStatus);
+  getStatusStream() {
+    return Observable.from(this.userStatusStream).startWith(
+      this.approvedStatus
+    );
   }
-
-
-
 }

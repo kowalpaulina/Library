@@ -1,49 +1,54 @@
-    input.ng-dirty.ng-invalid, 
-    textarea.ng-dirty.ng-invalid,
-    input.ng-touched.ng-invalid, 
-    textarea.ng-touched.ng-invalid{
-      border: 1px solid red;
-    }
+input.ng-dirty.ng-invalid,
+textarea.ng-dirty.ng-invalid,
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
 
-    .borrower{
-      display: block;
-    }
+.borrower {
+  display: block;
+}
 
-    label{
-      margin-top: 0.6rem;
-    }
+label {
+  margin-top: 0.6rem;
+}
 
-    .borrow-return-book{
-      display: flex;
-      margin-top: 0.6rem;
+.borrow-return-book {
+  display: flex;
+  margin-top: 0.6rem;
 
-      label{
-        margin-right: 10px;
-      }
+  label {
+    margin-right: 10px;
+  }
 
-      select{
-        margin-right: 15px;
-      }
-    }
+  select {
+    margin-right: 15px;
+  }
+}
 
-    .error{
-      display: inline-block;
-      color: #fff;
-      background-color: #d9534f;
-      padding: 8px;
-      margin: 10px 0;
-      font-size: 14px;
-      text-transform: uppercase;
-      border-radius: 10px;
-    }
+.btn-blue {
+  background-color: rgb(8, 96, 183);
+  color: #fff;
+}
 
-    .message{
-    background-color: #d9534f;
-    padding: 10px;
-    margin: 15px 0;
-    display: inline-block;
-    color: #fff;
-    font-size: 14px;
-    text-transform: uppercase;
-    border-radius: 10px;
+.error {
+  display: inline-block;
+  color: #fff;
+  background-color: #d9534f;
+  padding: 8px;
+  margin: 10px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+
+.message {
+  background-color: #d9534f;
+  padding: 10px;
+  margin: 15px 0;
+  display: inline-block;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 10px;
 }

@@ -16,10 +16,11 @@
           <td> {{ user.name }} </td>
           <td> {{ user.email }} </td>
           <td>
-              <button (click)="changeApproval(user)" class="btn btn-primary">{{user.approved ? 'Yes' : 'No'}}</button>
+              <button  [ngClass]="{'btn btn-yes': user.approved, 'btn-no btn': !user.approved}" (click)="changeApproval(user)" class="btn">{{user.approved ? 'Yes' : 'No'}}</button>
+
           </td>
              <td>
-              <button (click)="changeFriend(user)" class="btn btn-primary">{{user.friend ? 'Yes' : 'No'}}</button>
+              <button [ngClass]="{'btn btn-yes': user.friend, 'btn-no btn': !user.friend}" (click)="changeFriend(user)" class="btn">{{user.friend ? 'Yes' : 'No'}}</button>
           </td>
             <td>
               <button class="btn btn-danger" (click)="delete(user)">Delete</button>

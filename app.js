@@ -12,7 +12,6 @@ const appRoutes = require('./controllers/app');
 const usersRoutes = require('./controllers/users');
 const adminRoutes = require('./controllers/admin');
 const loginRoutes = require('./controllers/login');
-const borrowedBooksRoutes = require('./controllers/borrowed');
 
 //Connect mongoose to our database
 //mongoose.connect(config.database);
@@ -52,7 +51,6 @@ app.use('/books', booksRoutes);
 app.use('/users', usersRoutes);
 app.use('/admin', adminRoutes);
 app.use('/login', loginRoutes);
-app.use('/borowed', borrowedBooksRoutes);
 app.use('/', appRoutes);
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
