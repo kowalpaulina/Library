@@ -26,7 +26,7 @@ export class BorrowedService {
     : "";
 
   getUserData(id) {
-    this.url = `http://localhost:3000/users/${id}`;
+    this.url = `http://localhost:3000/users/${id}${this.token}`;
     console.log(this.url);
     return this.http
       .get(this.url)

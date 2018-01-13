@@ -6,15 +6,27 @@ const jwt = require('jsonwebtoken');
 const Book = require('../models/books');
 const User = require('../models/users');
 
-
 router.use('/', function (req, res, next) {
-    User.findById(req.query.userId, function(err, user){
-        console.log(user.approved);
-        if(user.approved){
-            next();
+    jwt.verify(req.query.token, 'secret', function (err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                title: 'Not Authenticated',
+                error: err
+            });
+        }else{
+            userData = decoded; 
+            if(userData.user.approved){
+                
+                next();
+            }else{
+                return res.status(401).json({
+                title: 'Not Authenticated',
+                error: err
+            });
+            }
         }
-    });
-
+            
+    })
 });
 
 

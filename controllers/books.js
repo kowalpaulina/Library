@@ -3,7 +3,33 @@ const express = require('express');
 const router = express.Router();
 const Book = require('../models/books');
 const User = require('../models/users');
+const jwt = require('jsonwebtoken');
 
+
+
+
+router.use('/', function (req, res, next) {
+    jwt.verify(req.query.token, 'secret', function (err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                title: 'Not Authenticated',
+                error: err
+            });
+        }else{
+            userData = decoded; 
+            if(userData.user.approved || userData.user.friend){
+                
+                next();
+            }else{
+                return res.status(401).json({
+                title: 'Not Authenticated',
+                error: err
+            });
+            }
+        }
+            
+    })
+});
 
 router.get('/', function (req, res, next) {
     Book.find()
@@ -22,24 +48,6 @@ router.get('/', function (req, res, next) {
 });
 
 
-router.use('/', function (req, res, next) {
-    // jwt.verify(req.query.token, 'secret', function (err, decoded) {
-    //     if (err) {
-    //         return res.status(401).json({
-    //             title: 'Not Authenticated',
-    //             error: err
-    //         });
-    //     }
-    //     next();
-    // })
-
-    User.findById(req.query.userId, function(err, user){
-        if(user.approved || user.friend){
-            next();
-        }
-    });
-
-});
 
 
 router.get('/:id/edit', function (req, res, next) {
@@ -66,23 +74,28 @@ router.get('/:id/edit', function (req, res, next) {
 
 });
 
+
 router.use('/', function (req, res, next) {
-    // jwt.verify(req.query.token, 'secret', function (err, decoded) {
-    //     if (err) {
-    //         return res.status(401).json({
-    //             title: 'Not Authenticated',
-    //             error: err
-    //         });
-    //     }
-    //     next();
-    // })
-
-    User.findById(req.query.userId, function(err, user){
-        if(user.approved){
-            next();
+    jwt.verify(req.query.token, 'secret', function (err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                title: 'Not Authenticated',
+                error: err
+            });
+        }else{
+            userData = decoded; 
+            if(userData.user.approved==true){
+                
+                next();
+            }else{
+                return res.status(401).json({
+                title: 'Not Authenticated',
+                error: err
+            });
+            }
         }
-    });
-
+            
+    })
 });
 
 router.post('/new', function (req, res, next) {
@@ -213,6 +226,7 @@ router.patch('/:id/edit', function (req, res, next) {
         });
     });
 });
+
 
 
 

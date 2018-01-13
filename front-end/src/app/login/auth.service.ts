@@ -24,7 +24,7 @@ export class AuthService {
   userLoggedIn: Users;
   redirectUrl: string;
   token = localStorage.getItem("token")
-    ? "?token=" + localStorage.getItem("token")
+    ? "token=" + localStorage.getItem("token")
     : "";
   userId = localStorage.getItem("userId")
     ? "?userId=" + localStorage.getItem("userId")
@@ -62,7 +62,7 @@ export class AuthService {
 
   getUsers() {
     return this.http
-      .get(`${this.users_url}${this.userId}`)
+      .get(`${this.users_url}${this.userId}&${this.token}`)
       .map(response => response.json().obj)
       .catch((error: Response) => {
         this.errorService.handleError(error.json());
@@ -78,7 +78,7 @@ export class AuthService {
     const headers = new Headers({ "Content-Type": "application/json" });
     let request;
     request = this.http.patch(
-      `${this.users_url_manage}${user._id}${this.userId}`,
+      `${this.users_url_manage}${user._id}${this.userId}&${this.token}`,
       user,
       {
         headers: headers
@@ -96,7 +96,7 @@ export class AuthService {
     const headers = new Headers({ "Content-Type": "application/json" });
     let request;
     request = this.http.patch(
-      `${this.users_url_manage}${user._id}${this.userId}`,
+      `${this.users_url_manage}${user._id}${this.userId}&${this.token}`,
       user,
       {
         headers: headers
@@ -113,7 +113,7 @@ export class AuthService {
   deleteUser(user: Users) {
     let request;
     request = this.http.delete(
-      `${this.users_url_manage}${user._id}${this.userId}`
+      `${this.users_url_manage}${user._id}${this.userId}&${this.token}`
     );
     return request
       .map(response => response.json().obj)

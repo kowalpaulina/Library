@@ -32,7 +32,8 @@ export class BooksListComponent implements OnInit {
     if(!this.isApproved){
       return;
     }
-    this.router.navigate(["books", book._id, "edit"]);
+    console.log(typeof book.borrower);
+      this.router.navigate(["books", book._id, "edit"]);
   }
 
   ngOnInit() {

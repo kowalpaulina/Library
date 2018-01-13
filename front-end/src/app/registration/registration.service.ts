@@ -12,7 +12,7 @@ export class RegistrationService {
 
   server_url = "http://localhost:3000/users/register/";
   users: Users[] = [];
-  token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+  token = localStorage.getItem('token') ? 'token=' + localStorage.getItem('token') : '';
   userId = localStorage.getItem('userId') ? '?userId=' + localStorage.getItem('userId') : '';
 
 
@@ -20,7 +20,7 @@ export class RegistrationService {
     console.log(users);
     const headers = new Headers({ "Content-Type": "application/json" });
     return this.http
-      .post(`${this.server_url}${this.userId}`, users, { headers: headers })
+      .post(`${this.server_url}${this.userId}&${this.token}`, users, { headers: headers })
       .map(response => response.json().obj)
       .catch((error: Response) => {
                 this.errorService.handleError(error.json());

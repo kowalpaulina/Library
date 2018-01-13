@@ -6,6 +6,30 @@ const jwt = require('jsonwebtoken');
 const Book = require('../models/books');
 const User = require('../models/users');
 
+
+router.use('/', function (req, res, next) {
+    jwt.verify(req.query.token, 'secret', function (err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                title: 'Not Authenticated',
+                error: err
+            });
+        }else{
+            userData = decoded; 
+            if(userData.user.approved || userData.user.friend){
+                next();
+            }else{
+                return res.status(401).json({
+                title: 'Not Authenticated',
+                error: err
+            });
+            }
+        }
+            
+    })
+});
+
+
 router.get('/:id', function (req, res) {
     console.log("id", req.params.id);
     User

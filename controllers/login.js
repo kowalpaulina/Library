@@ -37,7 +37,6 @@ router.post('/', function(req, res, next) {
                 token: token,
                 userId: user._id,
                 approved: user.approved,
-                userData: user,
             });
         }else{
             return res.status(401).json({

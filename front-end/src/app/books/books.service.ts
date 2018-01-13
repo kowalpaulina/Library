@@ -18,7 +18,7 @@ export class BooksService{
   books: Books[] = [];
   chosenBook;
   booksStream$ = new Subject<Books[]>();
-  token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+  token = localStorage.getItem('token') ? 'token=' + localStorage.getItem('token') : '';
   userId = localStorage.getItem('userId') ? '?userId=' + localStorage.getItem('userId') : '';
 
 
@@ -27,11 +27,11 @@ export class BooksService{
     const headers = new Headers({ "Content-Type": "application/json" });
     if (books._id) {
       console.log("saveBooks from service", books);
-      request = this.http.patch(`${this.server_url}${books._id}/edit${this.userId}`, books, {
+      request = this.http.patch(`${this.server_url}${books._id}/edit${this.userId}&${this.token}`, books, {
         headers: headers
       });
     } else {
-      request = this.http.post(`${this.server_url}new${this.userId}`, books, {
+      request = this.http.post(`${this.server_url}new${this.userId}&${this.token}`, books, {
         headers: headers
       });
     }
@@ -48,7 +48,7 @@ export class BooksService{
 
   deleteBook(books) {
     let request;
-    request = this.http.delete(`${this.server_url}${books._id}/edit${this.userId}`);
+    request = this.http.delete(`${this.server_url}${books._id}/edit${this.userId}&${this.token}`);
 
     return request
       .map(response => response.json().obj)
@@ -76,7 +76,7 @@ export class BooksService{
 
   getBooks() {
     return this.http
-      .get(`${this.server_url}${this.userId}`)
+      .get(`${this.server_url}${this.userId}&${this.token}`)
       .map(response => response.json().obj)
       .catch((error: Response) => {
                 this.errorService.handleError(error.json());
@@ -104,7 +104,7 @@ export class BooksService{
   getBook(id) {
     console.log(this.token);
     return this.http
-      .get(`${this.server_url}${id}/edit${this.userId}`)
+      .get(`${this.server_url}${id}/edit${this.userId}&${this.token}`)
       .map(response => response.json().obj)
       .catch((error: Response) => {
                 this.errorService.handleError(error.json());

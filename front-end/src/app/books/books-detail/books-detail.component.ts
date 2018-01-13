@@ -50,7 +50,8 @@ export class BooksDetailComponent implements OnInit {
   }
 
   delete(books) {
-    if (books.borrower.length > 0) {
+    console.log(books.borrower);
+    if (books.borrower || books.borrower != null) {
       this.message = "You can not delete the book until it is borrowed";
       this.deleteForbidden.emit(this.message);
       return;
