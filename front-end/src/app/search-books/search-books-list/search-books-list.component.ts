@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { BooksService } from '../../books/books.service'
 import { BooksSearchService } from '../books-search.service'
 import { AuthService } from "../../login/auth.service";
@@ -8,6 +8,7 @@ import { StatusService } from '../../login/user-status.service';
   selector: 'app-search-books-list',
   templateUrl: './search-books-list.component.html',
   styleUrls: ["./search-books-list.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class SearchBooksListComponent implements OnInit {
     isLogged: boolean;

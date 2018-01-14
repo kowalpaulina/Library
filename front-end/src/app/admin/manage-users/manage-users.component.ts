@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from "@angular/core";
+import { Component, OnInit, EventEmitter, ViewEncapsulation } from "@angular/core";
 import { Users } from "../../registration/user";
 import "rxjs/add/operator/map";
 import "rxjs/Rx";
@@ -9,6 +9,7 @@ import { StatusService } from '../../login/user-status.service';
 @Component({
   templateUrl: "./manage-users.html",
   styleUrls: ["./manage-users.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ManageUsersComponent implements OnInit {
   users: Users[];

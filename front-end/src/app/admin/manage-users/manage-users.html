@@ -1,5 +1,5 @@
 <div *ngIf="message!=''" class="message">{{message}}</div>
-<table class="table table-striped">
+<table class="table table-border">
       <thead>
         <tr>
           <th> # </th>
@@ -23,7 +23,7 @@
               <button [ngClass]="{'btn btn-yes': user.friend, 'btn-no btn': !user.friend}" (click)="changeFriend(user)" class="btn">{{user.friend ? 'Yes' : 'No'}}</button>
           </td>
             <td>
-              <button class="btn btn-danger" (click)="delete(user)">Delete</button>
+              <button class="btn btn-warning" (click)="delete(user)">Delete</button>
             </td>
         </tr>
         

@@ -2,13 +2,14 @@ import { BooksService } from "./../books/books.service";
 import { BorrowedService } from "./borrowed.service";
 import { Users } from "./../registration/user";
 import { Books } from "../books/books";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Subject, Observable } from "rxjs";
 
 @Component({
   selector: "app-borrowed",
   templateUrl: "./borrowed.component.html",
-  styleUrls: ["./borrowed.component.scss"]
+  styleUrls: ["./borrowed.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class BorrowedComponent implements OnInit {
   loggedUserId: string;

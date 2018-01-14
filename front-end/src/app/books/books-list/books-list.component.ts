@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import { Component, OnInit, ElementRef, ViewChild, ViewEncapsulation   } from "@angular/core";
 import { Books } from "../books";
 import { BooksService } from "../books.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -11,6 +11,7 @@ import { StatusService } from '../../login/user-status.service';
   selector: "books-list",
   templateUrl: "./books-list.component.html",
   styleUrls: ["./books-list.component.scss"],
+  encapsulation: ViewEncapsulation.None,
   providers: <any>[BooksService]
 })
 export class BooksListComponent implements OnInit {

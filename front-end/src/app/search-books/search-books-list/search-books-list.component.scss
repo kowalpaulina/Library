@@ -1,34 +1,3 @@
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(8, 96, 183, 0.4);
-}
-
-.table-striped tbody tr:nth-of-type(even) {
-  background-color: rgba(8, 96, 183, 0.2);
-}
-
-.table th,
-.table td {
-  border-top-color: transparent;
-  cursor: pointer;
-}
-
-table {
+.table {
   margin-top: 30px;
-}
-
-thead tr {
-  background-color: rgb(8, 96, 183);
-
-  th {
-    color: #fff;
-  }
-}
-
-.message {
-  color: rgba(2, 117, 216, 0.8);
-  margin-top: 25px;
-  display: flex;
-  justify-content: flex-end;
-  text-transform: uppercase;
-  font-size: 14px;
 }
