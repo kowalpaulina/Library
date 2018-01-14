@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { Books } from "../books";
 import { BooksService } from "../books.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -27,14 +27,20 @@ export class BooksListComponent implements OnInit {
   userWhoBorrow;
   AllUser;
   isApproved: boolean;
+  @ViewChild('scrollMe') myScrollContainer: ElementRef;
 
   edit(book) {
     if(!this.isApproved){
       return;
     }
-    console.log(typeof book.borrower);
       this.router.navigate(["books", book._id, "edit"]);
   }
+
+   private onScroll() {
+     console.log("scroll");
+        this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+        
+    }
 
   ngOnInit() {
     this.authService.getUserStream().subscribe((users: Users[]) => {
