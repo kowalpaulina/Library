@@ -6,59 +6,90 @@ import "rxjs/Rx";
 import { Subject, Observable } from "rxjs";
 import { ErrorService } from "../errors/error.service";
 
-
-
-
 @Injectable()
-export class BooksService{
-  constructor(private http: Http, private errorService: ErrorService) {}
-
+export class BooksService {
+  constructor(private http: Http, private errorService: ErrorService) {
+    // this.token = localStorage.getItem("token")
+    //   ? "&token=" + localStorage.getItem("token")
+    //   : "";
+    // this.userId = localStorage.getItem("userId")
+    //   ? "?userId=" + localStorage.getItem("userId")
+    //   : "";
+  }
 
   server_url = "http://localhost:3000/books/";
   books: Books[] = [];
   chosenBook;
   booksStream$ = new Subject<Books[]>();
-  token = localStorage.getItem('token') ? 'token=' + localStorage.getItem('token') : '';
-  userId = localStorage.getItem('userId') ? '?userId=' + localStorage.getItem('userId') : '';
-
 
   saveBook(books) {
+      const token = localStorage.getItem("token")
+    ? "&token=" + localStorage.getItem("token")
+    : "";
+  const userId = localStorage.getItem("userId")
+    ? "?userId=" + localStorage.getItem("userId")
+    : "";
     let request;
     const headers = new Headers({ "Content-Type": "application/json" });
     if (books._id) {
       console.log("saveBooks from service", books);
-      request = this.http.patch(`${this.server_url}${books._id}/edit${this.userId}&${this.token}`, books, {
-        headers: headers
-      });
+      request = this.http.patch(
+        `${this.server_url}${books._id}/edit${userId}${token}`,
+        books,
+        {
+          headers: headers
+        }
+      );
     } else {
-      request = this.http.post(`${this.server_url}new${this.userId}&${this.token}`, books, {
-        headers: headers
-      });
+      console.log("5",books)
+        const token = localStorage.getItem("token")
+    ? "&token=" + localStorage.getItem("token")
+    : "";
+  const userId = localStorage.getItem("userId")
+    ? "?userId=" + localStorage.getItem("userId")
+    : "";
+      request = this.http.post(
+        `${this.server_url}new${userId}${token}`,
+        books,
+        {
+          headers: headers
+        }
+      );
     }
     return request
       .map(response => response.json().obj)
-      .do(books => {
+      .do(newBooks => {
+        console.log("6",newBooks);
+        this.books = Object.assign({}, newBooks);
         this.getBooks();
       })
       .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
-      })
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
   }
 
   deleteBook(books) {
     let request;
-    request = this.http.delete(`${this.server_url}${books._id}/edit${this.userId}&${this.token}`);
+      const token = localStorage.getItem("token")
+    ? "&token=" + localStorage.getItem("token")
+    : "";
+  const userId = localStorage.getItem("userId")
+    ? "?userId=" + localStorage.getItem("userId")
+    : "";
+    request = this.http.delete(
+      `${this.server_url}${books._id}/edit${userId}${token}`
+    );
 
     return request
       .map(response => response.json().obj)
       .do(books => {
         this.getBooks();
-    })
-      .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
       })
+      .catch((error: Response) => {
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
   }
 
   createBook(): Books {
@@ -70,21 +101,26 @@ export class BooksService{
       lend: false,
       borrower: null,
       dateFrom: "",
-      dateTo: "",
+      dateTo: ""
     };
   }
 
   getBooks() {
+      const token = localStorage.getItem("token")
+    ? "&token=" + localStorage.getItem("token")
+    : "";
+  const userId = localStorage.getItem("userId")
+    ? "?userId=" + localStorage.getItem("userId")
+    : "";
     return this.http
-      .get(`${this.server_url}${this.userId}&${this.token}`)
+      .get(`${this.server_url}${userId}${token}`)
       .map(response => response.json().obj)
       .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
       })
       .subscribe(books => {
         console.log("getBooks", books);
-        
 
         this.books = books;
         console.log("this.getBooks", this.books);
@@ -102,19 +138,24 @@ export class BooksService{
   }
 
   getBook(id) {
-    console.log(this.token);
+      const token = localStorage.getItem("token")
+    ? "&token=" + localStorage.getItem("token")
+    : "";
+  const userId = localStorage.getItem("userId")
+    ? "?userId=" + localStorage.getItem("userId")
+    : "";
+    console.log("token from get book", token);
     return this.http
-      .get(`${this.server_url}${id}/edit${this.userId}&${this.token}`)
+      .get(`${this.server_url}${id}/edit${userId}${token}`)
       .map(response => response.json().obj)
       .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
-      })
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
   }
 
   addBookToLibrary(chosenBook) {
     console.log(chosenBook);
-    this.saveBook(chosenBook).subscribe(() => {
-    });
+    this.saveBook(chosenBook).subscribe(() => {});
   }
 }

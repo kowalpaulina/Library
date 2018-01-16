@@ -28,6 +28,7 @@ export class SearchBooksListComponent implements OnInit {
     this.statusService.checkStatusAfterRefreash();
     this.statusService.getStatusStream().subscribe(value=>{
       this.isApproved = value;
+      console.log("value",value);
     });
 
     

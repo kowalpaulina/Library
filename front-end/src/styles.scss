@@ -12,6 +12,14 @@ h2 {
   padding: 2rem;
 }
 
+.navbar ul{
+  justify-content: flex-end!important;
+
+  li{
+    margin-left: 20px;
+  }
+}
+
 table {
   font-family: "Alegreya Sans", sans-serif;
 }
@@ -60,8 +68,8 @@ table.table-border tbody tr td {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border: 1px solid transparent;
   padding: 0.5rem 0.75rem;
+  border:none;
   font-size: 1rem;
   line-height: 1.25;
   border-radius: 0.25rem;

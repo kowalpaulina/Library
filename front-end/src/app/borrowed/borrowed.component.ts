@@ -17,6 +17,7 @@ export class BorrowedComponent implements OnInit {
   message: string = "";
   book: Books;
   listOfBorrowedBooks: object[] = [];
+  loggedUserToken
 
   constructor(
     private borrowedService: BorrowedService,
@@ -25,6 +26,12 @@ export class BorrowedComponent implements OnInit {
     if (localStorage.getItem("userId") !== null) {
       this.loggedUserId = localStorage.getItem("userId");
     }
+
+      if (localStorage.getItem("token") !== null) {
+      this.loggedUserToken = localStorage.getItem("token");
+    }
+
+    
 
     this.borrowedService.getUserData(this.loggedUserId).subscribe(user => {
       this.user = user;

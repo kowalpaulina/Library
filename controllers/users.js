@@ -25,32 +25,30 @@ router.get('/', function (req, res, next) {
 
 
 
-// router.use('/', function (req, res, next) {
-//     jwt.verify(req.query.token, 'secret', function (err, decoded) {
-//         if (err) {
-//             return res.status(401).json({
-//                 title: 'Not Authenticated1',
-//                 error: err
-//             });
-//         }else{
-//             userData = decoded; 
-//             if(userData.user.approved || userData.user.friend){
-//                 next();
-//             }else{
-//                 return res.status(401).json({
-//                 title: 'Not Authenticated2',
-//                 error: err
-//             });
-//             }
-//         }
+router.use('/', function (req, res, next) {
+    jwt.verify(req.query.token, 'secret', function (err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                title: 'Not Authenticated1',
+                error: err
+            });
+        }else{
+            userData = decoded; 
+            if(userData.user.approved || userData.user.friend){
+                next();
+            }else{
+                return res.status(401).json({
+                title: 'Not Authenticated2',
+                error: err
+            });
+            }
+        }
             
-//     })
-// });
-
-
+    })
+});
 
 router.get('/:id', function (req, res) {
-    console.log("id", req.params.id);
+
     User
     .findOne({_id:req.params.id}, function (err, user){
         if (err) {
@@ -78,27 +76,27 @@ router.get('/:id', function (req, res) {
 
 
 
-// router.use('/', function (req, res, next) {
-//     jwt.verify(req.query.token, 'secret', function (err, decoded) {
-//         if (err) {
-//             return res.status(401).json({
-//                 title: 'Not Authenticated3',
-//                 error: err
-//             });
-//         }else{
-//             userData = decoded; 
-//             if(userData.user.approved){
-//                 next();
-//             }else{
-//                 return res.status(401).json({
-//                 title: 'Not Authenticated4',
-//                 error: err
-//             });
-//             }
-//         }
+router.use('/', function (req, res, next) {
+    jwt.verify(req.query.token, 'secret', function (err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                title: 'Not Authenticated3',
+                error: err
+            });
+        }else{
+            userData = decoded; 
+            if(userData.user.approved){
+                next();
+            }else{
+                return res.status(401).json({
+                title: 'Not Authenticated4',
+                error: err
+            });
+            }
+        }
             
-//     })
-// });
+    })
+});
 
 
 router.post('/register', function (req, res, next) {
