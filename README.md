@@ -2,11 +2,19 @@
 
 You need node, mongodb and angular-cli to use this project. 
 
+Inside your Mongodb directory run
+
+```
+./mongod
+```
+
 To install, run
 
 ```
 npm install
 ```
+
+in root directory of project.
 
 The angular front-end code is located inside the `front-end`. 
 
