@@ -13,11 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let book of books; let i = index" 
-            class="playlist-row" 
-            (click)="edit(book)" 
-            #scrollMe 
-            (scroll)="onScroll()">
+        <tr *ngFor="let book of books; let i = index" class="playlist-row" (click)="edit(book)" #scrollMe (scroll)="onScroll()">
             <td> {{ i + 1 || "" }}. </td>
             <td> {{ book.title || "" }} </td>
             <td> {{ book.author || "" }} </td>
@@ -36,11 +32,7 @@
             <td> {{ book.borrower || "" }} </td>
             <td> {{ book.dateFrom || "" }} </td>
             <td> {{ book.dateTo || "" }} </td>
-
         </tr>
-
- 
-
     </tbody>
 
 </table>

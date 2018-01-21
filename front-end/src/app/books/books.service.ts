@@ -8,14 +8,7 @@ import { ErrorService } from "../errors/error.service";
 
 @Injectable()
 export class BooksService {
-  constructor(private http: Http, private errorService: ErrorService) {
-    // this.token = localStorage.getItem("token")
-    //   ? "&token=" + localStorage.getItem("token")
-    //   : "";
-    // this.userId = localStorage.getItem("userId")
-    //   ? "?userId=" + localStorage.getItem("userId")
-    //   : "";
-  }
+  constructor(private http: Http, private errorService: ErrorService) {}
 
   server_url = "http://localhost:3000/books/";
   books: Books[] = [];
@@ -23,16 +16,15 @@ export class BooksService {
   booksStream$ = new Subject<Books[]>();
 
   saveBook(books) {
-      const token = localStorage.getItem("token")
-    ? "&token=" + localStorage.getItem("token")
-    : "";
-  const userId = localStorage.getItem("userId")
-    ? "?userId=" + localStorage.getItem("userId")
-    : "";
+    const token = localStorage.getItem("token")
+      ? "&token=" + localStorage.getItem("token")
+      : "";
+    const userId = localStorage.getItem("userId")
+      ? "?userId=" + localStorage.getItem("userId")
+      : "";
     let request;
     const headers = new Headers({ "Content-Type": "application/json" });
     if (books._id) {
-      console.log("saveBooks from service", books);
       request = this.http.patch(
         `${this.server_url}${books._id}/edit${userId}${token}`,
         books,
@@ -41,13 +33,12 @@ export class BooksService {
         }
       );
     } else {
-      console.log("5",books)
-        const token = localStorage.getItem("token")
-    ? "&token=" + localStorage.getItem("token")
-    : "";
-  const userId = localStorage.getItem("userId")
-    ? "?userId=" + localStorage.getItem("userId")
-    : "";
+      const token = localStorage.getItem("token")
+        ? "&token=" + localStorage.getItem("token")
+        : "";
+      const userId = localStorage.getItem("userId")
+        ? "?userId=" + localStorage.getItem("userId")
+        : "";
       request = this.http.post(
         `${this.server_url}new${userId}${token}`,
         books,
@@ -59,7 +50,6 @@ export class BooksService {
     return request
       .map(response => response.json().obj)
       .do(newBooks => {
-        console.log("6",newBooks);
         this.books = Object.assign({}, newBooks);
         this.getBooks();
       })
@@ -71,12 +61,12 @@ export class BooksService {
 
   deleteBook(books) {
     let request;
-      const token = localStorage.getItem("token")
-    ? "&token=" + localStorage.getItem("token")
-    : "";
-  const userId = localStorage.getItem("userId")
-    ? "?userId=" + localStorage.getItem("userId")
-    : "";
+    const token = localStorage.getItem("token")
+      ? "&token=" + localStorage.getItem("token")
+      : "";
+    const userId = localStorage.getItem("userId")
+      ? "?userId=" + localStorage.getItem("userId")
+      : "";
     request = this.http.delete(
       `${this.server_url}${books._id}/edit${userId}${token}`
     );
@@ -106,12 +96,12 @@ export class BooksService {
   }
 
   getBooks() {
-      const token = localStorage.getItem("token")
-    ? "&token=" + localStorage.getItem("token")
-    : "";
-  const userId = localStorage.getItem("userId")
-    ? "?userId=" + localStorage.getItem("userId")
-    : "";
+    const token = localStorage.getItem("token")
+      ? "&token=" + localStorage.getItem("token")
+      : "";
+    const userId = localStorage.getItem("userId")
+      ? "?userId=" + localStorage.getItem("userId")
+      : "";
     return this.http
       .get(`${this.server_url}${userId}${token}`)
       .map(response => response.json().obj)
@@ -120,10 +110,7 @@ export class BooksService {
         return Observable.throw(error.json());
       })
       .subscribe(books => {
-        console.log("getBooks", books);
-
         this.books = books;
-        console.log("this.getBooks", this.books);
         this.booksStream$.next(this.books);
       });
   }
@@ -132,19 +119,16 @@ export class BooksService {
     if (!this.books.length) {
       this.getBooks();
     }
-    //return this.booksStream$.startWith(this.books);
-    console.log("getBooksStream", this.books);
     return Observable.from(this.booksStream$).startWith(this.books);
   }
 
   getBook(id) {
-      const token = localStorage.getItem("token")
-    ? "&token=" + localStorage.getItem("token")
-    : "";
-  const userId = localStorage.getItem("userId")
-    ? "?userId=" + localStorage.getItem("userId")
-    : "";
-    console.log("token from get book", token);
+    const token = localStorage.getItem("token")
+      ? "&token=" + localStorage.getItem("token")
+      : "";
+    const userId = localStorage.getItem("userId")
+      ? "?userId=" + localStorage.getItem("userId")
+      : "";
     return this.http
       .get(`${this.server_url}${id}/edit${userId}${token}`)
       .map(response => response.json().obj)
@@ -155,7 +139,6 @@ export class BooksService {
   }
 
   addBookToLibrary(chosenBook) {
-    console.log(chosenBook);
     this.saveBook(chosenBook).subscribe(() => {});
   }
 }

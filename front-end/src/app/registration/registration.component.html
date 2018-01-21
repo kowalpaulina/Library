@@ -17,12 +17,13 @@
 
   <div class="form-group">
     <label for="">Email</label>
-    <input ngModel pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" #emailRegistration="ngModel" type="text" class="form-control" name="email" required>
+    <input ngModel pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+      #emailRegistration="ngModel" type="text" class="form-control" name="email" required>
     <div class="danger" *ngIf="emailRegistration.touched || emailRegistration.dirty || emailRegistration.submitted">
       <div class="error" *ngIf="emailRegistration.errors?.required">
         Email is required
       </div>
-            <div class="error" *ngIf="emailRegistration.errors?.pattern">
+      <div class="error" *ngIf="emailRegistration.errors?.pattern">
         Wrong email format
       </div>
     </div>
@@ -30,7 +31,7 @@
 
   <div class="form-group">
     <label for="">Password</label>
-    <input  #passwordRegistration="ngModel" minlength="3" type="text" class="form-control" name="password" required ngModel>
+    <input #passwordRegistration="ngModel" minlength="3" type="text" class="form-control" name="password" required ngModel>
     <div class="danger" *ngIf="passwordRegistration.touched || passwordRegistration.dirty || passwordRegistration.submitted">
       <div class="error" *ngIf="passwordRegistration.errors?.required">
         Password is required

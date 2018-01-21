@@ -9,26 +9,28 @@ import { ErrorService } from "../errors/error.service";
 @Injectable()
 export class RegistrationService {
   constructor(private http: Http, private errorService: ErrorService) {}
-
   server_url = "http://localhost:3000/users/register/";
   users: Users[] = [];
-  token = localStorage.getItem('token') ? 'token=' + localStorage.getItem('token') : '';
-  userId = localStorage.getItem('userId') ? '?userId=' + localStorage.getItem('userId') : '';
 
 
   registerUser(users: Users) {
+      const token = localStorage.getItem("token")
+    ? "token=" + localStorage.getItem("token")
+    : "";
+  const userId = localStorage.getItem("userId")
+    ? "?userId=" + localStorage.getItem("userId")
+    : "";
     console.log(users);
     const headers = new Headers({ "Content-Type": "application/json" });
     return this.http
-      .post(`${this.server_url}${this.userId}&${this.token}`, users, { headers: headers })
+      .post(`${this.server_url}${userId}&${token}`, users, {
+        headers: headers
+      })
       .map(response => response.json().obj)
       .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
       })
-      .subscribe(users => {
-      })
+      .subscribe(users => {});
   }
 }
-
-

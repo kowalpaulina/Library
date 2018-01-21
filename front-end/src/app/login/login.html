@@ -8,7 +8,7 @@
     <div class="error" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">
         Email is required
     </div>
-        <div class="error" *ngIf="loginForm.get('email').hasError('pattern') && loginForm.get('email').touched">
+    <div class="error" *ngIf="loginForm.get('email').hasError('pattern') && loginForm.get('email').touched">
         Wrong email format
     </div>
 

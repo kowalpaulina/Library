@@ -9,7 +9,7 @@ import { Subject, Observable } from "rxjs";
   selector: "app-borrowed",
   templateUrl: "./borrowed.component.html",
   styleUrls: ["./borrowed.component.scss"],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class BorrowedComponent implements OnInit {
   loggedUserId: string;
@@ -17,7 +17,7 @@ export class BorrowedComponent implements OnInit {
   message: string = "";
   book: Books;
   listOfBorrowedBooks: object[] = [];
-  loggedUserToken
+  loggedUserToken;
 
   constructor(
     private borrowedService: BorrowedService,
@@ -27,11 +27,9 @@ export class BorrowedComponent implements OnInit {
       this.loggedUserId = localStorage.getItem("userId");
     }
 
-      if (localStorage.getItem("token") !== null) {
+    if (localStorage.getItem("token") !== null) {
       this.loggedUserToken = localStorage.getItem("token");
     }
-
-    
 
     this.borrowedService.getUserData(this.loggedUserId).subscribe(user => {
       this.user = user;

@@ -1,21 +1,18 @@
-import { Component } from '@angular/core';
-import {AuthService} from "../../login/auth.service";
+import { Component } from "@angular/core";
+import { AuthService } from "../../login/auth.service";
 
 @Component({
   templateUrl: "./admin-dashboard.component.html",
-  styleUrls: ["./admin-dashboard.component.scss"],
+  styleUrls: ["./admin-dashboard.component.scss"]
 })
 export class AdminDashboardComponent {
   message: string;
 
-
-  constructor(private authService:AuthService) {
-  }
+  constructor(private authService: AuthService) {}
 
   logout() {
-      this.authService.logout();
-      this.authService.isLoggedIn.next(false);
-      this.message = "Logging out ...";
+    this.authService.logout();
+    this.authService.isLoggedIn.next(false);
+    this.message = "Logging out ...";
   }
-
 }

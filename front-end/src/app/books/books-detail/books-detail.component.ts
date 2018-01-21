@@ -30,10 +30,10 @@ export class BooksDetailComponent implements OnInit {
   deleteForbidden = new EventEmitter<string>();
 
   onChangeUser(newUser) {
-    console.log("newUser1",newUser);
+    console.log("newUser1", newUser);
     //this.newUser = newUser;
     this.borrower = newUser;
-    console.log("this.borrower2",this.borrower);
+    console.log("this.borrower2", this.borrower);
   }
 
   save(valid, books) {
@@ -44,8 +44,8 @@ export class BooksDetailComponent implements OnInit {
     if (this.books.borrower == "") {
       this.books.borrower = null;
     }
-    console.log("this.books.borrower3",this.books.borrower);
-    console.log("4",this.books);
+    console.log("this.books.borrower3", this.books.borrower);
+    console.log("4", this.books);
     this.booksDataService.saveBook(this.books).subscribe(books => {
       this.router.navigate(["books", books._id]);
     });

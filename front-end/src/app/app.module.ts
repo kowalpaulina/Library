@@ -1,7 +1,7 @@
-import { BorrowedService } from './borrowed/borrowed.service';
-import { ErrorService } from './errors/error.service';
+import { BorrowedService } from "./borrowed/borrowed.service";
+import { ErrorService } from "./errors/error.service";
 import { BrowserModule } from "@angular/platform-browser";
-import { CommonModule } from '@angular/common';
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
@@ -19,23 +19,23 @@ import { BooksComponent } from "./books/books.component";
 import { BooksListComponent } from "./books/books-list/books-list.component";
 import { LoginComponent } from "./login/login.component";
 import { AdminComponent } from "./admin/admin.component";
-import { BooksDetailComponent } from './books/books-detail/books-detail.component'
-import { BooksSearchFormComponent } from './search-books/books-search-form.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { SearchBooksComponent } from './search-books/search-books.component';
+import { BooksDetailComponent } from "./books/books-detail/books-detail.component";
+import { BooksSearchFormComponent } from "./search-books/books-search-form.component";
+import { NavbarComponent } from "./navbar/navbar.component";
+import { SearchBooksComponent } from "./search-books/search-books.component";
 
 import { AuthService } from "./login/auth.service";
 import { StatusService } from "./login/user-status.service";
 import { AuthGuard } from "./login/auth-guard.service";
 import { AdminModule } from "./admin/admin.module";
-import { SearchBooksListComponent } from './search-books/search-books-list/search-books-list.component';
+import { SearchBooksListComponent } from "./search-books/search-books-list/search-books-list.component";
 
-import { BooksService } from './books/books.service';
-import { RegistrationComponent } from './registration/registration.component';
-import { RegistrationService } from './registration/registration.service';
-import { LibraryComponent } from './library/library.component';
-import { ErrorsComponent } from './errors/errors.component';
-import { BorrowedComponent } from './borrowed/borrowed.component'
+import { BooksService } from "./books/books.service";
+import { RegistrationComponent } from "./registration/registration.component";
+import { RegistrationService } from "./registration/registration.service";
+import { LibraryComponent } from "./library/library.component";
+import { ErrorsComponent } from "./errors/errors.component";
+import { BorrowedComponent } from "./borrowed/borrowed.component";
 
 @NgModule({
   declarations: [
@@ -83,10 +83,10 @@ import { BorrowedComponent } from './borrowed/borrowed.component'
         canActivate: [AuthGuard],
         component: BooksComponent,
         children: [
-          {path:'new', component: BooksDetailComponent },
-          {path:':id', component: BooksDetailComponent },
-          {path:':id/edit', component: BooksDetailComponent },
-        ],
+          { path: "new", component: BooksDetailComponent },
+          { path: ":id", component: BooksDetailComponent },
+          { path: ":id/edit", component: BooksDetailComponent }
+        ]
       },
       {
         path: "searchBooks",
@@ -102,7 +102,7 @@ import { BorrowedComponent } from './borrowed/borrowed.component'
       },
       {
         path: "logout",
-        redirectTo: '/',
+        redirectTo: "/"
       },
 
       {
@@ -113,24 +113,29 @@ import { BorrowedComponent } from './borrowed/borrowed.component'
       {
         path: "users",
         canActivate: [AuthGuard],
-        children: [
-          {path:'register', component: RegistrationComponent },
-
-        ],
+        children: [{ path: "register", component: RegistrationComponent }]
       },
       // {
       //   path: "",
       //   redirectTo: "/",
       //   pathMatch: "full"
       // }
-      { 
-        path: '**', 
-        redirectTo: '/',
-        pathMatch: 'full' 
-      },
+      {
+        path: "**",
+        redirectTo: "/",
+        pathMatch: "full"
+      }
     ])
   ],
-  providers: [AuthService, AuthGuard, BooksService,RegistrationService, ErrorService, StatusService, BorrowedService],
+  providers: [
+    AuthService,
+    AuthGuard,
+    BooksService,
+    RegistrationService,
+    ErrorService,
+    StatusService,
+    BorrowedService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -139,5 +144,3 @@ export class AppModule {
     //console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
   }
 }
-
-

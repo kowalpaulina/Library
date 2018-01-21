@@ -1,75 +1,67 @@
-<div *ngIf="message!=''" class="message">{{message}}</div> 
+<div *ngIf="message!=''" class="message">{{message}}</div>
 <div class="books-details" *ngIf="books">
-          <form #formRef="ngForm" (ngSubmit)="save(formRef.valid, books)">
-          <div class="form-group">
-            <label>Title:</label>
-            <input type="text" #nameRef="ngModel" required minlength="2" [(ngModel)]="books.title" name="name" class="form-control">
-            <div class="danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
-              <div class="error" 
-                    *ngIf="nameRef.errors?.required">
-                    Title is required
-              </div>
-              <div class="error" 
-                    *ngIf="nameRef.errors?.minlength">
-                    This field must have at least {{nameRef.errors.minlength.requiredLength}} characters.
-              </div>
-            </div>
+  <form #formRef="ngForm" (ngSubmit)="save(formRef.valid, books)">
+    <div class="form-group">
+      <label>Title:</label>
+      <input type="text" #nameRef="ngModel" required minlength="2" [(ngModel)]="books.title" name="name" class="form-control">
+      <div class="danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
+        <div class="error" *ngIf="nameRef.errors?.required">
+          Title is required
+        </div>
+        <div class="error" *ngIf="nameRef.errors?.minlength">
+          This field must have at least {{nameRef.errors.minlength.requiredLength}} characters.
+        </div>
+      </div>
 
-            <label for="author">Author:</label>
-            <input type="text" required minlength="3" [(ngModel)]="books.author" name="author" class="form-control" id="author">
-            <div class="danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
-              <div class="error" 
-                    *ngIf="nameRef.errors?.required">
-                    Author is required
-              </div>
-              <div class="error" 
-                    *ngIf="nameRef.errors?.minlength">
-                    This field must have at least {{nameRef.errors.minlength.requiredLength}} characters.
-              </div>
-            </div>
-            
-            <div class="borrow-return-book">
-              <label for="borrower">Borrower:</label>
-              <select class="borrower" name="borrower" id="borrower" [(ngModel)]="books.borrower" (ngModelChange)="onChangeUser($event)">
+      <label for="author">Author:</label>
+      <input type="text" required minlength="3" [(ngModel)]="books.author" name="author" class="form-control" id="author">
+      <div class="danger" *ngIf="nameRef.touched || nameRef.dirty || formRef.submitted">
+        <div class="error" *ngIf="nameRef.errors?.required">
+          Author is required
+        </div>
+        <div class="error" *ngIf="nameRef.errors?.minlength">
+          This field must have at least {{nameRef.errors.minlength.requiredLength}} characters.
+        </div>
+      </div>
+
+      <div class="borrow-return-book">
+        <label for="borrower">Borrower:</label>
+        <select class="borrower" name="borrower" id="borrower" [(ngModel)]="books.borrower" (ngModelChange)="onChangeUser($event)">
                 <option value="" [ngValue]="null">return a book</option> 
                 <option *ngFor="let user of users" [ngValue]="user._id">{{user.email}}</option>
               </select>
-            </div>
-      
-            <label for="dateFrom">Date From</label>
-            <input type="date" [(ngModel)]="books.dateFrom" name="dateFrom" class="form-control" id="dateFrom">
+      </div>
 
-            <label for="dateTo">Date To</label>
-            <input type="date" [(ngModel)]="books.dateTo" name="dateTo" class="form-control" id="dateTo">
+      <label for="dateFrom">Date From</label>
+      <input type="date" [(ngModel)]="books.dateFrom" name="dateFrom" class="form-control" id="dateFrom">
 
-           
+      <label for="dateTo">Date To</label>
+      <input type="date" [(ngModel)]="books.dateTo" name="dateTo" class="form-control" id="dateTo">
 
 
-          </div>
-         
-      
-          
-          <div class="form-group">
-            <label><input type="checkbox" [(ngModel)]="books.read" name="read"> 
+
+
+    </div>
+
+
+
+    <div class="form-group">
+      <label><input type="checkbox" [(ngModel)]="books.read" name="read"> 
             Read</label>
-          </div>
+    </div>
 
-          <!-- <div class="form-group">
+    <!-- <div class="form-group">
             <label><input type="checkbox" [(ngModel)]="books.lend" name="lend"> 
             Lend</label>
           </div> -->
 
 
-          <div class="form-group">
-            <button class="btn btn-blue float-xs-right" type="submit">Save</button>
-            <button 
-              *ngIf="books._id" 
-              class="btn btn-warning float-xs-right" 
-              type="button" 
-              (click)="delete(books); 
+    <div class="form-group">
+      <button class="btn btn-blue float-xs-right" type="submit">Save</button>
+      <button *ngIf="books._id" class="btn btn-warning float-xs-right" type="button" (click)="delete(books); 
               $event.stopPropagation()">
               Delete
             </button>
-          </div>
-          </form>
-        </div>
+    </div>
+  </form>
+</div>

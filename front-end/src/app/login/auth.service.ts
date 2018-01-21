@@ -55,12 +55,12 @@ export class AuthService {
   }
 
   getUsers() {
-      const token = localStorage.getItem("token")
-    ? "&token=" + localStorage.getItem("token")
-    : "";
-  const userId = localStorage.getItem("userId")
-    ? "?userId=" + localStorage.getItem("userId")
-    : "";
+    const token = localStorage.getItem("token")
+      ? "&token=" + localStorage.getItem("token")
+      : "";
+    const userId = localStorage.getItem("userId")
+      ? "?userId=" + localStorage.getItem("userId")
+      : "";
     return this.http
       .get(`${this.users_url}${userId}${token}`)
       .map(response => response.json().obj)
@@ -76,12 +76,12 @@ export class AuthService {
 
   upadeApprovedStatus(user: Users) {
     const headers = new Headers({ "Content-Type": "application/json" });
-      const token = localStorage.getItem("token")
-    ? "&token=" + localStorage.getItem("token")
-    : "";
-  const userId = localStorage.getItem("userId")
-    ? "?userId=" + localStorage.getItem("userId")
-    : "";
+    const token = localStorage.getItem("token")
+      ? "&token=" + localStorage.getItem("token")
+      : "";
+    const userId = localStorage.getItem("userId")
+      ? "?userId=" + localStorage.getItem("userId")
+      : "";
     let request;
     request = this.http.patch(
       `${this.users_url_manage}${user._id}${userId}${token}`,
@@ -99,12 +99,12 @@ export class AuthService {
   }
 
   updateFriendStatus(user: Users) {
-      const token = localStorage.getItem("token")
-    ? "&token=" + localStorage.getItem("token")
-    : "";
-  const userId = localStorage.getItem("userId")
-    ? "?userId=" + localStorage.getItem("userId")
-    : "";
+    const token = localStorage.getItem("token")
+      ? "&token=" + localStorage.getItem("token")
+      : "";
+    const userId = localStorage.getItem("userId")
+      ? "?userId=" + localStorage.getItem("userId")
+      : "";
     const headers = new Headers({ "Content-Type": "application/json" });
     let request;
     request = this.http.patch(
@@ -123,12 +123,12 @@ export class AuthService {
   }
 
   deleteUser(user: Users) {
-      const token = localStorage.getItem("token")
-    ? "&token=" + localStorage.getItem("token")
-    : "";
-  const userId = localStorage.getItem("userId")
-    ? "?userId=" + localStorage.getItem("userId")
-    : "";
+    const token = localStorage.getItem("token")
+      ? "&token=" + localStorage.getItem("token")
+      : "";
+    const userId = localStorage.getItem("userId")
+      ? "?userId=" + localStorage.getItem("userId")
+      : "";
     let request;
     request = this.http.delete(
       `${this.users_url_manage}${user._id}${userId}${token}`

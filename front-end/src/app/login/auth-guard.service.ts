@@ -18,23 +18,26 @@ export class AuthGuard implements CanActivate {
       console.log("VALUE OF isLoggedIn", value);
       if (!value) this.router.navigate(["/login"]);
       this.isLogged = value;
-      console.log("this.isLogged",this.isLogged);
+      console.log("this.isLogged", this.isLogged);
     });
   }
 
-  canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean> | boolean {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | boolean {
     let url: string = state.url;
     return this.checkLogin(url);
   }
 
-  checkLogin(url:string): boolean {
+  checkLogin(url: string): boolean {
     if (localStorage.getItem("token") !== null) {
       this.isLogged = true;
     } else {
       this.isLogged = false;
       console.log("isloggedin false");
     }
-    
+
     if (this.isLogged) {
       console.log("true");
       return true;

@@ -1,11 +1,16 @@
-import { Component, OnInit, ElementRef, ViewChild, ViewEncapsulation   } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  ViewEncapsulation
+} from "@angular/core";
 import { Books } from "../books";
 import { BooksService } from "../books.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "./../../login/auth.service";
 import { Users } from "../../registration/user";
-import { StatusService } from '../../login/user-status.service';
-
+import { StatusService } from "../../login/user-status.service";
 
 @Component({
   selector: "books-list",
@@ -20,7 +25,7 @@ export class BooksListComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private statusService: StatusService,
+    private statusService: StatusService
   ) {}
 
   books;
@@ -28,29 +33,28 @@ export class BooksListComponent implements OnInit {
   userWhoBorrow;
   AllUser;
   isApproved: boolean;
-  @ViewChild('scrollMe') myScrollContainer: ElementRef;
+  @ViewChild("scrollMe") myScrollContainer: ElementRef;
 
   edit(book) {
-    if(!this.isApproved){
+    if (!this.isApproved) {
       return;
     }
-      this.router.navigate(["books", book._id, "edit"]);
+    this.router.navigate(["books", book._id, "edit"]);
   }
 
-   private onScroll() {
-     console.log("scroll");
-        this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-        
-    }
+  private onScroll() {
+    console.log("scroll");
+    this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+  }
 
   ngOnInit() {
     this.authService.getUserStream().subscribe((users: Users[]) => {
-        this.users = users;
+      this.users = users;
     });
-      
+
     this.statusService.checkStatusAfterRefreash();
     //check after signin
-    this.statusService.getStatusStream().subscribe(value=>{
+    this.statusService.getStatusStream().subscribe(value => {
       this.isApproved = value;
     });
 
@@ -64,23 +68,19 @@ export class BooksListComponent implements OnInit {
     //   }
     // }
 
-        console.log("bookslist component",this.isApproved);
-
+    console.log("bookslist component", this.isApproved);
 
     this.booksDataService.getBooksStream().subscribe((books: Books[]) => {
-
       books.forEach(book => {
         this.userWhoBorrow = this.users.find(user => user._id == book.borrower);
-        if(this.userWhoBorrow){
+        if (this.userWhoBorrow) {
           book.borrower = this.userWhoBorrow.email;
-        }else{
+        } else {
           book.borrower = "";
         }
-        
       });
-      
+
       this.books = books;
-      
     });
   }
 }

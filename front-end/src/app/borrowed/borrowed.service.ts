@@ -18,17 +18,11 @@ export class BorrowedService {
   user: Users;
   url: string;
   loggedUserId: string;
-  // token = localStorage.getItem("token")
-  //   ? "?token=" + localStorage.getItem("token")
-  //   : "";
-  // userId = localStorage.getItem("userId")
-  //   ? "?userId=" + localStorage.getItem("userId")
-  //   : "";
 
   getUserData(id) {
-      const token = localStorage.getItem("token")
-    ? "?token=" + localStorage.getItem("token")
-    : "";
+    const token = localStorage.getItem("token")
+      ? "?token=" + localStorage.getItem("token")
+      : "";
 
     this.url = `http://localhost:3000/users/${id}${token}`;
     console.log(this.url);

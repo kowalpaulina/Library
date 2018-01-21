@@ -1,9 +1,9 @@
-import { async } from '@angular/core/testing';
-import { Component } from '@angular/core';
- 
+import { async } from "@angular/core/testing";
+import { Component } from "@angular/core";
+
 @Component({
   styleUrls: ["./admin.component.scss"],
-  template:  `
+  template: `
     <h3>Administrative panel</h3>
     <nav>
       <li>
@@ -22,5 +22,4 @@ import { Component } from '@angular/core';
     <router-outlet></router-outlet>
   `
 })
-export class AdminComponent {
-}
+export class AdminComponent {}

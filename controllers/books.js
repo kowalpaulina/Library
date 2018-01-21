@@ -41,8 +41,6 @@ router.get("/", function(req, res, next) {
   });
 });
 
-
-
 router.get("/:id/edit", function(req, res, next) {
   Book.findOne({ _id: req.params.id }, function(err, book) {
     if (err) {
@@ -107,28 +105,22 @@ router.post("/new", function(req, res, next) {
       obj: result
     });
 
-        if (book.borrower) {
+    if (book.borrower) {
       console.log("yes");
-    User.findById(book.borrower, function(err, user) {
-      if (err) {
-        return res.status(500).json({
-          title: "An error occurred - no book borrower",
-          error: err
-        });
-      }
-    console.log(book._id);
-      user.booksBorrowed.push(book._id);
-      console.log(user);
-      user.save();
-    });
-  }
-
-
+      User.findById(book.borrower, function(err, user) {
+        if (err) {
+          return res.status(500).json({
+            title: "An error occurred - no book borrower",
+            error: err
+          });
+        }
+        console.log(book._id);
+        user.booksBorrowed.push(book._id);
+        console.log(user);
+        user.save();
+      });
+    }
   });
-
-
-
-
 });
 
 router.patch("/:id/edit", function(req, res, next) {
@@ -147,7 +139,6 @@ router.patch("/:id/edit", function(req, res, next) {
     }
     if (book.borrower) {
       var previousBorrower = book.borrower.toString();
-
     }
 
     (book.author = req.body.author),

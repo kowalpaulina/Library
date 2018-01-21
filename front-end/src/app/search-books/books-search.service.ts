@@ -22,7 +22,6 @@ export class BooksSearchService {
   search(query) {
     console.log("query",query)
     let url =
-    //`http://data.bn.org.pl/docs/bibs/api/bibs.json?author=${query}`
       `http://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=e13a1f4cefca4afba7016dcc43e832ca&author=${query}&sort-by=title&sort-order=desc`;
 
     return this.http
@@ -31,7 +30,6 @@ export class BooksSearchService {
       .subscribe(books => {
         console.log("stream1", books); //obiekt
         books = Object.keys( books ).map( p => Object.assign( books[p], {field:p} ) )
-        
         this.books = books[3]; //tablica
         this.booksStream.next(this.books);
       });
